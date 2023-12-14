@@ -9,21 +9,37 @@
 /* Begin PBXBuildFile section */
 		4EB726002B29DF9700B9990A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB725FF2B29DF9700B9990A /* AppDelegate.swift */; };
 		4EB726022B29DF9700B9990A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB726012B29DF9700B9990A /* SceneDelegate.swift */; };
-		4EB726042B29DF9700B9990A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB726032B29DF9700B9990A /* ViewController.swift */; };
+		4EB726042B29DF9700B9990A /* ExpirationDateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB726032B29DF9700B9990A /* ExpirationDateVC.swift */; };
 		4EB726072B29DF9700B9990A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EB726052B29DF9700B9990A /* Main.storyboard */; };
 		4EB726092B29DF9800B9990A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EB726082B29DF9800B9990A /* Assets.xcassets */; };
 		4EB7260C2B29DF9800B9990A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EB7260A2B29DF9800B9990A /* LaunchScreen.storyboard */; };
+		4EC696D22B2AD6FE000EDE9B /* StockVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC696D12B2AD6FE000EDE9B /* StockVC.swift */; };
+		4EC696D42B2AD709000EDE9B /* SalaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC696D32B2AD708000EDE9B /* SalaryVC.swift */; };
+		4EC696D62B2AD725000EDE9B /* ExpirationDateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC696D52B2AD725000EDE9B /* ExpirationDateViewModel.swift */; };
+		4EC696D82B2AD736000EDE9B /* StockViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC696D72B2AD736000EDE9B /* StockViewModel.swift */; };
+		4EC696DA2B2AD742000EDE9B /* SalaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC696D92B2AD742000EDE9B /* SalaryViewModel.swift */; };
+		4EC696DC2B2AD755000EDE9B /* ExpirationDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC696DB2B2AD755000EDE9B /* ExpirationDate.swift */; };
+		4EC696DE2B2AD758000EDE9B /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC696DD2B2AD758000EDE9B /* Stock.swift */; };
+		4EC696E02B2AD760000EDE9B /* Salary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC696DF2B2AD760000EDE9B /* Salary.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4EB725FC2B29DF9700B9990A /* Pyeon-Duck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pyeon-Duck.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EB725FF2B29DF9700B9990A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4EB726012B29DF9700B9990A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		4EB726032B29DF9700B9990A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4EB726032B29DF9700B9990A /* ExpirationDateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpirationDateVC.swift; sourceTree = "<group>"; };
 		4EB726062B29DF9700B9990A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4EB726082B29DF9800B9990A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4EB7260B2B29DF9800B9990A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4EB7260D2B29DF9800B9990A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4EC696D12B2AD6FE000EDE9B /* StockVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockVC.swift; sourceTree = "<group>"; };
+		4EC696D32B2AD708000EDE9B /* SalaryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalaryVC.swift; sourceTree = "<group>"; };
+		4EC696D52B2AD725000EDE9B /* ExpirationDateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpirationDateViewModel.swift; sourceTree = "<group>"; };
+		4EC696D72B2AD736000EDE9B /* StockViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockViewModel.swift; sourceTree = "<group>"; };
+		4EC696D92B2AD742000EDE9B /* SalaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalaryViewModel.swift; sourceTree = "<group>"; };
+		4EC696DB2B2AD755000EDE9B /* ExpirationDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpirationDate.swift; sourceTree = "<group>"; };
+		4EC696DD2B2AD758000EDE9B /* Stock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
+		4EC696DF2B2AD760000EDE9B /* Salary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Salary.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +72,55 @@
 		4EB725FE2B29DF9700B9990A /* Pyeon-Duck */ = {
 			isa = PBXGroup;
 			children = (
-				4EB725FF2B29DF9700B9990A /* AppDelegate.swift */,
-				4EB726012B29DF9700B9990A /* SceneDelegate.swift */,
-				4EB726032B29DF9700B9990A /* ViewController.swift */,
-				4EB726052B29DF9700B9990A /* Main.storyboard */,
-				4EB726082B29DF9800B9990A /* Assets.xcassets */,
-				4EB7260A2B29DF9800B9990A /* LaunchScreen.storyboard */,
+				4EC696D02B2AD1C1000EDE9B /* Resources */,
+				4EC696CD2B2AD13F000EDE9B /* Models */,
+				4EC696CF2B2AD18E000EDE9B /* ViewModels */,
+				4EC696CE2B2AD181000EDE9B /* Views */,
 				4EB7260D2B29DF9800B9990A /* Info.plist */,
 			);
 			path = "Pyeon-Duck";
+			sourceTree = "<group>";
+		};
+		4EC696CD2B2AD13F000EDE9B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4EC696DB2B2AD755000EDE9B /* ExpirationDate.swift */,
+				4EC696DD2B2AD758000EDE9B /* Stock.swift */,
+				4EC696DF2B2AD760000EDE9B /* Salary.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		4EC696CE2B2AD181000EDE9B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4EB726032B29DF9700B9990A /* ExpirationDateVC.swift */,
+				4EC696D12B2AD6FE000EDE9B /* StockVC.swift */,
+				4EC696D32B2AD708000EDE9B /* SalaryVC.swift */,
+				4EB726052B29DF9700B9990A /* Main.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4EC696CF2B2AD18E000EDE9B /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				4EC696D52B2AD725000EDE9B /* ExpirationDateViewModel.swift */,
+				4EC696D72B2AD736000EDE9B /* StockViewModel.swift */,
+				4EC696D92B2AD742000EDE9B /* SalaryViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		4EC696D02B2AD1C1000EDE9B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4EB725FF2B29DF9700B9990A /* AppDelegate.swift */,
+				4EB726012B29DF9700B9990A /* SceneDelegate.swift */,
+				4EB726082B29DF9800B9990A /* Assets.xcassets */,
+				4EB7260A2B29DF9800B9990A /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,9 +194,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4EB726042B29DF9700B9990A /* ViewController.swift in Sources */,
+				4EC696DA2B2AD742000EDE9B /* SalaryViewModel.swift in Sources */,
+				4EB726042B29DF9700B9990A /* ExpirationDateVC.swift in Sources */,
+				4EC696D62B2AD725000EDE9B /* ExpirationDateViewModel.swift in Sources */,
+				4EC696E02B2AD760000EDE9B /* Salary.swift in Sources */,
+				4EC696D22B2AD6FE000EDE9B /* StockVC.swift in Sources */,
+				4EC696DC2B2AD755000EDE9B /* ExpirationDate.swift in Sources */,
 				4EB726002B29DF9700B9990A /* AppDelegate.swift in Sources */,
+				4EC696D42B2AD709000EDE9B /* SalaryVC.swift in Sources */,
 				4EB726022B29DF9700B9990A /* SceneDelegate.swift in Sources */,
+				4EC696DE2B2AD758000EDE9B /* Stock.swift in Sources */,
+				4EC696D82B2AD736000EDE9B /* StockViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
