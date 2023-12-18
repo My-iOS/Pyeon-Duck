@@ -8,22 +8,30 @@
 import UIKit
 
 class SalaryVC: UIViewController {
+    var viewModel: SalaryViewModel!
 
+    deinit {
+        print("Deinitialized SalaryVC")
+    }
+}
+
+// MARK: - View Life Cycle
+
+extension SalaryVC {
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        view.backgroundColor = .white
     }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        tabBarController?.navigationItem.title = "시급 계산기"
     }
-    */
+}
 
+// MARK: - ViewModelInjectable
+
+extension SalaryVC: ViewModelInjectable {
+    func injectViewModel(_ viewModelType: SalaryViewModel) {
+        self.viewModel = viewModelType
+    }
 }

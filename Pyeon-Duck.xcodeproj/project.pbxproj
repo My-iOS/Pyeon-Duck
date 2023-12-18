@@ -21,6 +21,8 @@
 		4EC696DC2B2AD755000EDE9B /* ExpirationDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC696DB2B2AD755000EDE9B /* ExpirationDate.swift */; };
 		4EC696DE2B2AD758000EDE9B /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC696DD2B2AD758000EDE9B /* Stock.swift */; };
 		4EC696E02B2AD760000EDE9B /* Salary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC696DF2B2AD760000EDE9B /* Salary.swift */; };
+		4EC696E22B2AE3E3000EDE9B /* ViewModelInjectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC696E12B2AE3E3000EDE9B /* ViewModelInjectable.swift */; };
+		4EC696E42B2AE526000EDE9B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC696E32B2AE526000EDE9B /* TabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		4EC696DB2B2AD755000EDE9B /* ExpirationDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpirationDate.swift; sourceTree = "<group>"; };
 		4EC696DD2B2AD758000EDE9B /* Stock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
 		4EC696DF2B2AD760000EDE9B /* Salary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Salary.swift; sourceTree = "<group>"; };
+		4EC696E12B2AE3E3000EDE9B /* ViewModelInjectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelInjectable.swift; sourceTree = "<group>"; };
+		4EC696E32B2AE526000EDE9B /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +57,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4E3E027E2B3082E30091D6DD /* Subcomponents */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Subcomponents;
+			sourceTree = "<group>";
+		};
 		4EB725F32B29DF9700B9990A = {
 			isa = PBXGroup;
 			children = (
@@ -84,6 +95,7 @@
 		4EC696CD2B2AD13F000EDE9B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				4EC696E12B2AE3E3000EDE9B /* ViewModelInjectable.swift */,
 				4EC696DB2B2AD755000EDE9B /* ExpirationDate.swift */,
 				4EC696DD2B2AD758000EDE9B /* Stock.swift */,
 				4EC696DF2B2AD760000EDE9B /* Salary.swift */,
@@ -94,6 +106,8 @@
 		4EC696CE2B2AD181000EDE9B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4E3E027E2B3082E30091D6DD /* Subcomponents */,
+				4EC696E32B2AE526000EDE9B /* TabBarController.swift */,
 				4EB726032B29DF9700B9990A /* ExpirationDateVC.swift */,
 				4EC696D12B2AD6FE000EDE9B /* StockVC.swift */,
 				4EC696D32B2AD708000EDE9B /* SalaryVC.swift */,
@@ -195,10 +209,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				4EC696DA2B2AD742000EDE9B /* SalaryViewModel.swift in Sources */,
+				4EC696E42B2AE526000EDE9B /* TabBarController.swift in Sources */,
 				4EB726042B29DF9700B9990A /* ExpirationDateVC.swift in Sources */,
 				4EC696D62B2AD725000EDE9B /* ExpirationDateViewModel.swift in Sources */,
 				4EC696E02B2AD760000EDE9B /* Salary.swift in Sources */,
 				4EC696D22B2AD6FE000EDE9B /* StockVC.swift in Sources */,
+				4EC696E22B2AE3E3000EDE9B /* ViewModelInjectable.swift in Sources */,
 				4EC696DC2B2AD755000EDE9B /* ExpirationDate.swift in Sources */,
 				4EB726002B29DF9700B9990A /* AppDelegate.swift in Sources */,
 				4EC696D42B2AD709000EDE9B /* SalaryVC.swift in Sources */,
