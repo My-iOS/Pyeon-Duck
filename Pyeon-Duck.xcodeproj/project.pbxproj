@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E6D0AF32B317BB900A59BF4 /* CustomTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6D0AF22B317BB900A59BF4 /* CustomTableView.swift */; };
+		4E6D0AF52B317E1300A59BF4 /* ExpirationDateVC+TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6D0AF42B317E1300A59BF4 /* ExpirationDateVC+TableViewDataSource.swift */; };
+		4E937CED2B31DE2800C574D9 /* ExpirationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E937CEC2B31DE2800C574D9 /* ExpirationCell.swift */; };
+		4E937CEF2B31E4FC00C574D9 /* StockCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E937CEE2B31E4FC00C574D9 /* StockCell.swift */; };
 		4EB726002B29DF9700B9990A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB725FF2B29DF9700B9990A /* AppDelegate.swift */; };
 		4EB726022B29DF9700B9990A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB726012B29DF9700B9990A /* SceneDelegate.swift */; };
 		4EB726042B29DF9700B9990A /* ExpirationDateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB726032B29DF9700B9990A /* ExpirationDateVC.swift */; };
@@ -26,6 +30,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4E6D0AF22B317BB900A59BF4 /* CustomTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableView.swift; sourceTree = "<group>"; };
+		4E6D0AF42B317E1300A59BF4 /* ExpirationDateVC+TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExpirationDateVC+TableViewDataSource.swift"; sourceTree = "<group>"; };
+		4E937CEC2B31DE2800C574D9 /* ExpirationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpirationCell.swift; sourceTree = "<group>"; };
+		4E937CEE2B31E4FC00C574D9 /* StockCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockCell.swift; sourceTree = "<group>"; };
 		4EB725FC2B29DF9700B9990A /* Pyeon-Duck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pyeon-Duck.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EB725FF2B29DF9700B9990A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4EB726012B29DF9700B9990A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -60,8 +68,18 @@
 		4E3E027E2B3082E30091D6DD /* Subcomponents */ = {
 			isa = PBXGroup;
 			children = (
+				4E6D0AF22B317BB900A59BF4 /* CustomTableView.swift */,
 			);
 			path = Subcomponents;
+			sourceTree = "<group>";
+		};
+		4E937CEB2B31DE0A00C574D9 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				4E937CEC2B31DE2800C574D9 /* ExpirationCell.swift */,
+				4E937CEE2B31E4FC00C574D9 /* StockCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		4EB725F32B29DF9700B9990A = {
@@ -107,8 +125,10 @@
 			isa = PBXGroup;
 			children = (
 				4E3E027E2B3082E30091D6DD /* Subcomponents */,
+				4E937CEB2B31DE0A00C574D9 /* Cells */,
 				4EC696E32B2AE526000EDE9B /* TabBarController.swift */,
 				4EB726032B29DF9700B9990A /* ExpirationDateVC.swift */,
+				4E6D0AF42B317E1300A59BF4 /* ExpirationDateVC+TableViewDataSource.swift */,
 				4EC696D12B2AD6FE000EDE9B /* StockVC.swift */,
 				4EC696D32B2AD708000EDE9B /* SalaryVC.swift */,
 				4EB726052B29DF9700B9990A /* Main.storyboard */,
@@ -209,9 +229,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				4EC696DA2B2AD742000EDE9B /* SalaryViewModel.swift in Sources */,
+				4E6D0AF52B317E1300A59BF4 /* ExpirationDateVC+TableViewDataSource.swift in Sources */,
+				4E937CED2B31DE2800C574D9 /* ExpirationCell.swift in Sources */,
 				4EC696E42B2AE526000EDE9B /* TabBarController.swift in Sources */,
+				4E937CEF2B31E4FC00C574D9 /* StockCell.swift in Sources */,
 				4EB726042B29DF9700B9990A /* ExpirationDateVC.swift in Sources */,
 				4EC696D62B2AD725000EDE9B /* ExpirationDateViewModel.swift in Sources */,
+				4E6D0AF32B317BB900A59BF4 /* CustomTableView.swift in Sources */,
 				4EC696E02B2AD760000EDE9B /* Salary.swift in Sources */,
 				4EC696D22B2AD6FE000EDE9B /* StockVC.swift in Sources */,
 				4EC696E22B2AE3E3000EDE9B /* ViewModelInjectable.swift in Sources */,

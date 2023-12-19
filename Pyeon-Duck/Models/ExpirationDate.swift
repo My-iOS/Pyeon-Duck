@@ -10,3 +10,15 @@ import Foundation
 struct ExpirationDate {
     var title: String
 }
+
+// MARK: - Sample Data
+
+extension ExpirationDate {
+    static let sampleData: [ExpirationDate] = [
+        ExpirationDate(title: "1"),
+        ExpirationDate(title: "2"),
+        ExpirationDate(title: "3"),
+        ExpirationDate(title: "4"),
+        ExpirationDate(title: "5")
+    ]
+}
