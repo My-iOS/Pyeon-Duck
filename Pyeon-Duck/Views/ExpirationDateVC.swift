@@ -7,6 +7,12 @@
 
 import UIKit
 
+/*
+ 필수 구현 사항
+ 1. 연도 5년 간 표시(기본값) - 2024년
+ 2. 년도 바뀔 시, 자동으로 1년 추가
+ */
+
 class ExpirationDateVC: UIViewController {
     var viewModel: ExpirationDateViewModel!
     var itemList = ExpirationDate.sampleData

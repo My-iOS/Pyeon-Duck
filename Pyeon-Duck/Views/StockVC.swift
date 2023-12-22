@@ -7,6 +7,12 @@
 
 import UIKit
 
+/*
+ 필수 구현 사항
+ 1. 재고 리스트 CRUD
+ 2. 재고 정렬 (가나다순, 완료 순)
+ */
+
 class StockVC: UIViewController {
     var viewModel: StockViewModel!
     var itemList = Stock.sampleData
