@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22522" systemVersion="23C71" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
     <entity name="ExpirationDate" representedClassName="ExpirationDate" syncable="YES" codeGenerationType="class">
+        <attribute name="creationDate" optional="YES" attributeType="String"/>
         <attribute name="date" optional="YES" attributeType="String"/>
+        <attribute name="isConfirm" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="itemImage" optional="YES" attributeType="Binary"/>
+        <attribute name="modifiedDate" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
     </entity>
     <entity name="StockCategory" representedClassName="StockCategory" syncable="YES" codeGenerationType="class">

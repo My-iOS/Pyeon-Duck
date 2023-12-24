@@ -445,32 +445,32 @@ extension SalaryVC: ViewModelInjectable {
 
 // MARK: - SWIFT UI PREVIEWS
 
-#if DEBUG
-import SwiftUI
-
-@available(iOS 13, *)
-extension UIViewController {
-    private struct Preview: UIViewControllerRepresentable {
-        // this variable is used for injecting the current view controller
-        let viewController: UIViewController
-
-        func makeUIViewController(context: Context) -> UIViewController {
-            return viewController
-        }
-
-        func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
-    }
-
-    func toPreview() -> some View {
-        // inject self (the current view controller) for the preview
-        Preview(viewController: self)
-    }
-}
-
-@available(iOS 13.0, *)
-struct SalaryVC_Preview: PreviewProvider {
-    static var previews: some View {
-        SalaryVC().toPreview()
-    }
-}
-#endif
+// #if DEBUG
+// import SwiftUI
+//
+// @available(iOS 13, *)
+// extension UIViewController {
+//    private struct Preview: UIViewControllerRepresentable {
+//        // this variable is used for injecting the current view controller
+//        let viewController: UIViewController
+//
+//        func makeUIViewController(context: Context) -> UIViewController {
+//            return viewController
+//        }
+//
+//        func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
+//    }
+//
+//    internal func toPreview() -> some View {
+//        // inject self (the current view controller) for the preview
+//        Preview(viewController: self)
+//    }
+// }
+//
+// @available(iOS 13.0, *)
+// struct SalaryVC_Preview: PreviewProvider {
+//    static var previews: some View {
+//        SalaryVC().toPreview()
+//    }
+// }
+// #endif

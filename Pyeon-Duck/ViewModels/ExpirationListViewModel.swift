@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ExpirationDateViewModel {
+class ExpirationListViewModel {
     private var dataManager: DataManager
 
     init(dataManager: DataManager) {
@@ -17,7 +17,7 @@ class ExpirationDateViewModel {
 
 // MARK: - CRUD
 
-extension ExpirationDateViewModel {
+extension ExpirationListViewModel {
     var requestExpirationCount: Int {
         self.dataManager.expirationList.count
     }

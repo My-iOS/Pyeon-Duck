@@ -8,8 +8,6 @@
 import UIKit
 
 class ExpirationCalendarVC: UIViewController {
-    var viewModel: ExpirationDateViewModel!
-
     var selectedDate: DateComponents? = nil
 
     // 달력 선언
@@ -33,7 +31,6 @@ class ExpirationCalendarVC: UIViewController {
 extension ExpirationCalendarVC {
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.fetchExpirationList()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -101,7 +98,10 @@ extension ExpirationCalendarVC {
         tabBarController?.navigationItem.rightBarButtonItem = button
     }
 
-    @objc func didTapAddButton(_ sender: UIBarButtonItem) {}
+    @objc func didTapAddButton(_ sender: UIBarButtonItem) {
+        let vc = ExpirationCreateVC()
+        tabBarController?.navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 // MARK: - UICalendarViewDelegate && UICalendarSelectionSingleDateDelegate
@@ -137,13 +137,10 @@ extension ExpirationCalendarVC: UICalendarViewDelegate, UICalendarSelectionSingl
         selectedDate = dateComponents
         reloadDateView(date: Calendar.current.date(from: dateComponents!))
         print("#### \(Calendar.current.date(from: dateComponents!))")
-    }
-}
 
-// MARK: - ViewModelInjectable
-
-extension ExpirationCalendarVC: ViewModelInjectable {
-    func injectViewModel(_ viewModelType: ExpirationDateViewModel) {
-        viewModel = viewModelType
+        let vc = ExpirationListVC()
+        guard let dateComponent = dateComponents else { return }
+        let today = Calendar.current.date(from: dateComponent)
+        present(vc, animated: true)
     }
 }

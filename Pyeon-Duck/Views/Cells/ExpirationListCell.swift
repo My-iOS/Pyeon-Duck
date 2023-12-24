@@ -7,6 +7,6 @@
 
 import UIKit
 
-class ExpirationCell: UITableViewCell {
-    static let identifier = "ExpirationCell"
+class ExpirationListCell: UITableViewCell {
+    static let identifier = "ExpirationListCell"
 }

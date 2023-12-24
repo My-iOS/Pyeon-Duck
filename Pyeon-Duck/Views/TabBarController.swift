@@ -37,7 +37,6 @@ extension TabBarController {
         tabBar.backgroundColor = .white
 
         let expirationDateVC = ExpirationCalendarVC()
-        expirationDateVC.injectViewModel(ExpirationDateViewModel(dataManager: dataManager))
         expirationDateVC.tabBarItem = configure(title: "유통기한", symbolName: "calendar", tag: 0)
 
         let stockVC = StockVC()
