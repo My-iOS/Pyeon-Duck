@@ -16,7 +16,7 @@ import UIKit
 class StockVC: UIViewController {
     var viewModel: StockViewModel!
 
-    var tableView = CustomTableView(frame: .zero, style: .plain)
+    var tableView = CustomTableView(frame: .zero, style: .insetGrouped)
 
     deinit {
         print("Deinitialized StockVC")
@@ -57,7 +57,7 @@ extension StockVC {
     }
 }
 
-// MARK: - Method
+// MARK: - UIBarButtonItem Method
 
 extension StockVC {
     // Create Add NavigationItem
@@ -66,7 +66,10 @@ extension StockVC {
         tabBarController?.navigationItem.rightBarButtonItem = button
     }
 
-    @objc func didTapAddButton(_ sender: UIBarButtonItem) {}
+    @objc func didTapAddButton(_ sender: UIBarButtonItem) {
+        let vc = StockCreateVC()
+        tabBarController?.navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 // MARK: - Confirm TableView

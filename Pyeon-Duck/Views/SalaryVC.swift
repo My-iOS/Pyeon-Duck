@@ -81,11 +81,11 @@ extension SalaryVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        setUpUI()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         tabBarController?.navigationItem.title = "시급 계산기"
+        setUpUI()
     }
 }
 

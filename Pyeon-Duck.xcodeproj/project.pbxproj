@@ -10,6 +10,7 @@
 		4E0ABC262B38527500B585DA /* ExpirationListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0ABC252B38527500B585DA /* ExpirationListVC.swift */; };
 		4E0ABC282B385A4700B585DA /* ExpirationCreateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0ABC272B385A4700B585DA /* ExpirationCreateVC.swift */; };
 		4E0ABC2B2B385B3800B585DA /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0ABC2A2B385B3800B585DA /* CustomImageView.swift */; };
+		4E0ABC2D2B387DA400B585DA /* StockCreateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0ABC2C2B387DA400B585DA /* StockCreateVC.swift */; };
 		4E3D49B62B3590D500D4A1D1 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4E3D49B42B3590D500D4A1D1 /* Model.xcdatamodeld */; };
 		4E3D49B82B35BF0B00D4A1D1 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3D49B72B35BF0B00D4A1D1 /* DataManager.swift */; };
 		4E6D0AF32B317BB900A59BF4 /* CustomTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6D0AF22B317BB900A59BF4 /* CustomTableView.swift */; };
@@ -40,6 +41,7 @@
 		4E0ABC252B38527500B585DA /* ExpirationListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpirationListVC.swift; sourceTree = "<group>"; };
 		4E0ABC272B385A4700B585DA /* ExpirationCreateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpirationCreateVC.swift; sourceTree = "<group>"; };
 		4E0ABC2A2B385B3800B585DA /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
+		4E0ABC2C2B387DA400B585DA /* StockCreateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockCreateVC.swift; sourceTree = "<group>"; };
 		4E3D49B52B3590D500D4A1D1 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		4E3D49B72B35BF0B00D4A1D1 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		4E6D0AF22B317BB900A59BF4 /* CustomTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableView.swift; sourceTree = "<group>"; };
@@ -87,6 +89,15 @@
 				4E0ABC272B385A4700B585DA /* ExpirationCreateVC.swift */,
 			);
 			path = Expirations;
+			sourceTree = "<group>";
+		};
+		4E0ABC2E2B388A6C00B585DA /* Stocks */ = {
+			isa = PBXGroup;
+			children = (
+				4EC696D12B2AD6FE000EDE9B /* StockVC.swift */,
+				4E0ABC2C2B387DA400B585DA /* StockCreateVC.swift */,
+			);
+			path = Stocks;
 			sourceTree = "<group>";
 		};
 		4E3E027E2B3082E30091D6DD /* Subcomponents */ = {
@@ -158,7 +169,7 @@
 				4E937CEB2B31DE0A00C574D9 /* Cells */,
 				4EC696E32B2AE526000EDE9B /* TabBarController.swift */,
 				4E0ABC292B385A4C00B585DA /* Expirations */,
-				4EC696D12B2AD6FE000EDE9B /* StockVC.swift */,
+				4E0ABC2E2B388A6C00B585DA /* Stocks */,
 				4EC696D32B2AD708000EDE9B /* SalaryVC.swift */,
 				4EB726052B29DF9700B9990A /* Main.storyboard */,
 			);
@@ -262,6 +273,7 @@
 				4E7F05E02B37187600822B55 /* CustomStackView.swift in Sources */,
 				4E3D49B82B35BF0B00D4A1D1 /* DataManager.swift in Sources */,
 				4E937CED2B31DE2800C574D9 /* ExpirationListCell.swift in Sources */,
+				4E0ABC2D2B387DA400B585DA /* StockCreateVC.swift in Sources */,
 				4EC696E42B2AE526000EDE9B /* TabBarController.swift in Sources */,
 				4E937CEF2B31E4FC00C574D9 /* StocCategorykCell.swift in Sources */,
 				4EB726042B29DF9700B9990A /* ExpirationCalendarVC.swift in Sources */,
