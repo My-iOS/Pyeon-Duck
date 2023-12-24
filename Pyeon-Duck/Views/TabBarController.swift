@@ -8,6 +8,8 @@
 import UIKit
 
 final class TabBarController: UITabBarController {
+    let dataManager = DataManager()
+
     override func viewDidLoad() {
         setupTabbarController()
     }
@@ -35,12 +37,15 @@ extension TabBarController {
         tabBar.backgroundColor = .white
 
         let expirationDateVC = ExpirationDateVC()
+        expirationDateVC.injectViewModel(ExpirationDateViewModel(dataManager: dataManager))
         expirationDateVC.tabBarItem = configure(title: "유통기한", symbolName: "calendar", tag: 0)
 
         let stockVC = StockVC()
+        stockVC.injectViewModel(StockViewModel(dataManager: dataManager))
         stockVC.tabBarItem = configure(title: "재고", symbolName: "shippingbox", tag: 1)
 
         let salaryVC = SalaryVC()
+        salaryVC.injectViewModel(SalaryViewModel())
         salaryVC.tabBarItem = configure(title: "시급 계산기", symbolName: "wonsign.circle", tag: 2)
 
         expirationDateVC.tabBarItem.selectedImage = UIImage(named: "calendar.fill")

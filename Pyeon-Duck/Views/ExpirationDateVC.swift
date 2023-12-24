@@ -15,9 +15,8 @@ import UIKit
 
 class ExpirationDateVC: UIViewController {
     var viewModel: ExpirationDateViewModel!
-    var itemList = ExpirationDate.sampleData
 
-    private var tableView = CustomTableView(frame: .zero, style: .plain)
+    var tableView = CustomTableView(frame: .zero, style: .plain)
 
     deinit {
         print("Deinitialized ExpirationDateVC")
@@ -30,10 +29,13 @@ extension ExpirationDateVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
+
+        viewModel.fetchExpirationList()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         tabBarController?.navigationItem.title = "유통기한"
+        tableView.reloadData()
     }
 }
 
@@ -45,6 +47,7 @@ extension ExpirationDateVC {
         addView()
         registerCell()
         createTableView()
+        createAddButton()
     }
 
     func addView() {
@@ -75,13 +78,36 @@ extension ExpirationDateVC {
 
 // MARK: - Method
 
-extension ExpirationDateVC {}
+extension ExpirationDateVC {
+    // Create Add NavigationItem
+    func createAddButton() {
+        let button = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapAddButton))
+        tabBarController?.navigationItem.rightBarButtonItem = button
+    }
+
+    @objc func didTapAddButton(_ sender: UIBarButtonItem) {
+        let alert = UIAlertController(title: "New Folder", message: "Enter new folder", preferredStyle: .alert)
+        alert.addTextField(configurationHandler: nil)
+
+        alert.addAction(UIAlertAction(title: "Submit", style: .cancel, handler: { [weak self] _ in
+            guard let field = alert.textFields?.first, let text = field.text, !text.isEmpty else {
+                return
+            }
+
+            self?.viewModel.addExpiration(text)
+            self?.tableView.reloadData()
+
+        }))
+
+        present(alert, animated: true)
+    }
+}
 
 // MARK: - UITableViewDataSource
 
 extension ExpirationDateVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return itemList.count
+        return viewModel.requestExpirationCount ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

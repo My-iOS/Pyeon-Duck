@@ -7,4 +7,27 @@
 
 import Foundation
 
-class ExpirationDateViewModel {}
+class ExpirationDateViewModel {
+    private var dataManager: DataManager
+
+    init(dataManager: DataManager) {
+        self.dataManager = dataManager
+    }
+}
+
+// MARK: - CRUD
+
+extension ExpirationDateViewModel {
+    var requestExpirationCount: Int {
+        self.dataManager.expirationList.count
+    }
+
+    func fetchExpirationList() {
+        self.dataManager.requestExpiration()
+    }
+
+    func addExpiration(_ expiration: String) {
+        print("##### \(expiration)")
+        self.dataManager.addExpiration(expiration)
+    }
+}

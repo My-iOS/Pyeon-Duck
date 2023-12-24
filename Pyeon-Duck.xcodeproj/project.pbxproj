@@ -8,8 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		4E3D49B62B3590D500D4A1D1 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4E3D49B42B3590D500D4A1D1 /* Model.xcdatamodeld */; };
+		4E3D49B82B35BF0B00D4A1D1 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3D49B72B35BF0B00D4A1D1 /* DataManager.swift */; };
 		4E6D0AF32B317BB900A59BF4 /* CustomTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6D0AF22B317BB900A59BF4 /* CustomTableView.swift */; };
 		4E6D0AF52B317E1300A59BF4 /* ExpirationDateVC+TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6D0AF42B317E1300A59BF4 /* ExpirationDateVC+TableViewDataSource.swift */; };
+		4E7F05D82B3713E000822B55 /* CalenderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7F05D72B3713E000822B55 /* CalenderService.swift */; };
+		4E7F05DA2B3717AE00822B55 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7F05D92B3717AE00822B55 /* CustomLabel.swift */; };
+		4E7F05DC2B37180600822B55 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7F05DB2B37180600822B55 /* CustomTextField.swift */; };
+		4E7F05DE2B37183B00822B55 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7F05DD2B37183B00822B55 /* CustomButton.swift */; };
+		4E7F05E02B37187600822B55 /* CustomStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7F05DF2B37187600822B55 /* CustomStackView.swift */; };
 		4E937CED2B31DE2800C574D9 /* ExpirationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E937CEC2B31DE2800C574D9 /* ExpirationCell.swift */; };
 		4E937CEF2B31E4FC00C574D9 /* StockCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E937CEE2B31E4FC00C574D9 /* StockCell.swift */; };
 		4E937CF12B320FF700C574D9 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E937CF02B320FF700C574D9 /* CoreDataService.swift */; };
@@ -24,8 +30,6 @@
 		4EC696D62B2AD725000EDE9B /* ExpirationDateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC696D52B2AD725000EDE9B /* ExpirationDateViewModel.swift */; };
 		4EC696D82B2AD736000EDE9B /* StockViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC696D72B2AD736000EDE9B /* StockViewModel.swift */; };
 		4EC696DA2B2AD742000EDE9B /* SalaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC696D92B2AD742000EDE9B /* SalaryViewModel.swift */; };
-		4EC696DC2B2AD755000EDE9B /* ExpirationDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC696DB2B2AD755000EDE9B /* ExpirationDate.swift */; };
-		4EC696DE2B2AD758000EDE9B /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC696DD2B2AD758000EDE9B /* Stock.swift */; };
 		4EC696E02B2AD760000EDE9B /* Salary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC696DF2B2AD760000EDE9B /* Salary.swift */; };
 		4EC696E22B2AE3E3000EDE9B /* ViewModelInjectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC696E12B2AE3E3000EDE9B /* ViewModelInjectable.swift */; };
 		4EC696E42B2AE526000EDE9B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC696E32B2AE526000EDE9B /* TabBarController.swift */; };
@@ -33,8 +37,14 @@
 
 /* Begin PBXFileReference section */
 		4E3D49B52B3590D500D4A1D1 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		4E3D49B72B35BF0B00D4A1D1 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		4E6D0AF22B317BB900A59BF4 /* CustomTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableView.swift; sourceTree = "<group>"; };
 		4E6D0AF42B317E1300A59BF4 /* ExpirationDateVC+TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExpirationDateVC+TableViewDataSource.swift"; sourceTree = "<group>"; };
+		4E7F05D72B3713E000822B55 /* CalenderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderService.swift; sourceTree = "<group>"; };
+		4E7F05D92B3717AE00822B55 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
+		4E7F05DB2B37180600822B55 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		4E7F05DD2B37183B00822B55 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		4E7F05DF2B37187600822B55 /* CustomStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStackView.swift; sourceTree = "<group>"; };
 		4E937CEC2B31DE2800C574D9 /* ExpirationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpirationCell.swift; sourceTree = "<group>"; };
 		4E937CEE2B31E4FC00C574D9 /* StockCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockCell.swift; sourceTree = "<group>"; };
 		4E937CF02B320FF700C574D9 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
@@ -51,8 +61,6 @@
 		4EC696D52B2AD725000EDE9B /* ExpirationDateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpirationDateViewModel.swift; sourceTree = "<group>"; };
 		4EC696D72B2AD736000EDE9B /* StockViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockViewModel.swift; sourceTree = "<group>"; };
 		4EC696D92B2AD742000EDE9B /* SalaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalaryViewModel.swift; sourceTree = "<group>"; };
-		4EC696DB2B2AD755000EDE9B /* ExpirationDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpirationDate.swift; sourceTree = "<group>"; };
-		4EC696DD2B2AD758000EDE9B /* Stock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
 		4EC696DF2B2AD760000EDE9B /* Salary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Salary.swift; sourceTree = "<group>"; };
 		4EC696E12B2AE3E3000EDE9B /* ViewModelInjectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelInjectable.swift; sourceTree = "<group>"; };
 		4EC696E32B2AE526000EDE9B /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -73,6 +81,10 @@
 			isa = PBXGroup;
 			children = (
 				4E6D0AF22B317BB900A59BF4 /* CustomTableView.swift */,
+				4E7F05D92B3717AE00822B55 /* CustomLabel.swift */,
+				4E7F05DB2B37180600822B55 /* CustomTextField.swift */,
+				4E7F05DD2B37183B00822B55 /* CustomButton.swift */,
+				4E7F05DF2B37187600822B55 /* CustomStackView.swift */,
 			);
 			path = Subcomponents;
 			sourceTree = "<group>";
@@ -119,9 +131,9 @@
 			children = (
 				4EC696E12B2AE3E3000EDE9B /* ViewModelInjectable.swift */,
 				4E937CF02B320FF700C574D9 /* CoreDataService.swift */,
-				4EC696DB2B2AD755000EDE9B /* ExpirationDate.swift */,
-				4EC696DD2B2AD758000EDE9B /* Stock.swift */,
+				4E3D49B72B35BF0B00D4A1D1 /* DataManager.swift */,
 				4EC696DF2B2AD760000EDE9B /* Salary.swift */,
+				4E7F05D72B3713E000822B55 /* CalenderService.swift */,
 				4E3D49B42B3590D500D4A1D1 /* Model.xcdatamodeld */,
 			);
 			path = Models;
@@ -235,21 +247,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				4EC696DA2B2AD742000EDE9B /* SalaryViewModel.swift in Sources */,
+				4E7F05E02B37187600822B55 /* CustomStackView.swift in Sources */,
+				4E3D49B82B35BF0B00D4A1D1 /* DataManager.swift in Sources */,
 				4E6D0AF52B317E1300A59BF4 /* ExpirationDateVC+TableViewDataSource.swift in Sources */,
 				4E937CED2B31DE2800C574D9 /* ExpirationCell.swift in Sources */,
 				4EC696E42B2AE526000EDE9B /* TabBarController.swift in Sources */,
 				4E937CEF2B31E4FC00C574D9 /* StockCell.swift in Sources */,
 				4EB726042B29DF9700B9990A /* ExpirationDateVC.swift in Sources */,
 				4EC696D62B2AD725000EDE9B /* ExpirationDateViewModel.swift in Sources */,
+				4E7F05D82B3713E000822B55 /* CalenderService.swift in Sources */,
 				4E6D0AF32B317BB900A59BF4 /* CustomTableView.swift in Sources */,
 				4EC696E02B2AD760000EDE9B /* Salary.swift in Sources */,
+				4E7F05DA2B3717AE00822B55 /* CustomLabel.swift in Sources */,
 				4EC696D22B2AD6FE000EDE9B /* StockVC.swift in Sources */,
 				4EC696E22B2AE3E3000EDE9B /* ViewModelInjectable.swift in Sources */,
-				4EC696DC2B2AD755000EDE9B /* ExpirationDate.swift in Sources */,
+				4E7F05DC2B37180600822B55 /* CustomTextField.swift in Sources */,
 				4EB726002B29DF9700B9990A /* AppDelegate.swift in Sources */,
 				4EC696D42B2AD709000EDE9B /* SalaryVC.swift in Sources */,
 				4EB726022B29DF9700B9990A /* SceneDelegate.swift in Sources */,
-				4EC696DE2B2AD758000EDE9B /* Stock.swift in Sources */,
+				4E7F05DE2B37183B00822B55 /* CustomButton.swift in Sources */,
 				4E937CF12B320FF700C574D9 /* CoreDataService.swift in Sources */,
 				4E3D49B62B3590D500D4A1D1 /* Model.xcdatamodeld in Sources */,
 				4EC696D82B2AD736000EDE9B /* StockViewModel.swift in Sources */,

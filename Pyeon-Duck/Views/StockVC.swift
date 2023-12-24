@@ -15,9 +15,8 @@ import UIKit
 
 class StockVC: UIViewController {
     var viewModel: StockViewModel!
-    var itemList = Stock.sampleData
 
-    private var tableView = CustomTableView(frame: .zero, style: .plain)
+    var tableView = CustomTableView(frame: .zero, style: .plain)
 
     deinit {
         print("Deinitialized StockVC")
@@ -81,7 +80,7 @@ extension StockVC {}
 
 extension StockVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return itemList.count
+        return viewModel?.requestStockCount ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
