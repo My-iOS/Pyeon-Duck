@@ -32,13 +32,6 @@
                     <view key="view" contentMode="scaleToFill" id="IlB-uY-1pg">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EOB-Tv-VMQ">
-                                <rect key="frame" x="77" y="225" width="200" height="110"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="linkColor"/>
-                            </stackView>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="M8i-qP-YGA"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
@@ -51,7 +44,7 @@
         <!--Item 1-->
         <scene sceneID="Fuw-ZD-4AX">
             <objects>
-                <viewController id="j4u-Is-c2G" customClass="ExpirationDateVC" customModule="Pyeon_Duck" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="j4u-Is-c2G" customClass="ExpirationCalendarVC" customModule="Pyeon_Duck" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7LP-d5-dpo">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -102,9 +95,6 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="linkColor">
-            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

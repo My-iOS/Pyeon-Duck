@@ -10,18 +10,17 @@
 		4E3D49B62B3590D500D4A1D1 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4E3D49B42B3590D500D4A1D1 /* Model.xcdatamodeld */; };
 		4E3D49B82B35BF0B00D4A1D1 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3D49B72B35BF0B00D4A1D1 /* DataManager.swift */; };
 		4E6D0AF32B317BB900A59BF4 /* CustomTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6D0AF22B317BB900A59BF4 /* CustomTableView.swift */; };
-		4E6D0AF52B317E1300A59BF4 /* ExpirationDateVC+TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6D0AF42B317E1300A59BF4 /* ExpirationDateVC+TableViewDataSource.swift */; };
 		4E7F05D82B3713E000822B55 /* CalenderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7F05D72B3713E000822B55 /* CalenderService.swift */; };
 		4E7F05DA2B3717AE00822B55 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7F05D92B3717AE00822B55 /* CustomLabel.swift */; };
 		4E7F05DC2B37180600822B55 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7F05DB2B37180600822B55 /* CustomTextField.swift */; };
 		4E7F05DE2B37183B00822B55 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7F05DD2B37183B00822B55 /* CustomButton.swift */; };
 		4E7F05E02B37187600822B55 /* CustomStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7F05DF2B37187600822B55 /* CustomStackView.swift */; };
 		4E937CED2B31DE2800C574D9 /* ExpirationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E937CEC2B31DE2800C574D9 /* ExpirationCell.swift */; };
-		4E937CEF2B31E4FC00C574D9 /* StockCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E937CEE2B31E4FC00C574D9 /* StockCell.swift */; };
+		4E937CEF2B31E4FC00C574D9 /* StocCategorykCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E937CEE2B31E4FC00C574D9 /* StocCategorykCell.swift */; };
 		4E937CF12B320FF700C574D9 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E937CF02B320FF700C574D9 /* CoreDataService.swift */; };
 		4EB726002B29DF9700B9990A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB725FF2B29DF9700B9990A /* AppDelegate.swift */; };
 		4EB726022B29DF9700B9990A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB726012B29DF9700B9990A /* SceneDelegate.swift */; };
-		4EB726042B29DF9700B9990A /* ExpirationDateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB726032B29DF9700B9990A /* ExpirationDateVC.swift */; };
+		4EB726042B29DF9700B9990A /* ExpirationCalendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB726032B29DF9700B9990A /* ExpirationCalendarVC.swift */; };
 		4EB726072B29DF9700B9990A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EB726052B29DF9700B9990A /* Main.storyboard */; };
 		4EB726092B29DF9800B9990A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EB726082B29DF9800B9990A /* Assets.xcassets */; };
 		4EB7260C2B29DF9800B9990A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EB7260A2B29DF9800B9990A /* LaunchScreen.storyboard */; };
@@ -30,7 +29,6 @@
 		4EC696D62B2AD725000EDE9B /* ExpirationDateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC696D52B2AD725000EDE9B /* ExpirationDateViewModel.swift */; };
 		4EC696D82B2AD736000EDE9B /* StockViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC696D72B2AD736000EDE9B /* StockViewModel.swift */; };
 		4EC696DA2B2AD742000EDE9B /* SalaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC696D92B2AD742000EDE9B /* SalaryViewModel.swift */; };
-		4EC696E02B2AD760000EDE9B /* Salary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC696DF2B2AD760000EDE9B /* Salary.swift */; };
 		4EC696E22B2AE3E3000EDE9B /* ViewModelInjectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC696E12B2AE3E3000EDE9B /* ViewModelInjectable.swift */; };
 		4EC696E42B2AE526000EDE9B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC696E32B2AE526000EDE9B /* TabBarController.swift */; };
 /* End PBXBuildFile section */
@@ -39,19 +37,18 @@
 		4E3D49B52B3590D500D4A1D1 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		4E3D49B72B35BF0B00D4A1D1 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		4E6D0AF22B317BB900A59BF4 /* CustomTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableView.swift; sourceTree = "<group>"; };
-		4E6D0AF42B317E1300A59BF4 /* ExpirationDateVC+TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExpirationDateVC+TableViewDataSource.swift"; sourceTree = "<group>"; };
 		4E7F05D72B3713E000822B55 /* CalenderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderService.swift; sourceTree = "<group>"; };
 		4E7F05D92B3717AE00822B55 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		4E7F05DB2B37180600822B55 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		4E7F05DD2B37183B00822B55 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		4E7F05DF2B37187600822B55 /* CustomStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStackView.swift; sourceTree = "<group>"; };
 		4E937CEC2B31DE2800C574D9 /* ExpirationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpirationCell.swift; sourceTree = "<group>"; };
-		4E937CEE2B31E4FC00C574D9 /* StockCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockCell.swift; sourceTree = "<group>"; };
+		4E937CEE2B31E4FC00C574D9 /* StocCategorykCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocCategorykCell.swift; sourceTree = "<group>"; };
 		4E937CF02B320FF700C574D9 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		4EB725FC2B29DF9700B9990A /* Pyeon-Duck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pyeon-Duck.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EB725FF2B29DF9700B9990A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4EB726012B29DF9700B9990A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		4EB726032B29DF9700B9990A /* ExpirationDateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpirationDateVC.swift; sourceTree = "<group>"; };
+		4EB726032B29DF9700B9990A /* ExpirationCalendarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpirationCalendarVC.swift; sourceTree = "<group>"; };
 		4EB726062B29DF9700B9990A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4EB726082B29DF9800B9990A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4EB7260B2B29DF9800B9990A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -61,7 +58,6 @@
 		4EC696D52B2AD725000EDE9B /* ExpirationDateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpirationDateViewModel.swift; sourceTree = "<group>"; };
 		4EC696D72B2AD736000EDE9B /* StockViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockViewModel.swift; sourceTree = "<group>"; };
 		4EC696D92B2AD742000EDE9B /* SalaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalaryViewModel.swift; sourceTree = "<group>"; };
-		4EC696DF2B2AD760000EDE9B /* Salary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Salary.swift; sourceTree = "<group>"; };
 		4EC696E12B2AE3E3000EDE9B /* ViewModelInjectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelInjectable.swift; sourceTree = "<group>"; };
 		4EC696E32B2AE526000EDE9B /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -93,7 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				4E937CEC2B31DE2800C574D9 /* ExpirationCell.swift */,
-				4E937CEE2B31E4FC00C574D9 /* StockCell.swift */,
+				4E937CEE2B31E4FC00C574D9 /* StocCategorykCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -132,7 +128,6 @@
 				4EC696E12B2AE3E3000EDE9B /* ViewModelInjectable.swift */,
 				4E937CF02B320FF700C574D9 /* CoreDataService.swift */,
 				4E3D49B72B35BF0B00D4A1D1 /* DataManager.swift */,
-				4EC696DF2B2AD760000EDE9B /* Salary.swift */,
 				4E7F05D72B3713E000822B55 /* CalenderService.swift */,
 				4E3D49B42B3590D500D4A1D1 /* Model.xcdatamodeld */,
 			);
@@ -145,8 +140,7 @@
 				4E3E027E2B3082E30091D6DD /* Subcomponents */,
 				4E937CEB2B31DE0A00C574D9 /* Cells */,
 				4EC696E32B2AE526000EDE9B /* TabBarController.swift */,
-				4EB726032B29DF9700B9990A /* ExpirationDateVC.swift */,
-				4E6D0AF42B317E1300A59BF4 /* ExpirationDateVC+TableViewDataSource.swift */,
+				4EB726032B29DF9700B9990A /* ExpirationCalendarVC.swift */,
 				4EC696D12B2AD6FE000EDE9B /* StockVC.swift */,
 				4EC696D32B2AD708000EDE9B /* SalaryVC.swift */,
 				4EB726052B29DF9700B9990A /* Main.storyboard */,
@@ -249,15 +243,13 @@
 				4EC696DA2B2AD742000EDE9B /* SalaryViewModel.swift in Sources */,
 				4E7F05E02B37187600822B55 /* CustomStackView.swift in Sources */,
 				4E3D49B82B35BF0B00D4A1D1 /* DataManager.swift in Sources */,
-				4E6D0AF52B317E1300A59BF4 /* ExpirationDateVC+TableViewDataSource.swift in Sources */,
 				4E937CED2B31DE2800C574D9 /* ExpirationCell.swift in Sources */,
 				4EC696E42B2AE526000EDE9B /* TabBarController.swift in Sources */,
-				4E937CEF2B31E4FC00C574D9 /* StockCell.swift in Sources */,
-				4EB726042B29DF9700B9990A /* ExpirationDateVC.swift in Sources */,
+				4E937CEF2B31E4FC00C574D9 /* StocCategorykCell.swift in Sources */,
+				4EB726042B29DF9700B9990A /* ExpirationCalendarVC.swift in Sources */,
 				4EC696D62B2AD725000EDE9B /* ExpirationDateViewModel.swift in Sources */,
 				4E7F05D82B3713E000822B55 /* CalenderService.swift in Sources */,
 				4E6D0AF32B317BB900A59BF4 /* CustomTableView.swift in Sources */,
-				4EC696E02B2AD760000EDE9B /* Salary.swift in Sources */,
 				4E7F05DA2B3717AE00822B55 /* CustomLabel.swift in Sources */,
 				4EC696D22B2AD6FE000EDE9B /* StockVC.swift in Sources */,
 				4EC696E22B2AE3E3000EDE9B /* ViewModelInjectable.swift in Sources */,
@@ -428,7 +420,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -457,7 +449,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

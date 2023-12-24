@@ -30,4 +30,8 @@ extension ExpirationDateViewModel {
         print("##### \(expiration)")
         self.dataManager.addExpiration(expiration)
     }
+    
+    func deleteExpiration(at indexPath: IndexPath) {
+        self.dataManager.deleteExpiration(at: indexPath)
+    }
 }

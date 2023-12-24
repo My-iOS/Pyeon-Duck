@@ -8,6 +8,8 @@
 import Foundation
 
 class CalenderService {
+    static let shared = CalenderService()
+
     // 한 달 동안 몇일을 근무하는지 계산하는 함수
     func countWeekdaysInCurrentMonth(weekday: [Int]) -> Int {
         let calendar = Calendar.current
@@ -74,4 +76,6 @@ class CalenderService {
 
         return daysInMonths
     }
+
+    private init() {}
 }

@@ -18,7 +18,7 @@ class StockViewModel {
 // MARK: - CRUD
 
 extension StockViewModel {
-    var requestStockCount: Int {
-        self.dataManager.stockList.count
+    var requestStockCategoryCount: Int {
+        self.dataManager.stockCategoryList.count
     }
 }

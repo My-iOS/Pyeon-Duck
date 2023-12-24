@@ -28,11 +28,11 @@ class StockVC: UIViewController {
 extension StockVC {
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpUI()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         tabBarController?.navigationItem.title = "재고조사"
+        setUpUI()
     }
 }
 
@@ -44,6 +44,8 @@ extension StockVC {
         addView()
         registerCell()
         createTableView()
+
+        createAddButton()
     }
 
     func addView() {
@@ -51,8 +53,20 @@ extension StockVC {
     }
 
     func registerCell() {
-        tableView.register(StockCell.self, forCellReuseIdentifier: StockCell.identifier)
+        tableView.register(StocCategorykCell.self, forCellReuseIdentifier: StocCategorykCell.identifier)
     }
+}
+
+// MARK: - Method
+
+extension StockVC {
+    // Create Add NavigationItem
+    func createAddButton() {
+        let button = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapAddButton))
+        tabBarController?.navigationItem.rightBarButtonItem = button
+    }
+
+    @objc func didTapAddButton(_ sender: UIBarButtonItem) {}
 }
 
 // MARK: - Confirm TableView
@@ -61,7 +75,7 @@ extension StockVC {
     func createTableView() {
         tableView.backgroundColor = .systemOrange
         tableView.dataSource = self
-//        tableView.delegate = self
+        tableView.delegate = self
 
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -80,11 +94,11 @@ extension StockVC {}
 
 extension StockVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel?.requestStockCount ?? 0
+        return viewModel.requestStockCategoryCount
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: StockCell.identifier, for: indexPath) as? StockCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: StocCategorykCell.identifier, for: indexPath) as? StocCategorykCell else { return UITableViewCell() }
         cell.backgroundColor = .systemPink
         return cell
     }

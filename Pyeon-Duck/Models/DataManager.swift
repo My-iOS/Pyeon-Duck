@@ -9,10 +9,12 @@ import Foundation
 
 class DataManager {
     private(set) var expirationList: [ExpirationDate] = []
-    private(set) var stockList: [Stock] = []
+    private(set) var stockCategoryList: [StockCategory] = []
 
     var context = CoreDataService.context
 }
+
+// MARK: - CoreData CRUD
 
 // CRUD
 extension DataManager {
@@ -37,6 +39,19 @@ extension DataManager {
             print("##### \(expirationList)")
         } catch {
             print("Fetch Error: \(error)")
+        }
+    }
+
+    // Delete
+    func deleteExpiration(at indexPath: IndexPath) {
+        let itemIndexPath = expirationList[indexPath.row]
+        context.delete(itemIndexPath)
+
+        do {
+            try context.save()
+            requestExpiration()
+        } catch {
+            print("#### Delete Error : \(error)")
         }
     }
 }

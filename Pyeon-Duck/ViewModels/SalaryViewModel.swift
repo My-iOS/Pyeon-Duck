@@ -7,4 +7,6 @@
 
 import Foundation
 
-class SalaryViewModel {}
+class SalaryViewModel {
+    let calenderService = CalenderService.shared
+}

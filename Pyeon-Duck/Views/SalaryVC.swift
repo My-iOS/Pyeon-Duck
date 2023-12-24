@@ -14,8 +14,7 @@ class SalaryVC: UIViewController {
         let scrollView = UIScrollView()
         scrollView.backgroundColor = .systemPink
         scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.alwaysBounceVertical = false
-        scrollView.showsVerticalScrollIndicator = true
+        scrollView.showsHorizontalScrollIndicator = true
         return scrollView
     }()
 
@@ -87,7 +86,6 @@ extension SalaryVC {
 
     override func viewWillAppear(_ animated: Bool) {
         tabBarController?.navigationItem.title = "시급 계산기"
-        tabBarController?.navigationItem.rightBarButtonItem = nil
     }
 }
 
@@ -366,7 +364,7 @@ extension SalaryVC {
     }
 
     func createResultWeeklyTextField() {
-        resultWeeklyTextField.placeholder = "여기에 일급 결과가 출력됩니다."
+        resultWeeklyTextField.placeholder = "여기에 주급 결과가 출력됩니다."
         resultWeeklyTextField.backgroundColor = .white
         resultWeeklyTextField.layer.cornerRadius = 10
         resultWeeklyTextField.addLeftPadding()
@@ -426,8 +424,12 @@ extension SalaryVC {
 extension SalaryVC {
     // To-Do Stuff
     func createResetButton() {
-        let resetButton = UIBarButtonItem(systemItem: .redo, primaryAction: nil)
+        let resetButton = UIBarButtonItem(image: UIImage(systemName: "gobackward"), style: .plain, target: self, action: #selector(didTapRestButton))
         tabBarController?.navigationItem.rightBarButtonItem = resetButton
+    }
+
+    @objc func didTapRestButton(_ sender: UIBarButtonItem) {
+        print("#### \(#function)")
     }
 }
 
