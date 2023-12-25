@@ -12,6 +12,8 @@
 		4E0ABC2B2B385B3800B585DA /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0ABC2A2B385B3800B585DA /* CustomImageView.swift */; };
 		4E0ABC2D2B387DA400B585DA /* StockCreateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0ABC2C2B387DA400B585DA /* StockCreateVC.swift */; };
 		4E3607B12B3964D5006B0DA1 /* ExpirationDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3607B02B3964D5006B0DA1 /* ExpirationDetailVC.swift */; };
+		4E3607B32B398BD3006B0DA1 /* StockItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3607B22B398BD3006B0DA1 /* StockItemVC.swift */; };
+		4E3607B52B398BE4006B0DA1 /* StockDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3607B42B398BE4006B0DA1 /* StockDetailVC.swift */; };
 		4E3D49B62B3590D500D4A1D1 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4E3D49B42B3590D500D4A1D1 /* Model.xcdatamodeld */; };
 		4E3D49B82B35BF0B00D4A1D1 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3D49B72B35BF0B00D4A1D1 /* DataManager.swift */; };
 		4E6D0AF32B317BB900A59BF4 /* CustomTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6D0AF22B317BB900A59BF4 /* CustomTableView.swift */; };
@@ -29,7 +31,7 @@
 		4EB726072B29DF9700B9990A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EB726052B29DF9700B9990A /* Main.storyboard */; };
 		4EB726092B29DF9800B9990A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EB726082B29DF9800B9990A /* Assets.xcassets */; };
 		4EB7260C2B29DF9800B9990A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EB7260A2B29DF9800B9990A /* LaunchScreen.storyboard */; };
-		4EC696D22B2AD6FE000EDE9B /* StockVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC696D12B2AD6FE000EDE9B /* StockVC.swift */; };
+		4EC696D22B2AD6FE000EDE9B /* StockCategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC696D12B2AD6FE000EDE9B /* StockCategoryVC.swift */; };
 		4EC696D42B2AD709000EDE9B /* SalaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC696D32B2AD708000EDE9B /* SalaryVC.swift */; };
 		4EC696D62B2AD725000EDE9B /* ExpirationListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC696D52B2AD725000EDE9B /* ExpirationListViewModel.swift */; };
 		4EC696D82B2AD736000EDE9B /* StockViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC696D72B2AD736000EDE9B /* StockViewModel.swift */; };
@@ -44,6 +46,8 @@
 		4E0ABC2A2B385B3800B585DA /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 		4E0ABC2C2B387DA400B585DA /* StockCreateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockCreateVC.swift; sourceTree = "<group>"; };
 		4E3607B02B3964D5006B0DA1 /* ExpirationDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpirationDetailVC.swift; sourceTree = "<group>"; };
+		4E3607B22B398BD3006B0DA1 /* StockItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockItemVC.swift; sourceTree = "<group>"; };
+		4E3607B42B398BE4006B0DA1 /* StockDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDetailVC.swift; sourceTree = "<group>"; };
 		4E3D49B52B3590D500D4A1D1 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		4E3D49B72B35BF0B00D4A1D1 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		4E6D0AF22B317BB900A59BF4 /* CustomTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableView.swift; sourceTree = "<group>"; };
@@ -63,7 +67,7 @@
 		4EB726082B29DF9800B9990A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4EB7260B2B29DF9800B9990A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4EB7260D2B29DF9800B9990A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4EC696D12B2AD6FE000EDE9B /* StockVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockVC.swift; sourceTree = "<group>"; };
+		4EC696D12B2AD6FE000EDE9B /* StockCategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockCategoryVC.swift; sourceTree = "<group>"; };
 		4EC696D32B2AD708000EDE9B /* SalaryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalaryVC.swift; sourceTree = "<group>"; };
 		4EC696D52B2AD725000EDE9B /* ExpirationListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpirationListViewModel.swift; sourceTree = "<group>"; };
 		4EC696D72B2AD736000EDE9B /* StockViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockViewModel.swift; sourceTree = "<group>"; };
@@ -97,7 +101,9 @@
 		4E0ABC2E2B388A6C00B585DA /* Stocks */ = {
 			isa = PBXGroup;
 			children = (
-				4EC696D12B2AD6FE000EDE9B /* StockVC.swift */,
+				4EC696D12B2AD6FE000EDE9B /* StockCategoryVC.swift */,
+				4E3607B22B398BD3006B0DA1 /* StockItemVC.swift */,
+				4E3607B42B398BE4006B0DA1 /* StockDetailVC.swift */,
 				4E0ABC2C2B387DA400B585DA /* StockCreateVC.swift */,
 			);
 			path = Stocks;
@@ -285,9 +291,11 @@
 				4E7F05D82B3713E000822B55 /* CalenderService.swift in Sources */,
 				4E6D0AF32B317BB900A59BF4 /* CustomTableView.swift in Sources */,
 				4E7F05DA2B3717AE00822B55 /* CustomLabel.swift in Sources */,
+				4E3607B52B398BE4006B0DA1 /* StockDetailVC.swift in Sources */,
 				4E3607B12B3964D5006B0DA1 /* ExpirationDetailVC.swift in Sources */,
-				4EC696D22B2AD6FE000EDE9B /* StockVC.swift in Sources */,
+				4EC696D22B2AD6FE000EDE9B /* StockCategoryVC.swift in Sources */,
 				4EC696E22B2AE3E3000EDE9B /* ViewModelInjectable.swift in Sources */,
+				4E3607B32B398BD3006B0DA1 /* StockItemVC.swift in Sources */,
 				4E7F05DC2B37180600822B55 /* CustomTextField.swift in Sources */,
 				4EB726002B29DF9700B9990A /* AppDelegate.swift in Sources */,
 				4EC696D42B2AD709000EDE9B /* SalaryVC.swift in Sources */,

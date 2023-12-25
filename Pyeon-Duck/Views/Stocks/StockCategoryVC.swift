@@ -13,7 +13,7 @@ import UIKit
  2. 재고 정렬 (가나다순, 완료 순)
  */
 
-class StockVC: UIViewController {
+class StockCategoryVC: UIViewController {
     var viewModel: StockViewModel!
 
     var addFloattingButton = CustomButton(frame: .zero)
@@ -27,7 +27,7 @@ class StockVC: UIViewController {
 
 // MARK: - View Life Cycle
 
-extension StockVC {
+extension StockCategoryVC {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -40,7 +40,7 @@ extension StockVC {
 
 // MARK: - Setting Up UI
 
-extension StockVC {
+extension StockCategoryVC {
     func setUpUI() {
         view.backgroundColor = .white
         addView()
@@ -61,7 +61,7 @@ extension StockVC {
 
 // MARK: - AddFloattingButton Method
 
-extension StockVC {
+extension StockCategoryVC {
     @objc func didTapAddButton(_ sender: UIButton) {
         let vc = StockCreateVC()
         tabBarController?.navigationController?.pushViewController(vc, animated: true)
@@ -87,7 +87,7 @@ extension StockVC {
 
 // MARK: - Confirm TableView
 
-extension StockVC {
+extension StockCategoryVC {
     func createTableView() {
         tableView.backgroundColor = .systemOrange
         tableView.dataSource = self
@@ -104,11 +104,11 @@ extension StockVC {
 
 // MARK: - Method
 
-extension StockVC {}
+extension StockCategoryVC {}
 
 // MARK: - UITableViewDataSource
 
-extension StockVC: UITableViewDataSource {
+extension StockCategoryVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.requestStockCategoryCount
     }
@@ -153,11 +153,11 @@ extension StockVC: UITableViewDataSource {
 
 // MARK: - UITableViewDelegate
 
-extension StockVC: UITableViewDelegate {}
+extension StockCategoryVC: UITableViewDelegate {}
 
 // MARK: - ViewModelInjectable
 
-extension StockVC: ViewModelInjectable {
+extension StockCategoryVC: ViewModelInjectable {
     func injectViewModel(_ viewModelType: StockViewModel) {
         viewModel = viewModelType
     }

@@ -39,7 +39,7 @@ extension TabBarController {
         let expirationDateVC = ExpirationCalendarVC()
         expirationDateVC.tabBarItem = configure(title: "유통기한", symbolName: "calendar", tag: 0)
 
-        let stockVC = StockVC()
+        let stockVC = StockCategoryVC()
         stockVC.injectViewModel(StockViewModel(dataManager: dataManager))
         stockVC.tabBarItem = configure(title: "재고", symbolName: "shippingbox", tag: 1)
 
