@@ -6,3 +6,19 @@
 //
 
 import Foundation
+
+class StockViewModel {
+    private var dataManager: DataManager
+
+    init(dataManager: DataManager) {
+        self.dataManager = dataManager
+    }
+}
+
+// MARK: - CRUD
+
+extension StockViewModel {
+    var requestStockCategoryCount: Int {
+        self.dataManager.stockCategoryList.count
+    }
+}
