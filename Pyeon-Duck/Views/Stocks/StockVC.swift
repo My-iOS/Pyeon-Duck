@@ -16,6 +16,8 @@ import UIKit
 class StockVC: UIViewController {
     var viewModel: StockViewModel!
 
+    var addFloattingButton = CustomButton(frame: .zero)
+
     var tableView = CustomTableView(frame: .zero, style: .insetGrouped)
 
     deinit {
@@ -44,12 +46,12 @@ extension StockVC {
         addView()
         registerCell()
         createTableView()
-
-        createAddButton()
+        createAddFloattingButton()
     }
 
     func addView() {
         view.addSubview(tableView)
+        view.addSubview(addFloattingButton)
     }
 
     func registerCell() {
@@ -57,18 +59,29 @@ extension StockVC {
     }
 }
 
-// MARK: - UIBarButtonItem Method
+// MARK: - AddFloattingButton Method
 
 extension StockVC {
-    // Create Add NavigationItem
-    func createAddButton() {
-        let button = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapAddButton))
-        tabBarController?.navigationItem.rightBarButtonItem = button
-    }
-
-    @objc func didTapAddButton(_ sender: UIBarButtonItem) {
+    @objc func didTapAddButton(_ sender: UIButton) {
         let vc = StockCreateVC()
         tabBarController?.navigationController?.pushViewController(vc, animated: true)
+    }
+
+    func createAddFloattingButton() {
+        let configuration = UIImage.SymbolConfiguration(pointSize: 30) // 이미지 크기 조절
+        let image = UIImage(systemName: "plus", withConfiguration: configuration)
+        addFloattingButton.setImage(image, for: .normal)
+        addFloattingButton.backgroundColor = .systemRed
+        addFloattingButton.tintColor = .white
+        addFloattingButton.layer.cornerRadius = 30
+        addFloattingButton.addTarget(self, action: #selector(didTapAddButton), for: .touchUpInside)
+
+        NSLayoutConstraint.activate([
+            addFloattingButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -24),
+            addFloattingButton.trailingAnchor.constraint(equalTo: tableView.trailingAnchor, constant: -12),
+            addFloattingButton.widthAnchor.constraint(equalToConstant: 60),
+            addFloattingButton.heightAnchor.constraint(equalToConstant: 60),
+        ])
     }
 }
 
@@ -84,7 +97,7 @@ extension StockVC {
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             tableView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
         ])
     }
 }
@@ -106,6 +119,37 @@ extension StockVC: UITableViewDataSource {
         return cell
     }
 }
+
+// #if DEBUG
+// import SwiftUI
+//
+// extension UIViewController {
+//    private struct Preview: UIViewControllerRepresentable {
+//        let viewController: UIViewController
+//
+//        func makeUIViewController(context: Context) -> UIViewController {
+//            return viewController
+//        }
+//
+//        func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
+//    }
+//
+//    func toPreview() -> some View {
+//        Preview(viewController: self)
+//    }
+// }
+//
+// struct StockVC_PreView: PreviewProvider {
+//    static var previews: some View {
+//        // StockViewModel의 인스턴스를 생성하고 주입합니다.
+//        let dataManager = DataManager()
+//        let viewModel = StockViewModel(dataManager: dataManager)
+//        let stockVC = StockVC()
+//        stockVC.injectViewModel(viewModel)
+//
+//        return stockVC.toPreview()
+//    }
+// }#endif
 
 // MARK: - UITableViewDelegate
 

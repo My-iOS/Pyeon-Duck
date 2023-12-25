@@ -22,6 +22,7 @@ extension DataManager {
     func addExpiration(_ expiration: String) {
         let newItem = ExpirationDate(context: context)
         newItem.title = expiration
+
         print("##### \(newItem)")
         do {
             try context.save()
@@ -36,7 +37,6 @@ extension DataManager {
     func requestExpiration() {
         do {
             expirationList = try context.fetch(ExpirationDate.fetchRequest())
-            print("##### \(expirationList)")
         } catch {
             print("Fetch Error: \(error)")
         }

@@ -21,6 +21,8 @@ class ExpirationCalendarVC: UIViewController {
         return view
     }()
 
+    var addFloattingButton = CustomButton(frame: .zero)
+
     deinit {
         print("Deinitialized ExpirationDateVC")
     }
@@ -47,7 +49,8 @@ extension ExpirationCalendarVC {
         addView()
 
         createDateView()
-        createAddButton()
+//        createAddButton()
+        createAddFloattingButton()
 
         setCalendar()
         reloadDateView(date: Date())
@@ -55,6 +58,7 @@ extension ExpirationCalendarVC {
 
     func addView() {
         view.addSubview(dateView)
+        view.addSubview(addFloattingButton)
     }
 }
 
@@ -93,14 +97,40 @@ extension ExpirationCalendarVC {
 
 extension ExpirationCalendarVC {
     // Create Add NavigationItem
-    func createAddButton() {
-        let button = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapAddButton))
-        tabBarController?.navigationItem.rightBarButtonItem = button
-    }
+//    func createAddButton() {
+//        let button = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapAddButton))
+//        tabBarController?.navigationItem.rightBarButtonItem = button
+//    }
 
-    @objc func didTapAddButton(_ sender: UIBarButtonItem) {
+//    @objc func didTapAddButton(_ sender: UIBarButtonItem) {
+//        let vc = ExpirationCreateVC()
+//        tabBarController?.navigationController?.pushViewController(vc, animated: true)
+//    }
+}
+
+// MARK: - AddFloattingButton Method
+
+extension ExpirationCalendarVC {
+    @objc func didTapAddButton(_ sender: UIButton) {
         let vc = ExpirationCreateVC()
         tabBarController?.navigationController?.pushViewController(vc, animated: true)
+    }
+
+    func createAddFloattingButton() {
+        let configuration = UIImage.SymbolConfiguration(pointSize: 30) // 이미지 크기 조절
+        let image = UIImage(systemName: "plus", withConfiguration: configuration)
+        addFloattingButton.setImage(image, for: .normal)
+        addFloattingButton.backgroundColor = .systemRed
+        addFloattingButton.tintColor = .white
+        addFloattingButton.layer.cornerRadius = 30
+        addFloattingButton.addTarget(self, action: #selector(didTapAddButton), for: .touchUpInside)
+
+        NSLayoutConstraint.activate([
+            addFloattingButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -24),
+            addFloattingButton.trailingAnchor.constraint(equalTo: dateView.trailingAnchor, constant: -12),
+            addFloattingButton.widthAnchor.constraint(equalToConstant: 60),
+            addFloattingButton.heightAnchor.constraint(equalToConstant: 60),
+        ])
     }
 }
 
