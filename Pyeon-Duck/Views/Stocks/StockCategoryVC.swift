@@ -34,6 +34,7 @@ extension StockCategoryVC {
 
     override func viewWillAppear(_ animated: Bool) {
         tabBarController?.navigationItem.title = "재고조사"
+        tabBarController?.navigationItem.rightBarButtonItem = nil
         setUpUI()
     }
 }
@@ -62,9 +63,10 @@ extension StockCategoryVC {
 // MARK: - AddFloattingButton Method
 
 extension StockCategoryVC {
+    // To-Do Stuff : Alert 로 카테고리 생성
     @objc func didTapAddButton(_ sender: UIButton) {
-        let vc = StockCreateVC()
-        tabBarController?.navigationController?.pushViewController(vc, animated: true)
+//        let vc = StockCreateVC()
+//        tabBarController?.navigationController?.pushViewController(vc, animated: true)
     }
 
     func createAddFloattingButton() {
@@ -110,7 +112,7 @@ extension StockCategoryVC {}
 
 extension StockCategoryVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.requestStockCategoryCount
+        return 1
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -153,7 +155,12 @@ extension StockCategoryVC: UITableViewDataSource {
 
 // MARK: - UITableViewDelegate
 
-extension StockCategoryVC: UITableViewDelegate {}
+extension StockCategoryVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = StockItemVC()
+        tabBarController?.navigationController?.pushViewController(vc, animated: true)
+    }
+}
 
 // MARK: - ViewModelInjectable
 

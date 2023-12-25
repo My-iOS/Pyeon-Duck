@@ -37,6 +37,7 @@ extension ExpirationCalendarVC {
 
     override func viewWillAppear(_ animated: Bool) {
         tabBarController?.navigationItem.title = "유통기한"
+        tabBarController?.navigationItem.rightBarButtonItem = nil
         setUpUI()
     }
 }
