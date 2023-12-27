@@ -59,7 +59,7 @@ extension StockItemVC {
 
 extension StockItemVC {
     @objc func didTapAddButton(_ sender: UIButton) {
-        let vc = ExpirationCreateVC()
+        let vc = StockCreateVC()
         navigationController?.pushViewController(vc, animated: true)
     }
 

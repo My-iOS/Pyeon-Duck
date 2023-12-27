@@ -127,6 +127,11 @@ extension ExpirationCreateVC {
         imageView.tintColor = .systemGray6
         imageView.backgroundColor = .gray
         imageView.layer.cornerRadius = 10
+        imageView.layer.masksToBounds = true
+
+        imageView.isUserInteractionEnabled = true
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapImageView))
+        imageView.addGestureRecognizer(tapGesture)
 
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: itemImageLabel.bottomAnchor, constant: 12),
@@ -219,5 +224,42 @@ extension ExpirationCreateVC {
             saveButton.heightAnchor.constraint(equalToConstant: 60),
             saveButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -100),
         ])
+    }
+}
+
+// MARK: - ImageView Tap Gesture Method
+
+extension ExpirationCreateVC {
+    @objc func didTapImageView(_ sender: UITapGestureRecognizer) {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.sourceType = .camera
+        picker.allowsEditing = true
+
+        present(picker, animated: false)
+    }
+}
+
+extension ExpirationCreateVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    // 이미지 피커에서 이미지를 선택했을 때 호출되는 메소드
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        print("이미지 선택")
+        // 이미지 피커 컨트롤러 창 닫기
+        picker.dismiss(animated: false) { () in
+            // 이미지를 이미지 뷰에 표시
+            let img = info[UIImagePickerController.InfoKey.editedImage] as? UIImage
+            self.imageView.image = img
+        }
+    }
+
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        print("#### 취소 버튼 눌름")
+
+        dismiss(animated: false) { () in
+            // 알림 창 호출
+            let alert = UIAlertController(title: "", message: "사진 촬영이 취소되었습니다.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "확인", style: .cancel))
+            self.present(alert, animated: true)
+        }
     }
 }
