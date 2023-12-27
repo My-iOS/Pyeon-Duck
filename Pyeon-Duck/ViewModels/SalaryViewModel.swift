@@ -75,9 +75,20 @@ class SalaryViewModel {
         numberFormatter.numberStyle = .decimal
 
         if let result = numberFormatter.string(from: NSNumber(value: inputValue)) {
-            return "\(result) 원"
+            return result
         }
         return "0"
+    }
+
+    // 숫자 사이에 콤마 제거
+    func numberFormattedStrToInt(_ inputValue: String) -> Int {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+
+        if let result = numberFormatter.number(from: inputValue) {
+            return Int(result)
+        }
+        return 0
     }
 
     // weeklyWorkdayArray 초기화

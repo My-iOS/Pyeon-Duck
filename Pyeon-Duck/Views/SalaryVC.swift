@@ -175,6 +175,8 @@ extension SalaryVC {
         hourlyWageTextField.layer.borderWidth = 1
         hourlyWageTextField.layer.borderColor = UIColor.black.cgColor
         hourlyWageTextField.addLeftPadding()
+        hourlyWageTextField.clearButtonMode = .whileEditing
+        hourlyWageTextField.addTarget(self, action: #selector(hourlyTextFieldDidChange), for: .editingChanged)
 
         NSLayoutConstraint.activate([
             hourlyWageTextField.topAnchor.constraint(equalTo: hourlyWageTitleLabel.bottomAnchor, constant: 10),
@@ -203,6 +205,8 @@ extension SalaryVC {
         workHoursTextField.layer.borderWidth = 1
         workHoursTextField.layer.borderColor = UIColor.black.cgColor
         workHoursTextField.addLeftPadding()
+        workHoursTextField.clearButtonMode = .whileEditing
+        workHoursTextField.addTarget(self, action: #selector(workHoursTextFieldDidChange), for: .editingChanged)
 
         NSLayoutConstraint.activate([
             workHoursTextField.topAnchor.constraint(equalTo: workHoursTitleLabel.bottomAnchor, constant: 10),
@@ -460,21 +464,14 @@ extension SalaryVC {
             break
         }
     }
-
-    // Will : 특정행위가 일어나기 직전
-    // 데이터가 저장되기 직전
-    func willAppendDayArr(_ tagNum: Int) {
-        // 기존에 번호가 없는데, 번호를 저장 -> 입력을 의미
-        // 기존에 번호가 있는데, 같은 번호를 한 번 더 저장 -> 삭제를 의미
-    }
 }
 
 // MARK: - CalculatorButton Method
 
 extension SalaryVC {
     @objc func didTapCalculatorButton(_ sender: UIButton) {
-        guard let hourlyWage = Int(hourlyWageTextField.text ?? "0") else { return }
-        guard let workHours = Int(workHoursTextField.text ?? "0") else { return }
+        let hourlyWage = viewModel.numberFormattedStrToInt(hourlyWageTextField.text ?? "0")
+        let workHours = viewModel.numberFormattedStrToInt(workHoursTextField.text ?? "0")
 
         let dailyResult = hourlyWage * workHours
         let weeklyResult = dailyResult * viewModel.filterWorkDayArr.count
@@ -483,6 +480,30 @@ extension SalaryVC {
         resultDailyTextField.text = viewModel.numberFormatted(dailyResult)
         resultWeeklyTextField.text = viewModel.numberFormatted(weeklyResult)
         resultMonthlyTextField.text = viewModel.numberFormatted(monthlyResult)
+    }
+}
+
+// MARK: - TextField DidChange Method
+
+extension SalaryVC {
+    @objc func hourlyTextFieldDidChange(_ sender: Any) {
+        guard let input = Int(hourlyWageTextField.text ?? "0") else { return }
+
+        if input > 999 {
+            hourlyWageTextField.text = viewModel.numberFormatted(input)
+        } else {
+            hourlyWageTextField.text = input.description
+        }
+    }
+
+    @objc func workHoursTextFieldDidChange(_ sender: Any) {
+        guard let input = Int(workHoursTextField.text ?? "0") else { return }
+
+        if input > 999 {
+            workHoursTextField.text = viewModel.numberFormatted(input)
+        } else {
+            workHoursTextField.text = input.description
+        }
     }
 }
 
