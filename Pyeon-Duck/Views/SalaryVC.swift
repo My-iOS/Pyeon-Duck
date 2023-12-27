@@ -12,7 +12,7 @@ class SalaryVC: UIViewController {
 
     let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
-        scrollView.backgroundColor = .systemPink
+        scrollView.backgroundColor = .clear
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.showsHorizontalScrollIndicator = true
         return scrollView
@@ -23,7 +23,7 @@ class SalaryVC: UIViewController {
     let contentView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .systemOrange
+        view.backgroundColor = .clear
         return view
     }()
 
@@ -35,7 +35,7 @@ class SalaryVC: UIViewController {
 
     // MARK: - 텍스트필드들
 
-    let hourlWageTextField = CustomTextField(frame: .zero) // 시급 입력 텍스트필드
+    let hourlyWageTextField = CustomTextField(frame: .zero) // 시급 입력 텍스트필드
     let workHoursTextField = CustomTextField(frame: .zero) // 근로 시간 입력 텍스트 필드
 
     // MARK: - 근무일 수 담는 스택뷰
@@ -123,14 +123,7 @@ extension SalaryVC {
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
 
-//        contentView.addSubview(hourlyWageTitleLabel)
-//        contentView.addSubview(hourlWageTextField)
-//        contentView.addSubview(workHoursTitleLabel)
-//        contentView.addSubview(workHoursTextField)
-//        contentView.addSubview(numberOfWorkingDaysTitleLabel)
-//        contentView.addSubview(numberOfWorkingDaysStackView)
-
-        [hourlyWageTitleLabel, hourlWageTextField, workHoursTitleLabel, workHoursTextField, numberOfWorkingDaysTitleLabel, numberOfWorkingDaysStackView].forEach {
+        [hourlyWageTitleLabel, hourlyWageTextField, workHoursTitleLabel, workHoursTextField, numberOfWorkingDaysTitleLabel, numberOfWorkingDaysStackView].forEach {
             contentView.addSubview($0)
         }
 
@@ -139,14 +132,6 @@ extension SalaryVC {
         [resultDailyWageLabel, resultWeeklyWageLabel, resultMonthlyWageLabel, resultDailyTextField, resultWeeklyTextField, resultMonthlyTextField, calculatorButton].forEach {
             contentView.addSubview($0)
         }
-
-//        contentView.addSubview(resultDailyWageLabel)
-//        contentView.addSubview(resultWeeklyWageLabel)
-//        contentView.addSubview(resultMonthlyWageLabel)
-//
-//        contentView.addSubview(resultDailyTextField)
-//        contentView.addSubview(resultWeeklyTextField)
-//        contentView.addSubview(resultMonthlyTextField)
     }
 }
 
@@ -166,8 +151,6 @@ extension SalaryVC {
         NSLayoutConstraint.activate([
             contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
             contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-//            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-//            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor), // 너비 제약 조건 추가
 //            contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: 1400), // 높이 제약 조건 추가 (필요에 따라 조절)
         ])
@@ -186,16 +169,18 @@ extension SalaryVC {
     }
 
     func createHourlyWageTextField() {
-        hourlWageTextField.placeholder = "시급을 입력해주세요"
-        hourlWageTextField.backgroundColor = .white
-        hourlWageTextField.layer.cornerRadius = 10
-        hourlWageTextField.addLeftPadding()
+        hourlyWageTextField.placeholder = "시급을 입력해주세요"
+        hourlyWageTextField.backgroundColor = .white
+        hourlyWageTextField.layer.cornerRadius = 10
+        hourlyWageTextField.layer.borderWidth = 1
+        hourlyWageTextField.layer.borderColor = UIColor.black.cgColor
+        hourlyWageTextField.addLeftPadding()
 
         NSLayoutConstraint.activate([
-            hourlWageTextField.topAnchor.constraint(equalTo: hourlyWageTitleLabel.bottomAnchor, constant: 10),
-            hourlWageTextField.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
-            hourlWageTextField.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            hourlWageTextField.heightAnchor.constraint(equalToConstant: 60),
+            hourlyWageTextField.topAnchor.constraint(equalTo: hourlyWageTitleLabel.bottomAnchor, constant: 10),
+            hourlyWageTextField.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
+            hourlyWageTextField.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            hourlyWageTextField.heightAnchor.constraint(equalToConstant: 60),
         ])
     }
 
@@ -204,7 +189,7 @@ extension SalaryVC {
         workHoursTitleLabel.font = .systemFont(ofSize: 24, weight: .bold)
 
         NSLayoutConstraint.activate([
-            workHoursTitleLabel.topAnchor.constraint(equalTo: hourlWageTextField.bottomAnchor, constant: 24),
+            workHoursTitleLabel.topAnchor.constraint(equalTo: hourlyWageTextField.bottomAnchor, constant: 24),
             workHoursTitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
             workHoursTitleLabel.widthAnchor.constraint(equalToConstant: 120),
             workHoursTitleLabel.heightAnchor.constraint(equalToConstant: 60),
@@ -215,6 +200,8 @@ extension SalaryVC {
         workHoursTextField.placeholder = "하루 근로 시간을 입력해주세요"
         workHoursTextField.backgroundColor = .white
         workHoursTextField.layer.cornerRadius = 10
+        workHoursTextField.layer.borderWidth = 1
+        workHoursTextField.layer.borderColor = UIColor.black.cgColor
         workHoursTextField.addLeftPadding()
 
         NSLayoutConstraint.activate([
@@ -256,8 +243,10 @@ extension SalaryVC {
 
         // 일요일
         sundayButton.setTitle("일", for: .normal)
-        sundayButton.backgroundColor = .red
+        sundayButton.backgroundColor = .systemRed.withAlphaComponent(0.5)
         sundayButton.layer.cornerRadius = 10
+        sundayButton.tag = 1
+        sundayButton.addTarget(self, action: #selector(didTapDayButton), for: .touchUpInside)
 
         NSLayoutConstraint.activate([
             sundayButton.widthAnchor.constraint(equalToConstant: buttonWidth),
@@ -266,8 +255,10 @@ extension SalaryVC {
 
         // 월요일
         mondayButton.setTitle("월", for: .normal)
-        mondayButton.backgroundColor = .gray
+        mondayButton.backgroundColor = .systemOrange.withAlphaComponent(0.5)
         mondayButton.layer.cornerRadius = 10
+        mondayButton.tag = 2
+        mondayButton.addTarget(self, action: #selector(didTapDayButton), for: .touchUpInside)
 
         NSLayoutConstraint.activate([
             mondayButton.widthAnchor.constraint(equalToConstant: buttonWidth),
@@ -276,8 +267,10 @@ extension SalaryVC {
 
         // 화요일
         tuesayButton.setTitle("화", for: .normal)
-        tuesayButton.backgroundColor = .gray
+        tuesayButton.backgroundColor = .systemOrange.withAlphaComponent(0.5)
         tuesayButton.layer.cornerRadius = 10
+        tuesayButton.tag = 3
+        tuesayButton.addTarget(self, action: #selector(didTapDayButton), for: .touchUpInside)
 
         NSLayoutConstraint.activate([
             tuesayButton.widthAnchor.constraint(equalToConstant: buttonWidth),
@@ -286,8 +279,10 @@ extension SalaryVC {
 
         // 수요일
         wednesdayButton.setTitle("수", for: .normal)
-        wednesdayButton.backgroundColor = .gray
+        wednesdayButton.backgroundColor = .systemOrange.withAlphaComponent(0.5)
         wednesdayButton.layer.cornerRadius = 10
+        wednesdayButton.tag = 4
+        wednesdayButton.addTarget(self, action: #selector(didTapDayButton), for: .touchUpInside)
 
         NSLayoutConstraint.activate([
             wednesdayButton.widthAnchor.constraint(equalToConstant: buttonWidth),
@@ -296,8 +291,10 @@ extension SalaryVC {
 
         // 목요일
         thursdayButton.setTitle("목", for: .normal)
-        thursdayButton.backgroundColor = .gray
+        thursdayButton.backgroundColor = .systemOrange.withAlphaComponent(0.5)
         thursdayButton.layer.cornerRadius = 10
+        thursdayButton.tag = 5
+        thursdayButton.addTarget(self, action: #selector(didTapDayButton), for: .touchUpInside)
 
         NSLayoutConstraint.activate([
             thursdayButton.widthAnchor.constraint(equalToConstant: buttonWidth),
@@ -306,8 +303,10 @@ extension SalaryVC {
 
         // 금요일
         fridayButton.setTitle("금", for: .normal)
-        fridayButton.backgroundColor = .gray
+        fridayButton.backgroundColor = .systemOrange.withAlphaComponent(0.5)
         fridayButton.layer.cornerRadius = 10
+        fridayButton.tag = 6
+        fridayButton.addTarget(self, action: #selector(didTapDayButton), for: .touchUpInside)
 
         NSLayoutConstraint.activate([
             fridayButton.widthAnchor.constraint(equalToConstant: buttonWidth),
@@ -316,8 +315,10 @@ extension SalaryVC {
 
         // 토요일
         saturdayButton.setTitle("토", for: .normal)
-        saturdayButton.backgroundColor = .blue
         saturdayButton.layer.cornerRadius = 10
+        saturdayButton.tag = 7
+        saturdayButton.backgroundColor = .systemBlue.withAlphaComponent(0.5)
+        saturdayButton.addTarget(self, action: #selector(didTapDayButton), for: .touchUpInside)
 
         NSLayoutConstraint.activate([
             saturdayButton.widthAnchor.constraint(equalToConstant: buttonWidth),
@@ -342,6 +343,9 @@ extension SalaryVC {
         resultDailyTextField.backgroundColor = .white
         resultDailyTextField.layer.cornerRadius = 10
         resultDailyTextField.addLeftPadding()
+        resultDailyTextField.isEnabled = false
+        resultDailyTextField.layer.borderWidth = 1
+        resultDailyTextField.layer.borderColor = UIColor.black.cgColor
 
         NSLayoutConstraint.activate([
             resultDailyTextField.topAnchor.constraint(equalTo: resultDailyWageLabel.bottomAnchor, constant: 24),
@@ -368,6 +372,9 @@ extension SalaryVC {
         resultWeeklyTextField.backgroundColor = .white
         resultWeeklyTextField.layer.cornerRadius = 10
         resultWeeklyTextField.addLeftPadding()
+        resultWeeklyTextField.isEnabled = false
+        resultWeeklyTextField.layer.borderWidth = 1
+        resultWeeklyTextField.layer.borderColor = UIColor.black.cgColor
 
         NSLayoutConstraint.activate([
             resultWeeklyTextField.topAnchor.constraint(equalTo: resultWeeklyWageLabel.bottomAnchor, constant: 24),
@@ -394,6 +401,9 @@ extension SalaryVC {
         resultMonthlyTextField.backgroundColor = .white
         resultMonthlyTextField.layer.cornerRadius = 10
         resultMonthlyTextField.addLeftPadding()
+        resultMonthlyTextField.isEnabled = false
+        resultMonthlyTextField.layer.borderWidth = 1
+        resultMonthlyTextField.layer.borderColor = UIColor.black.cgColor
 
         NSLayoutConstraint.activate([
             resultMonthlyTextField.topAnchor.constraint(equalTo: resultMonthlyWageLabel.bottomAnchor, constant: 24),
@@ -408,6 +418,7 @@ extension SalaryVC {
         calculatorButton.setTitle("계산하기", for: .normal)
         calculatorButton.layer.cornerRadius = 10
         calculatorButton.backgroundColor = .red
+        calculatorButton.addTarget(self, action: #selector(didTapCalculatorButton), for: .touchUpInside)
 
         NSLayoutConstraint.activate([
             calculatorButton.topAnchor.constraint(equalTo: resultMonthlyTextField.bottomAnchor, constant: 34),
@@ -419,16 +430,78 @@ extension SalaryVC {
     }
 }
 
+// MARK: - DayButton Method
+
+extension SalaryVC {
+    @objc func didTapDayButton(_ sender: UIButton) {
+        switch sender.tag {
+        case 1:
+            viewModel.weeklyWorkdayArray[sender.tag - 1].toggle()
+            sundayButton.backgroundColor = viewModel.weeklyWorkdayArray[sundayButton.tag - 1] ? .systemRed : .systemRed.withAlphaComponent(0.5)
+        case 2:
+            viewModel.weeklyWorkdayArray[sender.tag - 1].toggle()
+            mondayButton.backgroundColor = viewModel.weeklyWorkdayArray[mondayButton.tag - 1] ? .systemOrange : .systemOrange.withAlphaComponent(0.5)
+        case 3:
+            viewModel.weeklyWorkdayArray[sender.tag - 1].toggle()
+            tuesayButton.backgroundColor = viewModel.weeklyWorkdayArray[tuesayButton.tag - 1] ? .systemOrange : .systemOrange.withAlphaComponent(0.5)
+        case 4:
+            viewModel.weeklyWorkdayArray[sender.tag - 1].toggle()
+            wednesdayButton.backgroundColor = viewModel.weeklyWorkdayArray[wednesdayButton.tag - 1] ? .systemOrange : .systemOrange.withAlphaComponent(0.5)
+        case 5:
+            viewModel.weeklyWorkdayArray[sender.tag - 1].toggle()
+            thursdayButton.backgroundColor = viewModel.weeklyWorkdayArray[thursdayButton.tag - 1] ? .systemOrange : .systemOrange.withAlphaComponent(0.5)
+        case 6:
+            viewModel.weeklyWorkdayArray[sender.tag - 1].toggle()
+            fridayButton.backgroundColor = viewModel.weeklyWorkdayArray[fridayButton.tag - 1] ? .systemOrange : .systemOrange.withAlphaComponent(0.5)
+        case 7:
+            viewModel.weeklyWorkdayArray[sender.tag - 1].toggle()
+            saturdayButton.backgroundColor = viewModel.weeklyWorkdayArray[saturdayButton.tag - 1] ? .systemBlue : .systemBlue.withAlphaComponent(0.5)
+        default:
+            break
+        }
+    }
+
+    // Will : 특정행위가 일어나기 직전
+    // 데이터가 저장되기 직전
+    func willAppendDayArr(_ tagNum: Int) {
+        // 기존에 번호가 없는데, 번호를 저장 -> 입력을 의미
+        // 기존에 번호가 있는데, 같은 번호를 한 번 더 저장 -> 삭제를 의미
+    }
+}
+
+// MARK: - CalculatorButton Method
+
+extension SalaryVC {
+    @objc func didTapCalculatorButton(_ sender: UIButton) {
+        guard let hourlyWage = Int(hourlyWageTextField.text ?? "0") else { return }
+        guard let workHours = Int(workHoursTextField.text ?? "0") else { return }
+
+        let dailyResult = hourlyWage * workHours
+        let weeklyResult = dailyResult * viewModel.filterWorkDayArr.count
+        let monthlyResult = dailyResult * viewModel.countWeekdaysInCurrentMonth(weekday: viewModel.filterWorkDayArr)
+
+        resultDailyTextField.text = viewModel.numberFormatted(dailyResult)
+        resultWeeklyTextField.text = viewModel.numberFormatted(weeklyResult)
+        resultMonthlyTextField.text = viewModel.numberFormatted(monthlyResult)
+    }
+}
+
 // MARK: - Reset Button
 
 extension SalaryVC {
-    // To-Do Stuff
     func createResetButton() {
         let resetButton = UIBarButtonItem(image: UIImage(systemName: "gobackward"), style: .plain, target: self, action: #selector(didTapRestButton))
         tabBarController?.navigationItem.rightBarButtonItem = resetButton
     }
 
     @objc func didTapRestButton(_ sender: UIBarButtonItem) {
+        hourlyWageTextField.text = nil
+        workHoursTextField.text = nil
+        resultDailyTextField.text = nil
+        resultWeeklyTextField.text = nil
+        resultMonthlyTextField.text = nil
+        viewModel.resetWeeklyWorkdayArray()
+        viewWillAppear(true)
         print("#### \(#function)")
     }
 }

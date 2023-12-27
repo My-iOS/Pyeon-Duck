@@ -7,6 +7,11 @@
 
 import UIKit
 
+/*
+ 1. 이미지 클릭시, 이미지 피커 작동
+ 2. 변경된 이미지 보이기
+ */
+
 class ExpirationListVC: UIViewController {
     var viewModel = ExpirationListViewModel(dataManager: DataManager())
 
