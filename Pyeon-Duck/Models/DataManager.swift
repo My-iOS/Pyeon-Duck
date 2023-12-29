@@ -19,11 +19,14 @@ class DataManager {
 // CRUD
 extension DataManager {
     // Create
-    func addExpiration(_ expiration: String) {
-        let newItem = ExpirationDate(context: context)
-        newItem.title = expiration
+    func addExpiration(_ title: String, _ date: String, _ image: Data, _ creationDate: String, isConfirm: Bool) {
+        var newItem = ExpirationDate(context: context)
+        newItem.title = title
+        newItem.itemImage = image
+        newItem.date = date
+        newItem.creationDate = creationDate
+        newItem.isConfirm = isConfirm
 
-        print("##### \(newItem)")
         do {
             try context.save()
             print("##### \(expirationList)")

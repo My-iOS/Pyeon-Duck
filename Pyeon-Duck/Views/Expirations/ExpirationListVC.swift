@@ -15,7 +15,7 @@ import UIKit
 class ExpirationListVC: UIViewController {
     var viewModel = ExpirationListViewModel(dataManager: DataManager())
 
-    var tableView = CustomTableView(frame: .zero, style: .insetGrouped)
+    var tableView = CustomTableView(frame: .zero, style: .plain)
     var addFloattingButton = CustomButton(frame: .zero)
 
     deinit {
@@ -29,6 +29,12 @@ extension ExpirationListVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        viewModel.fetchExpirationList()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        viewModel.fetchExpirationList()
+        tableView.reloadData()
     }
 }
 
@@ -100,12 +106,15 @@ extension ExpirationListVC {
 
 extension ExpirationListVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return viewModel.expirationList.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ExpirationListCell.identifier, for: indexPath) as? ExpirationListCell else { return UITableViewCell() }
-        cell.backgroundColor = .red
+        let item = viewModel.expirationList[indexPath.row]
+        cell.titleLabel.text = item.title
+        cell.setupUI()
+        cell.backgroundColor = .systemOrange
         return cell
     }
 }
@@ -114,8 +123,17 @@ extension ExpirationListVC: UITableViewDataSource {
 
 extension ExpirationListVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("#### \(indexPath)")
+        let item = viewModel.expirationList[indexPath.row]
         let vc = ExpirationDetailVC()
+        vc.viewModel.selectedItem = item
         present(vc, animated: true)
+    }
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            viewModel.deleteExpiration(at: indexPath)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+
+        } else if editingStyle == .insert {}
     }
 }

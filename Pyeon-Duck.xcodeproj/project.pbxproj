@@ -17,6 +17,8 @@
 		4E3D49B62B3590D500D4A1D1 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4E3D49B42B3590D500D4A1D1 /* Model.xcdatamodeld */; };
 		4E3D49B82B35BF0B00D4A1D1 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3D49B72B35BF0B00D4A1D1 /* DataManager.swift */; };
 		4E6D0AF32B317BB900A59BF4 /* CustomTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6D0AF22B317BB900A59BF4 /* CustomTableView.swift */; };
+		4E725C2E2B3E355300063E8D /* ExpirationDateCreateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E725C2D2B3E355300063E8D /* ExpirationDateCreateViewModel.swift */; };
+		4E725C302B3E4AFF00063E8D /* ExpirationDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E725C2F2B3E4AFF00063E8D /* ExpirationDetailViewModel.swift */; };
 		4E7F05D82B3713E000822B55 /* CalenderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7F05D72B3713E000822B55 /* CalenderService.swift */; };
 		4E7F05DA2B3717AE00822B55 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7F05D92B3717AE00822B55 /* CustomLabel.swift */; };
 		4E7F05DC2B37180600822B55 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7F05DB2B37180600822B55 /* CustomTextField.swift */; };
@@ -51,6 +53,8 @@
 		4E3D49B52B3590D500D4A1D1 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		4E3D49B72B35BF0B00D4A1D1 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		4E6D0AF22B317BB900A59BF4 /* CustomTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableView.swift; sourceTree = "<group>"; };
+		4E725C2D2B3E355300063E8D /* ExpirationDateCreateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpirationDateCreateViewModel.swift; sourceTree = "<group>"; };
+		4E725C2F2B3E4AFF00063E8D /* ExpirationDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpirationDetailViewModel.swift; sourceTree = "<group>"; };
 		4E7F05D72B3713E000822B55 /* CalenderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderService.swift; sourceTree = "<group>"; };
 		4E7F05D92B3717AE00822B55 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		4E7F05DB2B37180600822B55 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
@@ -122,6 +126,16 @@
 			path = Subcomponents;
 			sourceTree = "<group>";
 		};
+		4E725C312B3E4B0600063E8D /* Expiration */ = {
+			isa = PBXGroup;
+			children = (
+				4EC696D52B2AD725000EDE9B /* ExpirationListViewModel.swift */,
+				4E725C2D2B3E355300063E8D /* ExpirationDateCreateViewModel.swift */,
+				4E725C2F2B3E4AFF00063E8D /* ExpirationDetailViewModel.swift */,
+			);
+			path = Expiration;
+			sourceTree = "<group>";
+		};
 		4E937CEB2B31DE0A00C574D9 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -188,7 +202,7 @@
 		4EC696CF2B2AD18E000EDE9B /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				4EC696D52B2AD725000EDE9B /* ExpirationListViewModel.swift */,
+				4E725C312B3E4B0600063E8D /* Expiration */,
 				4EC696D72B2AD736000EDE9B /* StockViewModel.swift */,
 				4EC696D92B2AD742000EDE9B /* SalaryViewModel.swift */,
 			);
@@ -298,6 +312,8 @@
 				4E3607B32B398BD3006B0DA1 /* StockItemVC.swift in Sources */,
 				4E7F05DC2B37180600822B55 /* CustomTextField.swift in Sources */,
 				4EB726002B29DF9700B9990A /* AppDelegate.swift in Sources */,
+				4E725C2E2B3E355300063E8D /* ExpirationDateCreateViewModel.swift in Sources */,
+				4E725C302B3E4AFF00063E8D /* ExpirationDetailViewModel.swift in Sources */,
 				4EC696D42B2AD709000EDE9B /* SalaryVC.swift in Sources */,
 				4EB726022B29DF9700B9990A /* SceneDelegate.swift in Sources */,
 				4E7F05DE2B37183B00822B55 /* CustomButton.swift in Sources */,
@@ -459,6 +475,7 @@
 				DEVELOPMENT_TEAM = 4MN45GZSDT;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Pyeon-Duck/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "편의점 덕후";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -488,6 +505,7 @@
 				DEVELOPMENT_TEAM = 4MN45GZSDT;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Pyeon-Duck/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "편의점 덕후";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

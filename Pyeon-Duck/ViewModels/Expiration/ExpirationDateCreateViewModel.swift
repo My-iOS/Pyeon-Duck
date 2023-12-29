@@ -1,0 +1,29 @@
+//
+//  ExpirationDateCreateViewModel.swift
+//  Pyeon-Duck
+//
+//  Created by 준우의 MacBook 16 on 12/29/23.
+//
+
+import Foundation
+
+class ExpirationDateCreateViewModel {
+    var dataManager = DataManager()
+}
+
+extension ExpirationDateCreateViewModel {
+    func addExpiration(_ title: String, _ date: String, _ image: Data, _ creationDate: String, isConfirm: Bool) {
+        self.dataManager.addExpiration(title, date, image, creationDate, isConfirm: isConfirm)
+    }
+}
+
+extension ExpirationDateCreateViewModel {
+    func dateToStrFormatted(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "ko_KR")
+        formatter.dateFormat = "yyyy-MM-dd"
+
+        let dateString = formatter.string(from: date)
+        return dateString
+    }
+}

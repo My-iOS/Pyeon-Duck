@@ -163,15 +163,34 @@ extension ExpirationCalendarVC: UICalendarViewDelegate, UICalendarSelectionSingl
     }
 
     // 달력에서 날짜 선택했을 경우
+    // To - Do Stuff
+    // 달력에서 날짜 선택했을 경우
     func dateSelection(_ selection: UICalendarSelectionSingleDate, didSelectDate dateComponents: DateComponents?) {
+        guard let dateComponents = dateComponents,
+              let date = Calendar.current.date(from: dateComponents)
+        else {
+            print("날짜 선택이 잘못되었습니다.")
+            return
+        }
+
         selection.setSelected(dateComponents, animated: true)
         selectedDate = dateComponents
-        reloadDateView(date: Calendar.current.date(from: dateComponents!))
-        print("#### \(Calendar.current.date(from: dateComponents!))")
+        reloadDateView(date: date)
 
         let vc = ExpirationListVC()
-        guard let dateComponent = dateComponents else { return }
-        let today = Calendar.current.date(from: dateComponent)
-        present(vc, animated: true)
+
+        vc.viewModel.selectedDate = strToDateFormatted(date)
+        print("#### \(vc.viewModel.selectedDate)")
+
+        navigationController?.pushViewController(vc, animated: true)
+    }
+
+    func strToDateFormatted(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "ko_KR")
+        formatter.dateFormat = "yyyy-MM-dd"
+
+        let dateString = formatter.string(from: date)
+        return dateString
     }
 }

@@ -93,6 +93,8 @@ extension SalaryVC {
 
 extension SalaryVC {
     func setUpUI() {
+        hideKeyboardWhenTappedAround()
+
         addView()
 
         createScrollView()
@@ -534,6 +536,20 @@ extension SalaryVC {
 extension SalaryVC: ViewModelInjectable {
     func injectViewModel(_ viewModelType: SalaryViewModel) {
         viewModel = viewModelType
+    }
+}
+
+// MARK: - Hide Keyboard When Tapped Around
+
+extension SalaryVC {
+    func hideKeyboardWhenTappedAround() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(SalaryVC.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 }
 

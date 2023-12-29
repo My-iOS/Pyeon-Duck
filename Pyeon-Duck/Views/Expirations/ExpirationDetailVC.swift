@@ -8,6 +8,8 @@
 import UIKit
 
 class ExpirationDetailVC: UIViewController {
+    var viewModel = ExpirationDetailViewModel()
+
     let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.backgroundColor = .white
@@ -128,10 +130,21 @@ extension ExpirationDetailVC {
     }
 
     func createImageView() {
-        imageView.image = UIImage(systemName: "bell")
+        // 대체 이미지 설정
+        let defaultImage = UIImage(systemName: "bell")
+        if let image = viewModel.selectedItem?.itemImage {
+            imageView.image = UIImage(data: image)
+        } else {
+            imageView.image = defaultImage
+            imageView.tintColor = .white
+        }
+
         imageView.layer.cornerRadius = 10
         imageView.backgroundColor = .blue
+        imageView.clipsToBounds = true // 코너 반경을 적용하기 위해 필요
 
+        // Auto Layout 설정
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             imageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             imageView.topAnchor.constraint(equalTo: describeImageLabel.bottomAnchor, constant: 12),
@@ -153,7 +166,7 @@ extension ExpirationDetailVC {
     }
 
     func createItemTitleLabel() {
-        itemTitleLabel.text = "새우깡"
+        itemTitleLabel.text = viewModel.selectedItem?.title
         itemTitleLabel.font = .systemFont(ofSize: 24, weight: .bold)
 
         NSLayoutConstraint.activate([
@@ -177,7 +190,7 @@ extension ExpirationDetailVC {
     }
 
     func createExpirationDateLabel() {
-        expirationDateLabel.text = "2023.12.25"
+        expirationDateLabel.text = viewModel.selectedItem?.date
         expirationDateLabel.font = .systemFont(ofSize: 24, weight: .bold)
 
         NSLayoutConstraint.activate([
@@ -201,7 +214,7 @@ extension ExpirationDetailVC {
     }
 
     func createCreateDateLabel() {
-        createDateLabel.text = "2023.12.25"
+        createDateLabel.text = viewModel.selectedItem?.creationDate
         createDateLabel.font = .systemFont(ofSize: 24, weight: .bold)
 
         NSLayoutConstraint.activate([
@@ -225,7 +238,12 @@ extension ExpirationDetailVC {
     }
 
     func createModifiedDateLabel() {
-        modifiedDateLabel.text = "2023.12.26"
+        if viewModel.selectedItem?.modifiedDate == nil {
+            modifiedDateLabel.text = "N/A"
+        } else {
+            modifiedDateLabel.text = viewModel.selectedItem?.modifiedDate
+        }
+
         modifiedDateLabel.font = .systemFont(ofSize: 24, weight: .bold)
 
         NSLayoutConstraint.activate([
@@ -241,6 +259,7 @@ extension ExpirationDetailVC {
         editButton.layer.cornerRadius = 10
         editButton.backgroundColor = .systemBlue
         editButton.tintColor = .white
+        editButton.addTarget(self, action: #selector(didTapEditButton), for: .touchUpInside)
 
         NSLayoutConstraint.activate([
             editButton.topAnchor.constraint(equalTo: describeModifiedDateLabel.bottomAnchor, constant: 30),
@@ -249,5 +268,15 @@ extension ExpirationDetailVC {
             editButton.widthAnchor.constraint(equalToConstant: 150),
             editButton.heightAnchor.constraint(equalToConstant: 60),
         ])
+    }
+}
+
+// MARK: - Edit Button Method
+
+extension ExpirationDetailVC {
+    @objc func didTapEditButton(_ sender: UIButton) {
+        let vc = ExpirationCreateVC()
+        present(vc, animated: true)
+        print("#### \(#function)")
     }
 }

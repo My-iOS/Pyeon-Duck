@@ -8,6 +8,8 @@
 import UIKit
 
 class ExpirationCreateVC: UIViewController {
+    var viewModel = ExpirationDateCreateViewModel()
+
     let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.backgroundColor = .clear
@@ -64,6 +66,8 @@ extension ExpirationCreateVC {
 extension ExpirationCreateVC {
     func setupUI() {
         view.backgroundColor = .white
+        hideKeyboardWhenTappedAround()
+
         addView()
         createScrollView()
         createContentView()
@@ -177,6 +181,7 @@ extension ExpirationCreateVC {
         microphoneButton.imageView?.tintColor = .white
         microphoneButton.backgroundColor = .red
         microphoneButton.layer.cornerRadius = 10
+        microphoneButton.addTarget(self, action: #selector(didTapMicrophoneButton), for: .touchUpInside)
 
         NSLayoutConstraint.activate([
             microphoneButton.topAnchor.constraint(equalTo: itemTitleLabel.bottomAnchor, constant: 24),
@@ -200,6 +205,7 @@ extension ExpirationCreateVC {
 
     func createDatePicker() {
         datePicker.locale = Locale(identifier: "ko_KR")
+        datePicker.timeZone = TimeZone(abbreviation: "GMT+9:00") // Changed to GMT+0:00
         datePicker.preferredDatePickerStyle = .compact
         datePicker.datePickerMode = .date
         datePicker.translatesAutoresizingMaskIntoConstraints = false
@@ -216,6 +222,7 @@ extension ExpirationCreateVC {
         saveButton.setTitle("저장", for: .normal)
         saveButton.layer.cornerRadius = 10
         saveButton.backgroundColor = .systemBlue
+        saveButton.addTarget(self, action: #selector(didTapSaveButton), for: .touchUpInside)
 
         NSLayoutConstraint.activate([
             saveButton.topAnchor.constraint(equalTo: expirationDateLabel.bottomAnchor, constant: 50),
@@ -224,6 +231,27 @@ extension ExpirationCreateVC {
             saveButton.heightAnchor.constraint(equalToConstant: 60),
             saveButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -100),
         ])
+    }
+}
+
+// MARK: - SaveButton Method
+
+extension ExpirationCreateVC {
+    @objc func didTapSaveButton(_ sender: UIButton) {
+        // Convert UIImage to Data
+        if let imageData = imageView.image?.pngData() {
+            viewModel.addExpiration(itemTitleTextField.text ?? "N/A", viewModel.dateToStrFormatted(datePicker.date), imageData, viewModel.dateToStrFormatted(Date.now), isConfirm: false)
+        }
+
+        navigationController?.popViewController(animated: true)
+    }
+}
+
+// MARK: - MicrophoneButton Method
+
+extension ExpirationCreateVC {
+    @objc func didTapMicrophoneButton(_ sender: UIButton) {
+        print("#### \(#function)")
     }
 }
 
@@ -261,5 +289,19 @@ extension ExpirationCreateVC: UIImagePickerControllerDelegate, UINavigationContr
             alert.addAction(UIAlertAction(title: "확인", style: .cancel))
             self.present(alert, animated: true)
         }
+    }
+}
+
+// MARK: - Hide Keyboard When Tapped Around
+
+extension ExpirationCreateVC {
+    func hideKeyboardWhenTappedAround() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(ExpirationCreateVC.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 }
