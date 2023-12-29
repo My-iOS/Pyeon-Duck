@@ -57,4 +57,28 @@ extension DataManager {
             print("#### Delete Error : \(error)")
         }
     }
+
+    func updateExpiration(_ expiration: ExpirationDate, newTitle: String, newDate: String, newModifiedDate: String) {
+        expiration.title = newTitle
+        expiration.date = newDate
+        expiration.modifiedDate = newModifiedDate
+
+        do {
+            try context.save()
+            requestExpiration()
+        } catch {
+            print("#### Update Error : \(error)")
+        }
+    }
+
+    func updateConfirm(_ expiration: ExpirationDate, isConfirm: Bool) {
+        expiration.isConfirm = isConfirm
+
+        do {
+            try context.save()
+            requestExpiration()
+        } catch {
+            print("#### Update Error : \(error)")
+        }
+    }
 }

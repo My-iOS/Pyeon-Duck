@@ -15,6 +15,10 @@ extension ExpirationDateCreateViewModel {
     func addExpiration(_ title: String, _ date: String, _ image: Data, _ creationDate: String, isConfirm: Bool) {
         self.dataManager.addExpiration(title, date, image, creationDate, isConfirm: isConfirm)
     }
+
+    func updateExpiration(_ expiration: ExpirationDate, newTitle: String, newDate: String, newModifiedDate: String) {
+        self.dataManager.updateExpiration(expiration, newTitle: newTitle, newDate: newDate, newModifiedDate: newModifiedDate)
+    }
 }
 
 extension ExpirationDateCreateViewModel {

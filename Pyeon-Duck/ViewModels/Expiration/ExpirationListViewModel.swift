@@ -25,7 +25,7 @@ extension ExpirationListViewModel {
 
     var expirationList: [ExpirationDate] {
 //        print("#### \(self.dataManager.expirationList.filter { $0.date == dateToStrFormatted(Date.now) })")
-        return self.dataManager.expirationList.filter { $0.date == selectedDate ?? dateToStrFormatted(Date.now) }
+        return self.dataManager.expirationList.filter { $0.date == self.selectedDate ?? dateToStrFormatted(Date.now) }
     }
 
     func fetchExpirationList() {
@@ -39,6 +39,10 @@ extension ExpirationListViewModel {
 
     func deleteExpiration(at indexPath: IndexPath) {
         self.dataManager.deleteExpiration(at: indexPath)
+    }
+
+    func updateCompletedStatus(_ expiration: ExpirationDate, isConfirm: Bool) {
+        self.dataManager.updateConfirm(expiration, isConfirm: isConfirm)
     }
 }
 

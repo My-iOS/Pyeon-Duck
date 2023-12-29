@@ -9,6 +9,4 @@ import Foundation
 
 class ExpirationDetailViewModel {
     var selectedItem: ExpirationDate?
-    
-    
 }

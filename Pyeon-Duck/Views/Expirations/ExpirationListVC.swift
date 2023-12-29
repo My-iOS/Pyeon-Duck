@@ -7,11 +7,6 @@
 
 import UIKit
 
-/*
- 1. 이미지 클릭시, 이미지 피커 작동
- 2. 변경된 이미지 보이기
- */
-
 class ExpirationListVC: UIViewController {
     var viewModel = ExpirationListViewModel(dataManager: DataManager())
 
@@ -113,9 +108,21 @@ extension ExpirationListVC: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ExpirationListCell.identifier, for: indexPath) as? ExpirationListCell else { return UITableViewCell() }
         let item = viewModel.expirationList[indexPath.row]
         cell.titleLabel.text = item.title
-        cell.setupUI()
-        cell.backgroundColor = .systemOrange
+        cell.actionSwitch.isOn = item.isConfirm
+        cell.accessoryType = .disclosureIndicator
+        cell.setupAlpah(item.isConfirm)
+
+        cell.switchHandler = { [weak self] isConfirm in
+            guard let self = self else { return }
+
+            viewModel.updateCompletedStatus(item, isConfirm: isConfirm)
+        }
+
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
     }
 }
 
@@ -129,11 +136,53 @@ extension ExpirationListVC: UITableViewDelegate {
         present(vc, animated: true)
     }
 
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            viewModel.deleteExpiration(at: indexPath)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == .delete {
+//            viewModel.deleteExpiration(at: indexPath)
+//            tableView.deleteRows(at: [indexPath], with: .fade)
+//
+//        } else if editingStyle == .insert {}
+//    }
 
-        } else if editingStyle == .insert {}
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        // 오른쪽에 만들기
+        let item = viewModel.expirationList[indexPath.row]
+
+        let like = UIContextualAction(style: .normal, title: "삭제") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
+            self.viewModel.deleteExpiration(at: indexPath)
+            tableView.reloadData()
+            success(true)
+        }
+        like.backgroundColor = .systemRed
+
+        let share = UIContextualAction(style: .normal, title: "편집") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
+            print("Share 클릭 됨")
+
+            let vc = ExpirationCreateVC()
+            vc.expirationItem = item
+            vc.selectedTagNum = 2
+
+            vc.itemTitleTextField.text = item.title
+            vc.datePicker.date = self.strToDate(item.date ?? Date.now.description)
+
+            self.navigationController?.pushViewController(vc, animated: true)
+            success(true)
+        }
+        share.backgroundColor = .systemBlue
+
+        // actions배열 인덱스 0이 왼쪽에 붙어서 나옴
+        return UISwipeActionsConfiguration(actions: [like, share])
+    }
+}
+
+// MARK: - DateFormatted
+
+extension ExpirationListVC {
+    func strToDate(_ date: String) -> Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.locale = Locale(identifier: "ko_KR") // 일반적으로 설정하는 로케일
+        dateFormatter.timeZone = TimeZone(identifier: "Asia/Seoul") // 서울 시간대 설정
+        return dateFormatter.date(from: date) ?? Date.now
     }
 }

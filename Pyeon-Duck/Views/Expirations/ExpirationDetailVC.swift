@@ -78,7 +78,7 @@ extension ExpirationDetailVC {
         createDescribeModifiedDateLabel()
         createModifiedDateLabel()
 
-        createEditButton()
+//        createEditButton() // 나중에
     }
 
     func addView() {
@@ -139,15 +139,16 @@ extension ExpirationDetailVC {
             imageView.tintColor = .white
         }
 
+        imageView.contentMode = .scaleAspectFit
         imageView.layer.cornerRadius = 10
-        imageView.backgroundColor = .blue
+        imageView.backgroundColor = .white
         imageView.clipsToBounds = true // 코너 반경을 적용하기 위해 필요
 
         // Auto Layout 설정
         imageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             imageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            imageView.topAnchor.constraint(equalTo: describeImageLabel.bottomAnchor, constant: 12),
+            imageView.topAnchor.constraint(equalTo: describeImageLabel.bottomAnchor, constant: 20),
             imageView.widthAnchor.constraint(equalToConstant: 250),
             imageView.heightAnchor.constraint(equalToConstant: 250),
         ])
@@ -158,7 +159,7 @@ extension ExpirationDetailVC {
         describeTitleLable.font = .systemFont(ofSize: 24, weight: .bold)
 
         NSLayoutConstraint.activate([
-            describeTitleLable.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 12),
+            describeTitleLable.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 20),
             describeTitleLable.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
             describeTitleLable.widthAnchor.constraint(equalToConstant: 150),
             describeTitleLable.heightAnchor.constraint(equalToConstant: 60),
@@ -182,7 +183,7 @@ extension ExpirationDetailVC {
         describeExpirationLabel.font = .systemFont(ofSize: 24, weight: .bold)
 
         NSLayoutConstraint.activate([
-            describeExpirationLabel.topAnchor.constraint(equalTo: describeTitleLable.bottomAnchor, constant: 12),
+            describeExpirationLabel.topAnchor.constraint(equalTo: describeTitleLable.bottomAnchor, constant: 20),
             describeExpirationLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
             describeExpirationLabel.widthAnchor.constraint(equalToConstant: 150),
             describeExpirationLabel.heightAnchor.constraint(equalToConstant: 60),
@@ -194,7 +195,7 @@ extension ExpirationDetailVC {
         expirationDateLabel.font = .systemFont(ofSize: 24, weight: .bold)
 
         NSLayoutConstraint.activate([
-            expirationDateLabel.topAnchor.constraint(equalTo: describeTitleLable.bottomAnchor, constant: 12),
+            expirationDateLabel.topAnchor.constraint(equalTo: describeTitleLable.bottomAnchor, constant: 20),
             expirationDateLabel.leadingAnchor.constraint(equalTo: describeExpirationLabel.trailingAnchor, constant: 24),
             expirationDateLabel.widthAnchor.constraint(equalToConstant: 150),
             expirationDateLabel.heightAnchor.constraint(equalToConstant: 60),
@@ -206,7 +207,7 @@ extension ExpirationDetailVC {
         describeCreateDateLabel.font = .systemFont(ofSize: 24, weight: .bold)
 
         NSLayoutConstraint.activate([
-            describeCreateDateLabel.topAnchor.constraint(equalTo: describeExpirationLabel.bottomAnchor, constant: 12),
+            describeCreateDateLabel.topAnchor.constraint(equalTo: describeExpirationLabel.bottomAnchor, constant: 20),
             describeCreateDateLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
             describeCreateDateLabel.widthAnchor.constraint(equalToConstant: 150),
             describeCreateDateLabel.heightAnchor.constraint(equalToConstant: 60),
@@ -218,7 +219,7 @@ extension ExpirationDetailVC {
         createDateLabel.font = .systemFont(ofSize: 24, weight: .bold)
 
         NSLayoutConstraint.activate([
-            createDateLabel.topAnchor.constraint(equalTo: describeExpirationLabel.bottomAnchor, constant: 12),
+            createDateLabel.topAnchor.constraint(equalTo: describeExpirationLabel.bottomAnchor, constant: 20),
             createDateLabel.leadingAnchor.constraint(equalTo: describeCreateDateLabel.trailingAnchor, constant: 24),
             createDateLabel.widthAnchor.constraint(equalToConstant: 150),
             createDateLabel.heightAnchor.constraint(equalToConstant: 60),
@@ -230,7 +231,7 @@ extension ExpirationDetailVC {
         describeModifiedDateLabel.font = .systemFont(ofSize: 24, weight: .bold)
 
         NSLayoutConstraint.activate([
-            describeModifiedDateLabel.topAnchor.constraint(equalTo: describeCreateDateLabel.bottomAnchor, constant: 12),
+            describeModifiedDateLabel.topAnchor.constraint(equalTo: describeCreateDateLabel.bottomAnchor, constant: 20),
             describeModifiedDateLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
             describeModifiedDateLabel.widthAnchor.constraint(equalToConstant: 150),
             describeModifiedDateLabel.heightAnchor.constraint(equalToConstant: 60),

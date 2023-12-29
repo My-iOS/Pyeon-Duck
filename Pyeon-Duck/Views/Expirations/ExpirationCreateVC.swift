@@ -7,8 +7,24 @@
 
 import UIKit
 
+enum Action {
+    case read
+    case update
+
+    var tagNum: Int {
+        switch self {
+        case .read:
+            return 1
+        case .update:
+            return 2
+        }
+    }
+}
+
 class ExpirationCreateVC: UIViewController {
     var viewModel = ExpirationDateCreateViewModel()
+    var expirationItem: ExpirationDate?
+    var selectedTagNum = 1 // 1: Read 2: Update
 
     let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -126,7 +142,14 @@ extension ExpirationCreateVC {
     }
 
     func createImageView() {
-        imageView.image = UIImage(systemName: "camera")
+        if expirationItem == nil {
+            imageView.image = UIImage(systemName: "camera")
+        } else {
+            if let image = expirationItem?.itemImage {
+                imageView.image = UIImage(data: image)
+            }
+        }
+
         imageView.contentMode = .scaleAspectFit
         imageView.tintColor = .systemGray6
         imageView.backgroundColor = .gray
@@ -219,6 +242,7 @@ extension ExpirationCreateVC {
     }
 
     func createSaveButton() {
+        if selectedTagNum == 1 {}
         saveButton.setTitle("저장", for: .normal)
         saveButton.layer.cornerRadius = 10
         saveButton.backgroundColor = .systemBlue
@@ -239,10 +263,16 @@ extension ExpirationCreateVC {
 extension ExpirationCreateVC {
     @objc func didTapSaveButton(_ sender: UIButton) {
         // Convert UIImage to Data
-        if let imageData = imageView.image?.pngData() {
-            viewModel.addExpiration(itemTitleTextField.text ?? "N/A", viewModel.dateToStrFormatted(datePicker.date), imageData, viewModel.dateToStrFormatted(Date.now), isConfirm: false)
+        if selectedTagNum == 1 { // Read
+            if let imageData = imageView.image?.pngData() {
+                viewModel.addExpiration(itemTitleTextField.text ?? "N/A", viewModel.dateToStrFormatted(datePicker.date), imageData, viewModel.dateToStrFormatted(Date.now), isConfirm: false)
+            }
+        } else {
+            print("#### 변경!")
+            if let item = expirationItem {
+                viewModel.updateExpiration(item, newTitle: itemTitleTextField.text ?? "N/A", newDate: viewModel.dateToStrFormatted(datePicker.date), newModifiedDate: viewModel.dateToStrFormatted(Date.now))
+            }
         }
-
         navigationController?.popViewController(animated: true)
     }
 }
