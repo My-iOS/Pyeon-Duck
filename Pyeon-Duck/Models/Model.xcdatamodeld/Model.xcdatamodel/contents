@@ -8,11 +8,14 @@
         <attribute name="modifiedDate" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
     </entity>
-    <entity name="StockCategory" representedClassName="StockCategory" syncable="YES" codeGenerationType="class">
+    <entity name="StockCategory" representedClassName=".StockCategory" syncable="YES" codeGenerationType="class">
         <attribute name="categoryTitle" optional="YES" attributeType="String"/>
+        <relationship name="items" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="StockItem" inverseName="parentCount" inverseEntity="StockItem"/>
     </entity>
-    <entity name="StockItem" representedClassName="StockItem" syncable="YES" codeGenerationType="class">
+    <entity name="StockItem" representedClassName=".StockItem" syncable="YES" codeGenerationType="class">
+        <attribute name="itemCount" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="itemImage" optional="YES" attributeType="Binary"/>
         <attribute name="itemTitle" optional="YES" attributeType="String"/>
+        <relationship name="parentCount" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StockCategory" inverseName="items" inverseEntity="StockCategory"/>
     </entity>
 </model>

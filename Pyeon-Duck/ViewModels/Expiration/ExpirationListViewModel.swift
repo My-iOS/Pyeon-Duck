@@ -24,7 +24,6 @@ extension ExpirationListViewModel {
     }
 
     var expirationList: [ExpirationDate] {
-//        print("#### \(self.dataManager.expirationList.filter { $0.date == dateToStrFormatted(Date.now) })")
         return self.dataManager.expirationList.filter { $0.date == self.selectedDate ?? dateToStrFormatted(Date.now) }
     }
 

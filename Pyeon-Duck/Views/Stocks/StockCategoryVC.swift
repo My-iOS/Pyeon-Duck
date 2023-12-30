@@ -17,7 +17,6 @@ class StockCategoryVC: UIViewController {
     var viewModel: StockViewModel!
 
     var addFloattingButton = CustomButton(frame: .zero)
-
     var tableView = CustomTableView(frame: .zero, style: .insetGrouped)
 
     deinit {
@@ -30,12 +29,15 @@ class StockCategoryVC: UIViewController {
 extension StockCategoryVC {
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.fetchStockCategory()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         tabBarController?.navigationItem.title = "재고조사"
         tabBarController?.navigationItem.rightBarButtonItem = nil
         setUpUI()
+        viewModel.fetchStockCategory()
+        tableView.reloadData()
     }
 }
 
@@ -65,8 +67,27 @@ extension StockCategoryVC {
 extension StockCategoryVC {
     // To-Do Stuff : Alert 로 카테고리 생성
     @objc func didTapAddButton(_ sender: UIButton) {
-//        let vc = StockCreateVC()
-//        tabBarController?.navigationController?.pushViewController(vc, animated: true)
+        let alert = UIAlertController(title: "alert", message: "textField", preferredStyle: .alert)
+        alert.addTextField { (textField: UITextField) in textField.placeholder = "input todo" }
+
+        let save = UIAlertAction(title: "Save", style: .default) { [weak self] _ in
+            guard let content = alert.textFields?.first?.text,
+                  let self = self
+            else {
+                return
+            }
+            self.viewModel.addStockCategory(content)
+
+            self.tableView.reloadData()
+        }
+
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (cancel) in
+        }
+
+        alert.addAction(cancel)
+        alert.addAction(save)
+
+        present(alert, animated: true, completion: nil)
     }
 
     func createAddFloattingButton() {
@@ -104,21 +125,60 @@ extension StockCategoryVC {
     }
 }
 
-// MARK: - Method
-
-extension StockCategoryVC {}
-
 // MARK: - UITableViewDataSource
 
 extension StockCategoryVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return viewModel.requestStockCategoryCount
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: StocCategorykCell.identifier, for: indexPath) as? StocCategorykCell else { return UITableViewCell() }
         cell.backgroundColor = .systemPink
         return cell
+    }
+}
+
+// MARK: - UITableViewDelegate
+
+extension StockCategoryVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = StockItemVC()
+        tabBarController?.navigationController?.pushViewController(vc, animated: true)
+    }
+
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        // 오른쪽에 만들기
+        let item = viewModel.stockCategoryList[indexPath.row]
+
+        let like = UIContextualAction(style: .normal, title: "삭제") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
+            self.viewModel.deleteStockCategory(at: indexPath)
+
+            DispatchQueue.main.async {
+                tableView.reloadData()
+            }
+            success(true)
+        }
+        like.backgroundColor = .systemRed
+
+        let share = UIContextualAction(style: .normal, title: "편집") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
+            print("Share 클릭 됨")
+
+//
+            success(true)
+        }
+        share.backgroundColor = .systemBlue
+
+        // actions배열 인덱스 0이 왼쪽에 붙어서 나옴
+        return UISwipeActionsConfiguration(actions: [like, share])
+    }
+}
+
+// MARK: - ViewModelInjectable
+
+extension StockCategoryVC: ViewModelInjectable {
+    func injectViewModel(_ viewModelType: StockViewModel) {
+        viewModel = viewModelType
     }
 }
 
@@ -152,20 +212,3 @@ extension StockCategoryVC: UITableViewDataSource {
 //        return stockVC.toPreview()
 //    }
 // }#endif
-
-// MARK: - UITableViewDelegate
-
-extension StockCategoryVC: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = StockItemVC()
-        tabBarController?.navigationController?.pushViewController(vc, animated: true)
-    }
-}
-
-// MARK: - ViewModelInjectable
-
-extension StockCategoryVC: ViewModelInjectable {
-    func injectViewModel(_ viewModelType: StockViewModel) {
-        viewModel = viewModelType
-    }
-}

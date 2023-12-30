@@ -136,14 +136,6 @@ extension ExpirationListVC: UITableViewDelegate {
         present(vc, animated: true)
     }
 
-//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == .delete {
-//            viewModel.deleteExpiration(at: indexPath)
-//            tableView.deleteRows(at: [indexPath], with: .fade)
-//
-//        } else if editingStyle == .insert {}
-//    }
-
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         // 오른쪽에 만들기
         let item = viewModel.expirationList[indexPath.row]

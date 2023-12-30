@@ -10,11 +10,12 @@ import Foundation
 class DataManager {
     private(set) var expirationList: [ExpirationDate] = []
     private(set) var stockCategoryList: [StockCategory] = []
+    private(set) var stockItemList: [StockItem] = []
 
     var context = CoreDataService.context
 }
 
-// MARK: - CoreData CRUD
+// MARK: - Expiration CRUD
 
 // CRUD
 extension DataManager {
@@ -58,6 +59,7 @@ extension DataManager {
         }
     }
 
+    // Update - Content
     func updateExpiration(_ expiration: ExpirationDate, newTitle: String, newDate: String, newModifiedDate: String) {
         expiration.title = newTitle
         expiration.date = newDate
@@ -71,6 +73,7 @@ extension DataManager {
         }
     }
 
+    // Update - Status
     func updateConfirm(_ expiration: ExpirationDate, isConfirm: Bool) {
         expiration.isConfirm = isConfirm
 
@@ -82,3 +85,45 @@ extension DataManager {
         }
     }
 }
+
+// MARK: - StockCategory CRUD
+
+extension DataManager {
+    // Create
+    func addStockCategory(_ title: String) {
+        var newItem = StockCategory(context: context)
+        newItem.categoryTitle = title
+
+        do {
+            try context.save()
+            print("#### \(stockCategoryList)")
+            requestStockCategory()
+        } catch {
+            print("#### Insert Error: \(error)")
+        }
+    }
+
+    // Read
+    func requestStockCategory() {
+        do {
+            stockCategoryList = try context.fetch(StockCategory.fetchRequest())
+        } catch {
+            print("#### Fetch Error: \(error)")
+        }
+    }
+
+    // Delete
+    func deleteStockCategory(at indexPath: IndexPath) {
+        let itemIndexPath = stockCategoryList[indexPath.row]
+        context.delete(itemIndexPath)
+
+        do {
+            try context.save()
+            requestStockCategory()
+        } catch {
+            print("#### Delete Error: \(error)")
+        }
+    }
+}
+
+// MARK: - StockItem CRUD
