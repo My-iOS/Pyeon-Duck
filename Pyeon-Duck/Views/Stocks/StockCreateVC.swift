@@ -8,6 +8,8 @@
 import UIKit
 
 class StockCreateVC: UIViewController {
+    var viewModel = StockCreateViewModel()
+
     let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.backgroundColor = .clear
@@ -72,6 +74,8 @@ extension StockCreateVC {
 extension StockCreateVC {
     func setupUI() {
         view.backgroundColor = .white
+        hideKeyboardWhenTappedAround()
+
         addView()
         createScrollView()
         createContentView()
@@ -212,7 +216,7 @@ extension StockCreateVC {
     }
 
     func createStockCountLabel() {
-        stockCountLabel.text = "\(Int(stockStepper.value))개"
+        stockCountLabel.text = "1 개"
         stockCountLabel.font = .systemFont(ofSize: 20, weight: .bold)
 
         NSLayoutConstraint.activate([
@@ -224,6 +228,8 @@ extension StockCreateVC {
     }
 
     func createStockStepper() {
+        stockStepper.addTarget(self, action: #selector(didTapStepper), for: .valueChanged)
+
         NSLayoutConstraint.activate([
             stockStepper.topAnchor.constraint(equalTo: stockCountDescribeLabel.topAnchor, constant: 10),
             stockStepper.leadingAnchor.constraint(equalTo: stockCountLabel.trailingAnchor, constant: -36),
@@ -231,11 +237,16 @@ extension StockCreateVC {
             stockStepper.heightAnchor.constraint(equalToConstant: 60),
         ])
     }
+}
 
+// MARK: - Save Button Method
+
+extension StockCreateVC {
     func createSaveButton() {
         saveButton.setTitle("저장", for: .normal)
         saveButton.layer.cornerRadius = 10
         saveButton.backgroundColor = .systemBlue
+        saveButton.addTarget(self, action: #selector(didTapSaveButton), for: .touchUpInside)
 
         NSLayoutConstraint.activate([
             saveButton.topAnchor.constraint(equalTo: stockCountDescribeLabel.bottomAnchor, constant: 50),
@@ -244,6 +255,18 @@ extension StockCreateVC {
             saveButton.heightAnchor.constraint(equalToConstant: 60),
             saveButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -100),
         ])
+    }
+
+    @objc func didTapSaveButton(_ sender: UIButton) {
+        guard let title = itemTitleTextField.text else { return }
+
+        if let imageData = imageView.image?.pngData() {
+            viewModel.addStockItem(title, imageData, Int64(stockStepper.value), viewModel.selectedStockCategory!)
+        } else {
+            viewModel.addStockItem(title, (UIImage(systemName: "sun.max")?.pngData())!, Int64(stockStepper.value), viewModel.selectedStockCategory!)
+        }
+
+        navigationController?.popViewController(animated: true)
     }
 }
 
@@ -258,6 +281,14 @@ extension StockCreateVC {
 
     @objc func didTapRestButton(_ sender: UIBarButtonItem) {
         print("#### \(#function)")
+    }
+}
+
+// MARK: - Stepper Method
+
+extension StockCreateVC {
+    @objc func didTapStepper(_ sender: UIStepper) {
+        stockCountLabel.text = "\(Int(stockStepper.value)) 개"
     }
 }
 
@@ -295,6 +326,20 @@ extension StockCreateVC: UIImagePickerControllerDelegate, UINavigationController
             alert.addAction(UIAlertAction(title: "확인", style: .cancel))
             self.present(alert, animated: true)
         }
+    }
+}
+
+// MARK: - Hide Keyboard When Tapped Around
+
+extension StockCreateVC {
+    func hideKeyboardWhenTappedAround() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(ExpirationCreateVC.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 }
 

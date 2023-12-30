@@ -17,7 +17,7 @@ class StockCategoryVC: UIViewController {
     var viewModel: StockViewModel!
 
     var addFloattingButton = CustomButton(frame: .zero)
-    var tableView = CustomTableView(frame: .zero, style: .insetGrouped)
+    var tableView = CustomTableView(frame: .zero, style: .plain)
 
     deinit {
         print("Deinitialized StockVC")
@@ -29,6 +29,7 @@ class StockCategoryVC: UIViewController {
 extension StockCategoryVC {
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpUI()
         viewModel.fetchStockCategory()
     }
 
@@ -58,7 +59,7 @@ extension StockCategoryVC {
     }
 
     func registerCell() {
-        tableView.register(StocCategorykCell.self, forCellReuseIdentifier: StocCategorykCell.identifier)
+        tableView.register(StockCategorykCell.self, forCellReuseIdentifier: StockCategorykCell.identifier)
     }
 }
 
@@ -112,7 +113,7 @@ extension StockCategoryVC {
 
 extension StockCategoryVC {
     func createTableView() {
-        tableView.backgroundColor = .systemOrange
+        tableView.backgroundColor = .clear
         tableView.dataSource = self
         tableView.delegate = self
 
@@ -133,9 +134,15 @@ extension StockCategoryVC: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: StocCategorykCell.identifier, for: indexPath) as? StocCategorykCell else { return UITableViewCell() }
-        cell.backgroundColor = .systemPink
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: StockCategorykCell.identifier, for: indexPath) as? StockCategorykCell else { return UITableViewCell() }
+        let item = viewModel.stockCategoryList[indexPath.row]
+        cell.titleLabel.text = item.categoryTitle
+
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
     }
 }
 
@@ -143,7 +150,9 @@ extension StockCategoryVC: UITableViewDataSource {
 
 extension StockCategoryVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let item = viewModel.stockCategoryList[indexPath.row]
         let vc = StockItemVC()
+        vc.viewModel.selectedStockCategory = item
         tabBarController?.navigationController?.pushViewController(vc, animated: true)
     }
 

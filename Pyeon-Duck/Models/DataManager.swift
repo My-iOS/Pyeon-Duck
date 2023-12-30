@@ -5,6 +5,7 @@
 //  Created by 준우의 MacBook 16 on 12/22/23.
 //
 
+import CoreData
 import Foundation
 
 class DataManager {
@@ -127,3 +128,40 @@ extension DataManager {
 }
 
 // MARK: - StockItem CRUD
+
+extension DataManager {
+    // Create
+    func addStockItem(_ title: String, _ image: Data, _ count: Int, selectedCategory: StockCategory) {
+        let newItem = StockItem(context: context)
+        newItem.itemTitle = title
+        newItem.itemImage = image
+        newItem.itemCount = Int64(count)
+        newItem.parentCategory = selectedCategory
+
+        do {
+            try context.save()
+            requestStockItem(selectedCategory: selectedCategory)
+            print("#### Save Stock : \(stockItemList.count)")
+        } catch {
+            print("#### StockItem insert error: \(error)")
+        }
+    }
+
+    // Read
+    func requestStockItem(with request: NSFetchRequest<StockItem> = StockItem.fetchRequest(), predicate: NSPredicate? = nil, selectedCategory: StockCategory) {
+        let categoryPredicate = NSPredicate(format: "parentCategory.categoryTitle MATCHES %@", selectedCategory.categoryTitle ?? "N/A")
+
+        if let addtionalPredicate = predicate {
+            request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [categoryPredicate, addtionalPredicate])
+        } else {
+            request.predicate = categoryPredicate
+        }
+
+        do {
+            stockItemList = try context.fetch(request)
+            print("#### Start : \(stockItemList.count)")
+        } catch {
+            print("#### StockItem request error: \(error)")
+        }
+    }
+}

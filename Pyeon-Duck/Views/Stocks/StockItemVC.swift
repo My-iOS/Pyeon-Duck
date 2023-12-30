@@ -8,7 +8,9 @@
 import UIKit
 
 class StockItemVC: UIViewController {
-    var tableView = CustomTableView(frame: .zero, style: .insetGrouped)
+    var viewModel = StockDetailViewModel()
+
+    var tableView = CustomTableView(frame: .zero, style: .plain)
     var addFloattingButton = CustomButton(frame: .zero)
 }
 
@@ -18,6 +20,12 @@ extension StockItemVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        viewModel.fetchStockItem(viewModel.selectedStockCategory!)
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        viewModel.fetchStockItem(viewModel.selectedStockCategory!)
+        tableView.reloadData()
     }
 }
 
@@ -28,6 +36,7 @@ extension StockItemVC {
         view.backgroundColor = .white
         addView()
         createTableView()
+        registerCell()
 
         createAddFloattingButton()
     }
@@ -53,6 +62,10 @@ extension StockItemVC {
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         ])
     }
+
+    func registerCell() {
+        tableView.register(StockItemCell.self, forCellReuseIdentifier: StockItemCell.identifier)
+    }
 }
 
 // MARK: - AddFloattingButton Method
@@ -60,6 +73,7 @@ extension StockItemVC {
 extension StockItemVC {
     @objc func didTapAddButton(_ sender: UIButton) {
         let vc = StockCreateVC()
+        vc.viewModel.selectedStockCategory = viewModel.selectedStockCategory
         navigationController?.pushViewController(vc, animated: true)
     }
 
@@ -85,11 +99,20 @@ extension StockItemVC {
 
 extension StockItemVC: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return viewModel.requestStockItemCount
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let item = viewModel.stockItemList[indexPath.row]
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: StockItemCell.identifier, for: indexPath) as? StockItemCell else { return UITableViewCell() }
+        cell.titleLabel.text = item.itemTitle
+        cell.backgroundColor = .systemPink
+
+        return cell
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
     }
 }
 

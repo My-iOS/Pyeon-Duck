@@ -25,7 +25,7 @@
 		4E7F05DE2B37183B00822B55 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7F05DD2B37183B00822B55 /* CustomButton.swift */; };
 		4E7F05E02B37187600822B55 /* CustomStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7F05DF2B37187600822B55 /* CustomStackView.swift */; };
 		4E937CED2B31DE2800C574D9 /* ExpirationListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E937CEC2B31DE2800C574D9 /* ExpirationListCell.swift */; };
-		4E937CEF2B31E4FC00C574D9 /* StocCategorykCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E937CEE2B31E4FC00C574D9 /* StocCategorykCell.swift */; };
+		4E937CEF2B31E4FC00C574D9 /* StockCategorykCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E937CEE2B31E4FC00C574D9 /* StockCategorykCell.swift */; };
 		4E937CF12B320FF700C574D9 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E937CF02B320FF700C574D9 /* CoreDataService.swift */; };
 		4EB726002B29DF9700B9990A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB725FF2B29DF9700B9990A /* AppDelegate.swift */; };
 		4EB726022B29DF9700B9990A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB726012B29DF9700B9990A /* SceneDelegate.swift */; };
@@ -40,6 +40,9 @@
 		4EC696DA2B2AD742000EDE9B /* SalaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC696D92B2AD742000EDE9B /* SalaryViewModel.swift */; };
 		4EC696E22B2AE3E3000EDE9B /* ViewModelInjectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC696E12B2AE3E3000EDE9B /* ViewModelInjectable.swift */; };
 		4EC696E42B2AE526000EDE9B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC696E32B2AE526000EDE9B /* TabBarController.swift */; };
+		4ED180AC2B3FB94F004486A2 /* StockDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED180AB2B3FB94F004486A2 /* StockDetailViewModel.swift */; };
+		4ED180AF2B3FC26B004486A2 /* StockItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED180AE2B3FC26B004486A2 /* StockItemCell.swift */; };
+		4ED180B12B3FC3BD004486A2 /* StockCreateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED180B02B3FC3BD004486A2 /* StockCreateViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,7 +64,7 @@
 		4E7F05DD2B37183B00822B55 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		4E7F05DF2B37187600822B55 /* CustomStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStackView.swift; sourceTree = "<group>"; };
 		4E937CEC2B31DE2800C574D9 /* ExpirationListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpirationListCell.swift; sourceTree = "<group>"; };
-		4E937CEE2B31E4FC00C574D9 /* StocCategorykCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocCategorykCell.swift; sourceTree = "<group>"; };
+		4E937CEE2B31E4FC00C574D9 /* StockCategorykCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockCategorykCell.swift; sourceTree = "<group>"; };
 		4E937CF02B320FF700C574D9 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		4EB725FC2B29DF9700B9990A /* Pyeon-Duck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pyeon-Duck.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EB725FF2B29DF9700B9990A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +81,9 @@
 		4EC696D92B2AD742000EDE9B /* SalaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalaryViewModel.swift; sourceTree = "<group>"; };
 		4EC696E12B2AE3E3000EDE9B /* ViewModelInjectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelInjectable.swift; sourceTree = "<group>"; };
 		4EC696E32B2AE526000EDE9B /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		4ED180AB2B3FB94F004486A2 /* StockDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDetailViewModel.swift; sourceTree = "<group>"; };
+		4ED180AE2B3FC26B004486A2 /* StockItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockItemCell.swift; sourceTree = "<group>"; };
+		4ED180B02B3FC3BD004486A2 /* StockCreateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockCreateViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,7 +146,8 @@
 			isa = PBXGroup;
 			children = (
 				4E937CEC2B31DE2800C574D9 /* ExpirationListCell.swift */,
-				4E937CEE2B31E4FC00C574D9 /* StocCategorykCell.swift */,
+				4E937CEE2B31E4FC00C574D9 /* StockCategorykCell.swift */,
+				4ED180AE2B3FC26B004486A2 /* StockItemCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -203,7 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				4E725C312B3E4B0600063E8D /* Expiration */,
-				4EC696D72B2AD736000EDE9B /* StockViewModel.swift */,
+				4ED180AD2B3FB954004486A2 /* Stock */,
 				4EC696D92B2AD742000EDE9B /* SalaryViewModel.swift */,
 			);
 			path = ViewModels;
@@ -218,6 +225,16 @@
 				4EB7260A2B29DF9800B9990A /* LaunchScreen.storyboard */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		4ED180AD2B3FB954004486A2 /* Stock */ = {
+			isa = PBXGroup;
+			children = (
+				4EC696D72B2AD736000EDE9B /* StockViewModel.swift */,
+				4ED180AB2B3FB94F004486A2 /* StockDetailViewModel.swift */,
+				4ED180B02B3FC3BD004486A2 /* StockCreateViewModel.swift */,
+			);
+			path = Stock;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -292,13 +309,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				4EC696DA2B2AD742000EDE9B /* SalaryViewModel.swift in Sources */,
+				4ED180AF2B3FC26B004486A2 /* StockItemCell.swift in Sources */,
 				4E0ABC2B2B385B3800B585DA /* CustomImageView.swift in Sources */,
 				4E7F05E02B37187600822B55 /* CustomStackView.swift in Sources */,
 				4E3D49B82B35BF0B00D4A1D1 /* DataManager.swift in Sources */,
 				4E937CED2B31DE2800C574D9 /* ExpirationListCell.swift in Sources */,
 				4E0ABC2D2B387DA400B585DA /* StockCreateVC.swift in Sources */,
 				4EC696E42B2AE526000EDE9B /* TabBarController.swift in Sources */,
-				4E937CEF2B31E4FC00C574D9 /* StocCategorykCell.swift in Sources */,
+				4ED180AC2B3FB94F004486A2 /* StockDetailViewModel.swift in Sources */,
+				4E937CEF2B31E4FC00C574D9 /* StockCategorykCell.swift in Sources */,
 				4EB726042B29DF9700B9990A /* ExpirationCalendarVC.swift in Sources */,
 				4E0ABC282B385A4700B585DA /* ExpirationCreateVC.swift in Sources */,
 				4EC696D62B2AD725000EDE9B /* ExpirationListViewModel.swift in Sources */,
@@ -321,6 +340,7 @@
 				4E3D49B62B3590D500D4A1D1 /* Model.xcdatamodeld in Sources */,
 				4EC696D82B2AD736000EDE9B /* StockViewModel.swift in Sources */,
 				4E0ABC262B38527500B585DA /* ExpirationListVC.swift in Sources */,
+				4ED180B12B3FC3BD004486A2 /* StockCreateViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
