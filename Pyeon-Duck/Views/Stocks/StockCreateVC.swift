@@ -279,11 +279,11 @@ extension StockCreateVC {
         if viewModel.actionTag == 1 {
             // Create
             if let imageData = imageView.image?.pngData() {
-                print("#### 4")
-                viewModel.addStockItem(title, imageData, Int64(stockStepper.value), viewModel.selectedStockCategory!)
-            } else {
-                print("#### 5")
-                viewModel.addStockItem(title, (UIImage(systemName: "sun.max")?.pngData())!, Int64(stockStepper.value), viewModel.selectedStockCategory!)
+                if imageView.image?.isSymbolImage == true {
+                    viewModel.addStockItem(title, UIImage(named: "DuckBlankImage")!.pngData()!, Int64(stockStepper.value), viewModel.selectedStockCategory!)
+                } else {
+                    viewModel.addStockItem(title, imageData, Int64(stockStepper.value), viewModel.selectedStockCategory!)
+                }
             }
             navigationController?.popViewController(animated: true)
         } else {

@@ -148,15 +148,6 @@ extension StockItemVC: UITableViewDelegate {
         }
         delete.backgroundColor = .systemRed
 
-//        let share = UIContextualAction(style: .normal, title: "편집") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
-//            print("Share 클릭 됨")
-//
-//            let vc = StockCreateVC()
-//
-//            success(true)
-//        }
-//        share.backgroundColor = .systemBlue
-
         // actions배열 인덱스 0이 왼쪽에 붙어서 나옴
         return UISwipeActionsConfiguration(actions: [delete])
     }

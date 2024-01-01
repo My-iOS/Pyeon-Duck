@@ -261,14 +261,20 @@ extension ExpirationCreateVC {
 extension ExpirationCreateVC {
     @objc func didTapSaveButton(_ sender: UIButton) {
         // Convert UIImage to Data
-        if viewModel.selectedTagNum == 1 { // Read
+        if viewModel.selectedTagNum == 1 {
+            // Create
             if let imageData = imageView.image?.pngData() {
-                viewModel.addExpiration(itemTitleTextField.text ?? "N/A", viewModel.dateToStrFormatted(datePicker.date), imageData, viewModel.dateToStrFormatted(Date.now), isConfirm: false)
+                if imageView.image?.isSymbolImage == true {
+                    viewModel.addExpiration(itemTitleTextField.text ?? "N/A", viewModel.dateToStrFormatted(datePicker.date), UIImage(named: "DuckBlankImage")!.pngData()!, viewModel.dateToStrFormatted(Date.now), isConfirm: false)
+                } else {
+                    viewModel.addExpiration(itemTitleTextField.text ?? "N/A", viewModel.dateToStrFormatted(datePicker.date), imageData, viewModel.dateToStrFormatted(Date.now), isConfirm: false)
+                }
             }
 
             navigationController?.popViewController(animated: true)
 
         } else {
+            // Update
             if let item = viewModel.expirationItem {
                 viewModel.updateExpiration(item, newTitle: itemTitleTextField.text ?? "N/A", newDate: viewModel.dateToStrFormatted(datePicker.date), newModifiedDate: viewModel.dateToStrFormatted(Date.now))
             }
@@ -304,7 +310,6 @@ extension ExpirationCreateVC {
 extension ExpirationCreateVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     // 이미지 피커에서 이미지를 선택했을 때 호출되는 메소드
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-        print("이미지 선택")
         // 이미지 피커 컨트롤러 창 닫기
         picker.dismiss(animated: false) { () in
             // 이미지를 이미지 뷰에 표시
@@ -314,8 +319,6 @@ extension ExpirationCreateVC: UIImagePickerControllerDelegate, UINavigationContr
     }
 
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        print("#### 취소 버튼 눌름")
-
         dismiss(animated: false) { () in
             // 알림 창 호출
             let alert = UIAlertController(title: "", message: "사진 촬영이 취소되었습니다.", preferredStyle: .alert)

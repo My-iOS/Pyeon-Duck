@@ -7,6 +7,12 @@
 
 import UIKit
 
+/*
+ To-Do Stuff
+ 앱 알림 기능 : 날짜 변경시, 휴대폰으로 알림 전송(Ex: 오늘 7개의 유통기한 마감 품목이 있습니다.)
+ STT 기능 추가 (feat. CreateVC 에 추가할 예정)
+ */
+
 class ExpirationCalendarVC: UIViewController {
     var viewModel = ExpirationCalendarViewModel()
 
@@ -61,7 +67,6 @@ extension ExpirationCalendarVC {
         addView()
 
         createDateView()
-//        createAddButton()
         createAddFloattingButton()
 
         setCalendar()
@@ -106,20 +111,9 @@ extension ExpirationCalendarVC {
     }
 }
 
-// MARK: - UIBarButtonItem Method
+// MARK: - Notification Method
 
-extension ExpirationCalendarVC {
-    // Create Add NavigationItem
-//    func createAddButton() {
-//        let button = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapAddButton))
-//        tabBarController?.navigationItem.rightBarButtonItem = button
-//    }
-
-//    @objc func didTapAddButton(_ sender: UIBarButtonItem) {
-//        let vc = ExpirationCreateVC()
-//        tabBarController?.navigationController?.pushViewController(vc, animated: true)
-//    }
-}
+extension ExpirationCalendarVC {}
 
 // MARK: - AddFloattingButton Method
 

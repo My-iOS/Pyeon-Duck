@@ -30,6 +30,7 @@ extension DataManager {
         newItem.creationDate = creationDate
         newItem.isConfirm = isConfirm
 
+        print("#### DataManager Insert : \(newItem)")
         do {
             try context.save()
             print("##### \(expirationList)")
