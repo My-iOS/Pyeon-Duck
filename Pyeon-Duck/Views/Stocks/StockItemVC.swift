@@ -114,6 +114,7 @@ extension StockItemVC: UITableViewDataSource {
             guard let self = self else { return }
             print("#### 지금 \(isConfirm)")
             viewModel.updateCompletedStatus(item, isConfirm: isConfirm, selectedCategory: viewModel.selectedStockCategory!)
+            viewWillAppear(true)
         }
 
         cell.backgroundColor = .clear
@@ -141,7 +142,7 @@ extension StockItemVC: UITableViewDelegate {
         let item = viewModel.stockItemList[indexPath.row]
 
         let delete = UIContextualAction(style: .normal, title: "삭제") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
-            self.viewModel.deleteStockItem(at: indexPath, selectedCategory: self.viewModel.selectedStockCategory!)
+            self.viewModel.deleteStockItem(at: item, selectedCategory: self.viewModel.selectedStockCategory!)
             tableView.reloadData()
             success(true)
         }

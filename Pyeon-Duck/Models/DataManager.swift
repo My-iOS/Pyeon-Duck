@@ -125,6 +125,18 @@ extension DataManager {
             print("#### Delete Error: \(error)")
         }
     }
+
+    // Update
+    func updateStockCategory(_ stockCategory: StockCategory, title: String) {
+        stockCategory.categoryTitle = title
+
+        do {
+            try context.save()
+            requestStockCategory()
+        } catch {
+            print("#### Update Error: \(error)")
+        }
+    }
 }
 
 // MARK: - StockItem CRUD
@@ -167,9 +179,8 @@ extension DataManager {
     }
 
     // Delete
-    func deleteStockItem(at indexPath: IndexPath, _ selectedCategory: StockCategory) {
-        let itemIndexPath = stockItemList[indexPath.row]
-        context.delete(itemIndexPath)
+    func deleteStockItem(at stockItem: StockItem, _ selectedCategory: StockCategory) {
+        context.delete(stockItem)
 
         do {
             try context.save()

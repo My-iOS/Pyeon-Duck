@@ -166,15 +166,36 @@ extension StockCategoryVC: UITableViewDelegate {
         }
         delete.backgroundColor = .systemRed
 
-        let share = UIContextualAction(style: .normal, title: "편집") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
-            print("Share 클릭 됨")
+        let edit = UIContextualAction(style: .normal, title: "편집") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
+
+            let alert = UIAlertController(title: "카테고리 편집", message: "", preferredStyle: .alert)
+            alert.addTextField { (textField: UITextField) in textField.placeholder = "새로운 카테고리명을 입력해주세요" }
+
+            let save = UIAlertAction(title: "저장", style: .default) { [weak self] _ in
+                guard let content = alert.textFields?.first?.text,
+                      let self = self
+                else {
+                    return
+                }
+                self.viewModel.updateStockCategory(item, title: content)
+
+                self.tableView.reloadData()
+            }
+
+            let cancel = UIAlertAction(title: "취소", style: .destructive) { (cancel) in
+            }
+
+            alert.addAction(cancel)
+            alert.addAction(save)
+
+            self.present(alert, animated: true, completion: nil)
 
             success(true)
         }
-        share.backgroundColor = .systemBlue
+        edit.backgroundColor = .systemBlue
 
         // actions배열 인덱스 0이 왼쪽에 붙어서 나옴
-        return UISwipeActionsConfiguration(actions: [delete, share])
+        return UISwipeActionsConfiguration(actions: [delete, edit])
     }
 }
 

@@ -24,16 +24,12 @@ extension ExpirationListViewModel {
     }
 
     var expirationList: [ExpirationDate] {
-        return self.dataManager.expirationList.filter { $0.date == self.selectedDate ?? dateToStrFormatted(Date.now) }
+        return self.dataManager.expirationList.filter { $0.date == (self.selectedDate ?? dateToStrFormatted(Date.now)) }
+            .sorted(by: { $0.isConfirm && !$1.isConfirm })
     }
 
     func fetchExpirationList() {
         self.dataManager.requestExpiration()
-    }
-
-    func addExpiration(_ expiration: ExpirationDate) {
-        print("##### \(expiration)")
-//        self.dataManager.addExpiration(expiration)
     }
 
     func deleteExpiration(_ expiration: ExpirationDate) {

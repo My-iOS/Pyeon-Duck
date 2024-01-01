@@ -16,7 +16,7 @@ class StockItemViewModel {
     }
 
     var stockItemList: [StockItem] {
-        return self.dataManager.stockItemList
+        return self.dataManager.stockItemList.sorted { $0.isConfirm && !$1.isConfirm }
     }
 }
 
@@ -27,8 +27,8 @@ extension StockItemViewModel {
         self.dataManager.requestStockItem(selectedCategory: selectedCategory)
     }
 
-    func deleteStockItem(at indexPath: IndexPath, selectedCategory: StockCategory) {
-        self.dataManager.deleteStockItem(at: indexPath, selectedCategory)
+    func deleteStockItem(at stockItem: StockItem, selectedCategory: StockCategory) {
+        self.dataManager.deleteStockItem(at: stockItem, selectedCategory)
     }
 
     func updateStockItem(stockItem: StockItem, newTitle: String, newImage: Data, newCount: Int, selectedCategory: StockCategory) {

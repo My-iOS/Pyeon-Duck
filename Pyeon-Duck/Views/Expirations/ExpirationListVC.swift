@@ -116,8 +116,8 @@ extension ExpirationListVC: UITableViewDataSource {
 
         cell.actionHandler = { [weak self] isConfirm in
             guard let self = self else { return }
-            print("#### 지금 \(isConfirm)")
             viewModel.updateCompletedStatus(item, isConfirm: isConfirm)
+            viewWillAppear(true)
         }
 
         cell.backgroundColor = .clear

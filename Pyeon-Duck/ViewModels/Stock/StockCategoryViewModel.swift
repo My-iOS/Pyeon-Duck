@@ -40,4 +40,7 @@ extension StockCategoryViewModel {
 
     // Task
     // Update
+    func updateStockCategory(_ stockCategory: StockCategory, title: String) {
+        self.dataManager.updateStockCategory(stockCategory, title: title)
+    }
 }
