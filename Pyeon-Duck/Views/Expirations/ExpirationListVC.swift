@@ -78,6 +78,7 @@ extension ExpirationListVC {
 extension ExpirationListVC {
     @objc func didTapAddButton(_ sender: UIButton) {
         let vc = ExpirationCreateVC()
+        vc.datePicker.date = viewModel.strToDate(viewModel.selectedDate!)
         navigationController?.pushViewController(vc, animated: true)
     }
 
@@ -143,8 +144,10 @@ extension ExpirationListVC: UITableViewDelegate {
         let item = viewModel.expirationList[indexPath.row]
 
         let like = UIContextualAction(style: .normal, title: "삭제") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
-            self.viewModel.deleteExpiration(at: indexPath)
-            tableView.reloadData()
+
+            self.viewModel.deleteExpiration(item)
+            self.tableView.reloadData()
+
             success(true)
         }
         like.backgroundColor = .systemRed

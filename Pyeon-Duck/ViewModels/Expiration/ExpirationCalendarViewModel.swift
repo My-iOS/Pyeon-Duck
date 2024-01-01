@@ -18,6 +18,10 @@ class ExpirationCalendarViewModel {
 }
 
 extension ExpirationCalendarViewModel {
+    func fetchExpirationList() {
+        self.dataManager.requestExpiration()
+    }
+
     func strToDateFormatted(_ date: Date) -> String {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "ko_KR")

@@ -22,7 +22,8 @@ class DataManager {
 extension DataManager {
     // Create
     func addExpiration(_ title: String, _ date: String, _ image: Data, _ creationDate: String, isConfirm: Bool) {
-        var newItem = ExpirationDate(context: context)
+        let newItem = ExpirationDate(context: context)
+        newItem.id = UUID()
         newItem.title = title
         newItem.itemImage = image
         newItem.date = date
@@ -49,13 +50,11 @@ extension DataManager {
     }
 
     // Delete
-    func deleteExpiration(at indexPath: IndexPath) {
-        let itemIndexPath = expirationList[indexPath.row]
-        context.delete(itemIndexPath)
-
+    func deleteExpiration(at expiration: ExpirationDate) {
+        context.delete(expiration)
         do {
             try context.save()
-            requestExpiration()
+            requestExpiration() // 배열을 다시 fetch하여 갱신
         } catch {
             print("#### Delete Error : \(error)")
         }
@@ -160,6 +159,7 @@ extension DataManager {
 
         do {
             stockItemList = try context.fetch(request)
+
             print("#### Start : \(stockItemList.count)")
         } catch {
             print("#### StockItem request error: \(error)")
@@ -192,10 +192,10 @@ extension DataManager {
             print("#### Update Stock Item Error : \(error)")
         }
     }
-    
+
     func updateStockConfirm(_ stockItem: StockItem, isConfirm: Bool, selectedCategory: StockCategory) {
         stockItem.isConfirm = isConfirm
-        
+
         do {
             try context.save()
             requestStockItem(selectedCategory: selectedCategory)

@@ -267,6 +267,7 @@ extension ExpirationCreateVC {
             }
 
             navigationController?.popViewController(animated: true)
+
         } else {
             if let item = viewModel.expirationItem {
                 viewModel.updateExpiration(item, newTitle: itemTitleTextField.text ?? "N/A", newDate: viewModel.dateToStrFormatted(datePicker.date), newModifiedDate: viewModel.dateToStrFormatted(Date.now))

@@ -36,8 +36,8 @@ extension ExpirationListViewModel {
 //        self.dataManager.addExpiration(expiration)
     }
 
-    func deleteExpiration(at indexPath: IndexPath) {
-        self.dataManager.deleteExpiration(at: indexPath)
+    func deleteExpiration(_ expiration: ExpirationDate) {
+        self.dataManager.deleteExpiration(at: expiration)
     }
 
     func updateCompletedStatus(_ expiration: ExpirationDate, isConfirm: Bool) {

@@ -41,11 +41,14 @@ extension ExpirationCalendarVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
+        viewModel.fetchExpirationList()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         tabBarController?.navigationItem.title = "유통기한"
         tabBarController?.navigationItem.rightBarButtonItem = nil
+
+        viewModel.fetchExpirationList()
         setUpUI()
     }
 }
@@ -150,17 +153,20 @@ extension ExpirationCalendarVC: UICalendarViewDelegate, UICalendarSelectionSingl
     // UICalendarView
     func calendarView(_ calendarView: UICalendarView, decorationFor dateComponents: DateComponents) -> UICalendarView.Decoration? {
         if let date = Calendar.current.date(from: dateComponents) {
-            print("#### \(viewModel.strToDateFormatted(date))")
             viewModel.date = viewModel.strToDateFormatted(date)
-
-            if viewModel.expirationList.isEmpty == false {
-                print("#### 여기 장사 중")
-            } else {
-                print("#### 여기 장사 끝남")
-            }
         }
+        if viewModel.expirationList.count > 0 {
+            return .customView {
+                let view = UIView()
+                view.layer.cornerRadius = 5
+                view.backgroundColor = .systemRed
+                view.frame.size = .init(width: 10, height: 10)
 
-        return nil
+                return view
+            }
+        } else {
+            return nil
+        }
     }
 
     // 달력에서 날짜 선택했을 경우
