@@ -80,7 +80,7 @@ class SalaryVC: UIViewController {
 extension SalaryVC {
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = .systemGray6
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -514,6 +514,7 @@ extension SalaryVC {
 extension SalaryVC {
     func createResetButton() {
         let resetButton = UIBarButtonItem(image: UIImage(systemName: "gobackward"), style: .plain, target: self, action: #selector(didTapRestButton))
+        resetButton.tintColor = .black
         tabBarController?.navigationItem.rightBarButtonItem = resetButton
     }
 

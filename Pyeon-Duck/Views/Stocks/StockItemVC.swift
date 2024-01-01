@@ -79,7 +79,7 @@ extension StockItemVC {
     }
 
     func createAddFloattingButton() {
-        let configuration = UIImage.SymbolConfiguration(pointSize: 30) // 이미지 크기 조절
+        let configuration = UIImage.SymbolConfiguration(pointSize: 30, weight: .bold) // 이미지 크기 조절
         let image = UIImage(systemName: "plus", withConfiguration: configuration)
         addFloattingButton.setImage(image, for: .normal)
         addFloattingButton.backgroundColor = .systemRed

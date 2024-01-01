@@ -12,7 +12,7 @@ class StockDetailVC: UIViewController {
 
     let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
-        scrollView.backgroundColor = .systemOrange
+        scrollView.backgroundColor = .clear
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.showsVerticalScrollIndicator = true
         scrollView.isScrollEnabled = true
@@ -24,7 +24,7 @@ class StockDetailVC: UIViewController {
     let contentView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .systemPink
+        view.backgroundColor = .clear
         return view
     }()
 
@@ -59,7 +59,7 @@ extension StockDetailVC {
 
 extension StockDetailVC {
     func setupUI() {
-        view.backgroundColor = .white
+        view.backgroundColor = .systemGray6
         addView()
         createScrollView()
         createContentView()

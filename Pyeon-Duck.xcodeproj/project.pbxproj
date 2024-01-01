@@ -20,6 +20,7 @@
 		4E6D0AF32B317BB900A59BF4 /* CustomTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6D0AF22B317BB900A59BF4 /* CustomTableView.swift */; };
 		4E725C2E2B3E355300063E8D /* ExpirationDateCreateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E725C2D2B3E355300063E8D /* ExpirationDateCreateViewModel.swift */; };
 		4E725C302B3E4AFF00063E8D /* ExpirationDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E725C2F2B3E4AFF00063E8D /* ExpirationDetailViewModel.swift */; };
+		4E74A5322B42BDAF00657FC8 /* ExpirationCalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E74A5312B42BDAF00657FC8 /* ExpirationCalendarViewModel.swift */; };
 		4E7F05D82B3713E000822B55 /* CalenderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7F05D72B3713E000822B55 /* CalenderService.swift */; };
 		4E7F05DA2B3717AE00822B55 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7F05D92B3717AE00822B55 /* CustomLabel.swift */; };
 		4E7F05DC2B37180600822B55 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7F05DB2B37180600822B55 /* CustomTextField.swift */; };
@@ -60,6 +61,7 @@
 		4E6D0AF22B317BB900A59BF4 /* CustomTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableView.swift; sourceTree = "<group>"; };
 		4E725C2D2B3E355300063E8D /* ExpirationDateCreateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpirationDateCreateViewModel.swift; sourceTree = "<group>"; };
 		4E725C2F2B3E4AFF00063E8D /* ExpirationDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpirationDetailViewModel.swift; sourceTree = "<group>"; };
+		4E74A5312B42BDAF00657FC8 /* ExpirationCalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpirationCalendarViewModel.swift; sourceTree = "<group>"; };
 		4E7F05D72B3713E000822B55 /* CalenderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderService.swift; sourceTree = "<group>"; };
 		4E7F05D92B3717AE00822B55 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		4E7F05DB2B37180600822B55 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 		4E725C312B3E4B0600063E8D /* Expiration */ = {
 			isa = PBXGroup;
 			children = (
+				4E74A5312B42BDAF00657FC8 /* ExpirationCalendarViewModel.swift */,
 				4EC696D52B2AD725000EDE9B /* ExpirationListViewModel.swift */,
 				4E725C2D2B3E355300063E8D /* ExpirationDateCreateViewModel.swift */,
 				4E725C2F2B3E4AFF00063E8D /* ExpirationDetailViewModel.swift */,
@@ -333,6 +336,7 @@
 				4EC696D22B2AD6FE000EDE9B /* StockCategoryVC.swift in Sources */,
 				4EC696E22B2AE3E3000EDE9B /* ViewModelInjectable.swift in Sources */,
 				4E3607B32B398BD3006B0DA1 /* StockItemVC.swift in Sources */,
+				4E74A5322B42BDAF00657FC8 /* ExpirationCalendarViewModel.swift in Sources */,
 				4E7F05DC2B37180600822B55 /* CustomTextField.swift in Sources */,
 				4EB726002B29DF9700B9990A /* AppDelegate.swift in Sources */,
 				4E725C2E2B3E355300063E8D /* ExpirationDateCreateViewModel.swift in Sources */,

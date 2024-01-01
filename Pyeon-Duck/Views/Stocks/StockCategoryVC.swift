@@ -7,12 +7,6 @@
 
 import UIKit
 
-/*
- 필수 구현 사항
- 1. 재고 리스트 CRUD
- 2. 재고 정렬 (가나다순, 완료 순)
- */
-
 class StockCategoryVC: UIViewController {
     var viewModel: StockCategoryViewModel!
 
@@ -46,7 +40,7 @@ extension StockCategoryVC {
 
 extension StockCategoryVC {
     func setUpUI() {
-        view.backgroundColor = .white
+        view.backgroundColor = .systemGray6
         addView()
         registerCell()
         createTableView()
@@ -92,7 +86,7 @@ extension StockCategoryVC {
     }
 
     func createAddFloattingButton() {
-        let configuration = UIImage.SymbolConfiguration(pointSize: 30) // 이미지 크기 조절
+        let configuration = UIImage.SymbolConfiguration(pointSize: 30, weight: .bold) // 이미지 크기 조절
         let image = UIImage(systemName: "plus", withConfiguration: configuration)
         addFloattingButton.setImage(image, for: .normal)
         addFloattingButton.backgroundColor = .systemRed
@@ -139,6 +133,7 @@ extension StockCategoryVC: UITableViewDataSource {
         let item = viewModel.stockCategoryList[indexPath.row]
         cell.titleLabel.text = item.categoryTitle
         cell.countLabel.text = "\(Int(item.items?.count ?? 0)) 개"
+        cell.backgroundColor = .clear
         return cell
     }
 

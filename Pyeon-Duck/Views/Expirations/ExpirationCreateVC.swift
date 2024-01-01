@@ -79,7 +79,7 @@ extension ExpirationCreateVC {
 
 extension ExpirationCreateVC {
     func setupUI() {
-        view.backgroundColor = .white
+        view.backgroundColor = .systemGray6
         hideKeyboardWhenTappedAround()
 
         addView()

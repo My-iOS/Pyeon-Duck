@@ -76,7 +76,7 @@ extension StockCreateVC {
 
 extension StockCreateVC {
     func setupUI() {
-        view.backgroundColor = .white
+        view.backgroundColor = .systemGray6
         hideKeyboardWhenTappedAround()
 
         addView()

@@ -12,7 +12,7 @@ class ExpirationDetailVC: UIViewController {
 
     let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
-        scrollView.backgroundColor = .white
+        scrollView.backgroundColor = .clear
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.showsVerticalScrollIndicator = true
         scrollView.isScrollEnabled = true
@@ -24,7 +24,7 @@ class ExpirationDetailVC: UIViewController {
     let contentView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .white
+        view.backgroundColor = .systemGray6
         return view
     }()
 
@@ -62,7 +62,7 @@ extension ExpirationDetailVC {
 
 extension ExpirationDetailVC {
     func setupUI() {
-        view.backgroundColor = .white
+        view.backgroundColor = .systemGray6
         addView()
 
         createScrollView()

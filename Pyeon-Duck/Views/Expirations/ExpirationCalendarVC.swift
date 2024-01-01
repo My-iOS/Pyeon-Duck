@@ -8,12 +8,19 @@
 import UIKit
 
 class ExpirationCalendarVC: UIViewController {
-    var selectedDate: DateComponents? = nil
+    var viewModel = ExpirationCalendarViewModel()
 
     // 달력 선언
     let dateView: UICalendarView = {
         let view = UICalendarView()
+        view.locale = Locale(identifier: "ko_KR")
+        view.timeZone = TimeZone(abbreviation: "KST")
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.fontDesign = .serif
+        view.backgroundColor = .systemBackground
+        view.layer.cornerCurve = .continuous
+        view.layer.cornerRadius = 10
+        view.tintColor = UIColor.red
 
         // 달력 커스텀을 위해 설정해 주어야 하는 속성
         view.wantsDateDecorations = true
@@ -33,10 +40,10 @@ class ExpirationCalendarVC: UIViewController {
 extension ExpirationCalendarVC {
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpUI()
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        tabBarController?.navigationItem.largeTitleDisplayMode = .always
         tabBarController?.navigationItem.title = "유통기한"
         tabBarController?.navigationItem.rightBarButtonItem = nil
         setUpUI()
@@ -47,7 +54,7 @@ extension ExpirationCalendarVC {
 
 extension ExpirationCalendarVC {
     func setUpUI() {
-        view.backgroundColor = .white
+        view.backgroundColor = .systemGray6
         addView()
 
         createDateView()
@@ -69,10 +76,10 @@ extension ExpirationCalendarVC {
 extension ExpirationCalendarVC {
     func createDateView() {
         let dateViewConstraints = [
-            dateView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            dateView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            dateView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            dateView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
             dateView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            dateView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 10),
+            dateView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10),
         ]
 
         NSLayoutConstraint.activate(dateViewConstraints)
@@ -84,6 +91,7 @@ extension ExpirationCalendarVC {
 extension ExpirationCalendarVC {
     func setCalendar() {
         dateView.delegate = self
+
         let dateSelection = UICalendarSelectionSingleDate(delegate: self)
         dateView.selectionBehavior = dateSelection
     }
@@ -119,7 +127,7 @@ extension ExpirationCalendarVC {
     }
 
     func createAddFloattingButton() {
-        let configuration = UIImage.SymbolConfiguration(pointSize: 30) // 이미지 크기 조절
+        let configuration = UIImage.SymbolConfiguration(pointSize: 30, weight: .bold) // 이미지 크기 조절
         let image = UIImage(systemName: "plus", withConfiguration: configuration)
         addFloattingButton.setImage(image, for: .normal)
         addFloattingButton.backgroundColor = .systemRed
@@ -141,25 +149,17 @@ extension ExpirationCalendarVC {
 extension ExpirationCalendarVC: UICalendarViewDelegate, UICalendarSelectionSingleDateDelegate {
     // UICalendarView
     func calendarView(_ calendarView: UICalendarView, decorationFor dateComponents: DateComponents) -> UICalendarView.Decoration? {
-        let currentDateComponents = Calendar.current.dateComponents([.day, .month, .year], from: Date())
-        if currentDateComponents == dateComponents {
-            return .customView {
-                let view = UIView()
-                view.layer.cornerRadius = 10 // 원의 반지름 설정
-                view.translatesAutoresizingMaskIntoConstraints = false
-                view.backgroundColor = .red
-                return view
+        if let date = Calendar.current.date(from: dateComponents) {
+            print("#### \(viewModel.strToDateFormatted(date))")
+            viewModel.date = viewModel.strToDateFormatted(date)
+
+            if viewModel.expirationList.isEmpty == false {
+                print("#### 여기 장사 중")
+            } else {
+                print("#### 여기 장사 끝남")
             }
         }
 
-        if let selectedDate = selectedDate, selectedDate == dateComponents {
-//            return .customView {
-//                let label = UILabel()
-//                label.text = "🐶"
-//                label.textAlignment = .center
-//                return label
-//            }
-        }
         return nil
     }
 
@@ -175,23 +175,13 @@ extension ExpirationCalendarVC: UICalendarViewDelegate, UICalendarSelectionSingl
         }
 
         selection.setSelected(dateComponents, animated: true)
-        selectedDate = dateComponents
+        viewModel.selectedDate = dateComponents
         reloadDateView(date: date)
 
         let vc = ExpirationListVC()
 
-        vc.viewModel.selectedDate = strToDateFormatted(date)
-        print("#### \(vc.viewModel.selectedDate)")
+        vc.viewModel.selectedDate = viewModel.strToDateFormatted(date)
 
         navigationController?.pushViewController(vc, animated: true)
-    }
-
-    func strToDateFormatted(_ date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "ko_KR")
-        formatter.dateFormat = "yyyy-MM-dd"
-
-        let dateString = formatter.string(from: date)
-        return dateString
     }
 }

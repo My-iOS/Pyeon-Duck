@@ -17,8 +17,6 @@ final class TabBarController: UITabBarController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
-        view.tintColor = .systemOrange
-
         let paddingTop: CGFloat = 10.0
         tabBar.frame = .init(
             x: tabBar.frame.origin.x,
@@ -31,10 +29,17 @@ final class TabBarController: UITabBarController {
 
 extension TabBarController {
     func setupTabbarController() {
+        let navigationBarAppearance = UINavigationBarAppearance()
+        navigationBarAppearance.backgroundColor = .clear
+
+        tabBarController?.navigationController?.navigationBar.standardAppearance = navigationBarAppearance
+        tabBarController?.navigationController?.navigationBar.compactScrollEdgeAppearance = navigationBarAppearance
+        tabBarController?.navigationController?.navigationBar.scrollEdgeAppearance = navigationBarAppearance
+
         UITabBarItem.appearance().titlePositionAdjustment = UIOffset(horizontal: 0, vertical: 0)
-        tabBar.unselectedItemTintColor = .systemPink
-        tabBar.tintColor = .systemBlue
-        tabBar.backgroundColor = .white
+        tabBar.unselectedItemTintColor = .systemGray
+        tabBar.tintColor = .black
+        tabBar.backgroundColor = .clear
 
         let expirationDateVC = ExpirationCalendarVC()
         expirationDateVC.tabBarItem = configure(title: "유통기한", symbolName: "calendar", tag: 0)

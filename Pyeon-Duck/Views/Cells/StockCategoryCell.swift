@@ -54,7 +54,7 @@ extension StockCategoryCell {
 extension StockCategoryCell {
     func createBaseView() {
         baseView.translatesAutoresizingMaskIntoConstraints = false
-        baseView.backgroundColor = .orange
+        baseView.backgroundColor = .white
         baseView.layer.cornerRadius = 10
 
         NSLayoutConstraint.activate([
@@ -91,7 +91,7 @@ extension StockCategoryCell {
         let image = UIImage(systemName: "chevron.right", withConfiguration: imageConfig)
         disclosureImage.image = image
         disclosureImage.contentMode = .scaleAspectFit
-        disclosureImage.tintColor = .systemGray6
+        disclosureImage.tintColor = .systemGray
 
         NSLayoutConstraint.activate([
             disclosureImage.centerYAnchor.constraint(equalTo: baseView.centerYAnchor),

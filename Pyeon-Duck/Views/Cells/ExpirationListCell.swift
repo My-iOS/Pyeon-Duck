@@ -79,7 +79,7 @@ extension ExpirationListCell {
 extension ExpirationListCell {
     func createBaseView() {
         baseView.translatesAutoresizingMaskIntoConstraints = false
-        baseView.backgroundColor = .orange
+        baseView.backgroundColor = .white
         baseView.layer.cornerRadius = 10
 
         NSLayoutConstraint.activate([
