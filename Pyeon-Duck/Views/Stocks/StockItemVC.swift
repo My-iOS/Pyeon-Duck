@@ -115,7 +115,8 @@ extension StockItemVC: UITableViewDataSource {
 
         cell.actionHandler = { [weak self] isConfirm in
             guard let self = self else { return }
-            print("#### 지금 \(isConfirm)")
+
+            HapticManager.shared.hapticImpact(style: .light)
             viewModel.updateCompletedStatus(item, isConfirm: isConfirm, selectedCategory: viewModel.selectedStockCategory!)
             viewWillAppear(true)
         }

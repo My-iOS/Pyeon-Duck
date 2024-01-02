@@ -118,8 +118,10 @@ extension ExpirationListVC: UITableViewDataSource {
         cell.confirm(item.title ?? "N/A", item.itemImage ?? Data(), item.isConfirm)
         cell.setupAlpah(item.isConfirm)
 
+        //// - 셀 내부의 버튼 클릭시 동작
         cell.actionHandler = { [weak self] isConfirm in
             guard let self = self else { return }
+            HapticManager.shared.hapticImpact(style: .light)
             viewModel.updateCompletedStatus(item, isConfirm: isConfirm)
             viewWillAppear(true)
         }
