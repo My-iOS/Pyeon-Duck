@@ -31,6 +31,7 @@ extension ExpirationListVC {
 
     override func viewWillAppear(_ animated: Bool) {
         navigationItem.title = currentDate ?? "N/A"
+        navigationController?.navigationBar.barTintColor = .systemGray6
         navigationItem.largeTitleDisplayMode = .never
         viewModel.fetchExpirationList()
         tableView.reloadData()

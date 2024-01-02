@@ -9,6 +9,7 @@ import UIKit
 
 class SalaryVC: UIViewController {
     var viewModel: SalaryViewModel!
+    private var textFieldPosY = CGFloat(0)
 
     let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -94,6 +95,7 @@ extension SalaryVC {
 extension SalaryVC {
     func setUpUI() {
         hideKeyboardWhenTappedAround()
+//        keyboardCheck()
 
         addView()
 
@@ -141,6 +143,8 @@ extension SalaryVC {
 
 extension SalaryVC {
     func createScrollView() {
+        scrollView.delegate = self
+
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10),
@@ -530,6 +534,14 @@ extension SalaryVC {
     }
 }
 
+// MARK: - UIScrollViewDelegate
+
+extension SalaryVC: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        view.endEditing(true)
+    }
+}
+
 // MARK: - ViewModelInjectable
 
 // 상위 TabBarVC에서 ViewModel 주입
@@ -551,6 +563,59 @@ extension SalaryVC {
 
     @objc func dismissKeyboard() {
         view.endEditing(true)
+    }
+}
+
+// MARK: - 키보드 올렸을 때 뷰 올리는 코드
+
+extension SalaryVC {
+    func keyboardCheck() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name: UIResponder.keyboardDidShowNotification, object: nil)
+    }
+
+    @objc func keyboardWillShow(notification: NSNotification) {
+        scrollView.isScrollEnabled = false
+        if hourlyWageTextField.isFirstResponder {
+            if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+                if contentView.frame.origin.y == textFieldPosY {
+                    contentView.frame.origin.y -= keyboardSize.height / 3 - UIApplication.shared.windows.first!.safeAreaInsets.bottom
+                }
+            }
+        } else if workHoursTextField.isFirstResponder {
+            if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+                if contentView.frame.origin.y == textFieldPosY {
+                    contentView.frame.origin.y -= keyboardSize.height / 3 - UIApplication.shared.windows.first!.safeAreaInsets.bottom
+                }
+            }
+        }
+    }
+
+    @objc func keyboardDidShow(notification: NSNotification) {
+        scrollView.isScrollEnabled = false
+        if hourlyWageTextField.isFirstResponder {
+            if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+                if contentView.frame.origin.y == textFieldPosY {
+                    contentView.frame.origin.y -= keyboardSize.height / 3 - UIApplication.shared.windows.first!.safeAreaInsets.bottom
+                }
+            }
+        } else if workHoursTextField.isFirstResponder {
+            if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+                if contentView.frame.origin.y == textFieldPosY {
+                    contentView.frame.origin.y -= keyboardSize.height / 3 - UIApplication.shared.windows.first!.safeAreaInsets.bottom
+                }
+            }
+        }
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if contentView.frame.origin.y != textFieldPosY {
+            contentView.frame.origin.y = textFieldPosY
+            scrollView.isScrollEnabled = true
+            hourlyWageTextField.isEnabled = true
+            workHoursTextField.isEnabled = true
+        }
     }
 }
 

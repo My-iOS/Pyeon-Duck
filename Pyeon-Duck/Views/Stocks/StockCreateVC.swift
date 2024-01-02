@@ -10,6 +10,7 @@ import UIKit
 
 class StockCreateVC: UIViewController {
     var viewModel = StockCreateViewModel()
+    private var textFieldPosY = CGFloat(0)
 
     let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -82,6 +83,7 @@ extension StockCreateVC {
         view.backgroundColor = .systemGray6
         viewModel.sstService.speechRecognizer?.delegate = self
         hideKeyboardWhenTappedAround()
+        keyboardCheck()
 
         addView()
         configureUI()
@@ -197,6 +199,7 @@ extension StockCreateVC {
         itemTitleTextField.layer.borderWidth = 1
         itemTitleTextField.layer.borderColor = UIColor.gray.cgColor
         itemTitleTextField.backgroundColor = .white
+        itemTitleTextField.delegate = self
 
         NSLayoutConstraint.activate([
             itemTitleTextField.topAnchor.constraint(equalTo: itemTitleLabel.bottomAnchor, constant: 24),
@@ -361,6 +364,14 @@ extension StockCreateVC {
     }
 }
 
+// MARK: - UITextFieldDelegate
+
+extension StockCreateVC: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        view.endEditing(true)
+    }
+}
+
 // MARK: - ImageView Tap Gesture Method
 
 extension StockCreateVC {
@@ -424,6 +435,46 @@ extension StockCreateVC {
 
     @objc func dismissKeyboard() {
         view.endEditing(true)
+    }
+}
+
+// MARK: - 키보드 올렸을 때 뷰 올리는 코드
+
+extension StockCreateVC {
+    func keyboardCheck() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name: UIResponder.keyboardDidShowNotification, object: nil)
+    }
+
+    @objc func keyboardWillShow(notification: NSNotification) {
+        scrollView.isScrollEnabled = false
+        if itemTitleTextField.isFirstResponder {
+            if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+                if contentView.frame.origin.y == textFieldPosY {
+                    contentView.frame.origin.y -= keyboardSize.height / 2 - UIApplication.shared.windows.first!.safeAreaInsets.bottom
+                }
+            }
+        }
+    }
+
+    @objc func keyboardDidShow(notification: NSNotification) {
+        scrollView.isScrollEnabled = false
+        if itemTitleTextField.isFirstResponder {
+            if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+                if contentView.frame.origin.y == textFieldPosY {
+                    contentView.frame.origin.y -= keyboardSize.height / 2 - UIApplication.shared.windows.first!.safeAreaInsets.bottom
+                }
+            }
+        }
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if contentView.frame.origin.y != textFieldPosY {
+            contentView.frame.origin.y = textFieldPosY
+            scrollView.isScrollEnabled = true
+            itemTitleTextField.isEnabled = true
+        }
     }
 }
 
