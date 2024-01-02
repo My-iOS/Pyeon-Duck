@@ -27,5 +27,7 @@ final class AppAppearance {
 
         /// TabBar의 background 색상
         UITabBar.appearance().backgroundColor = .systemGray6
+        UITabBar.appearance().standardAppearance.backgroundColor = .clear
+        UITabBar.appearance().scrollEdgeAppearance?.backgroundColor = .clear
     }
 }
