@@ -63,7 +63,10 @@ extension StockCategoryVC {
     // To-Do Stuff : Alert 로 카테고리 생성
     @objc func didTapAddButton(_ sender: UIButton) {
         let alert = UIAlertController(title: "카테고리", message: "", preferredStyle: .alert)
-        alert.addTextField { (textField: UITextField) in textField.placeholder = "카테고리명을 입력해주세요" }
+        alert.addTextField { (textField: UITextField) in
+            textField.placeholder = "카테고리명을 입력해주세요"
+            textField.clearButtonMode = .whileEditing
+        }
 
         let save = UIAlertAction(title: "저장", style: .default) { [weak self] _ in
             guard let content = alert.textFields?.first?.text,
@@ -148,6 +151,7 @@ extension StockCategoryVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let item = viewModel.stockCategoryList[indexPath.row]
         let vc = StockItemVC()
+        vc.currentCategory = item.categoryTitle
         vc.viewModel.selectedStockCategory = item
         tabBarController?.navigationController?.pushViewController(vc, animated: true)
     }
@@ -169,7 +173,10 @@ extension StockCategoryVC: UITableViewDelegate {
         let edit = UIContextualAction(style: .normal, title: "편집") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
 
             let alert = UIAlertController(title: "카테고리 편집", message: "", preferredStyle: .alert)
-            alert.addTextField { (textField: UITextField) in textField.placeholder = "새로운 카테고리명을 입력해주세요" }
+            alert.addTextField { (textField: UITextField) in
+                textField.placeholder = "새로운 카테고리명을 입력해주세요"
+                textField.clearButtonMode = .whileEditing
+            }
 
             let save = UIAlertAction(title: "저장", style: .default) { [weak self] _ in
                 guard let content = alert.textFields?.first?.text,

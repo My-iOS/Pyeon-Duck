@@ -54,6 +54,12 @@ class ExpirationDetailVC: UIViewController {
 extension ExpirationDetailVC {
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.prefersLargeTitles = false
+        setupUI()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        navigationItem.largeTitleDisplayMode = .never
         setupUI()
     }
 }

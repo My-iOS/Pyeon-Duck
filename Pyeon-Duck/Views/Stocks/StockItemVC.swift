@@ -12,6 +12,8 @@ class StockItemVC: UIViewController {
 
     var tableView = CustomTableView(frame: .zero, style: .plain)
     var addFloattingButton = CustomButton(frame: .zero)
+
+    var currentCategory: String?
 }
 
 // MARK: - View Life Cycle
@@ -24,6 +26,7 @@ extension StockItemVC {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        navigationItem.title = currentCategory ?? "N/A"
         viewModel.fetchStockItem(viewModel.selectedStockCategory!)
         tableView.reloadData()
     }

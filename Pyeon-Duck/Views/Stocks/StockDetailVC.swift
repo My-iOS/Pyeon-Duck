@@ -53,6 +53,11 @@ extension StockDetailVC {
         super.viewDidLoad()
         setupUI()
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        navigationItem.largeTitleDisplayMode = .never
+        setupUI()
+    }
 }
 
 // MARK: - Set up UI

@@ -5,7 +5,6 @@
 //  Created by 준우의 MacBook 16 on 1/1/24.
 //
 
-import Foundation
 import UIKit
 import UserNotifications
 

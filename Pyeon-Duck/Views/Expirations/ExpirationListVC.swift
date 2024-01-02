@@ -13,6 +13,8 @@ class ExpirationListVC: UIViewController {
     var tableView = CustomTableView(frame: .zero, style: .plain)
     var addFloattingButton = CustomButton(frame: .zero)
 
+    var currentDate: String?
+
     deinit {
         print("#### Deinitilized ExpirationListVC")
     }
@@ -28,6 +30,8 @@ extension ExpirationListVC {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        navigationItem.title = currentDate ?? "N/A"
+        navigationItem.largeTitleDisplayMode = .never
         viewModel.fetchExpirationList()
         tableView.reloadData()
     }

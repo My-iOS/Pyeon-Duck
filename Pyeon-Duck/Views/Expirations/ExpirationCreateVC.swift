@@ -74,6 +74,12 @@ extension ExpirationCreateVC {
         super.viewDidLoad()
         setupUI()
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        navigationItem.title = "유통기한 상품 작성"
+        navigationItem.largeTitleDisplayMode = .never
+        setupUI()
+    }
 }
 
 // MARK: - Setup UI

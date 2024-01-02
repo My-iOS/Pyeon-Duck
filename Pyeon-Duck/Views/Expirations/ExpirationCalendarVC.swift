@@ -52,7 +52,8 @@ extension ExpirationCalendarVC {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        tabBarController?.navigationItem.title = "유통기한"
+        tabBarController?.navigationItem.title = "유통기한 달력"
+        tabBarController?.navigationController?.navigationBar.prefersLargeTitles = true
         tabBarController?.navigationItem.rightBarButtonItem = nil
 
         viewModel.fetchExpirationList()
@@ -180,7 +181,7 @@ extension ExpirationCalendarVC: UICalendarViewDelegate, UICalendarSelectionSingl
         reloadDateView(date: date)
 
         let vc = ExpirationListVC()
-
+        vc.currentDate = viewModel.strToDateFormatted(date)
         vc.viewModel.selectedDate = viewModel.strToDateFormatted(date)
 
         navigationController?.pushViewController(vc, animated: true)
