@@ -122,6 +122,7 @@ extension StockDetailVC {
         imageView.image = UIImage(data: viewModel.stockItemImage)
         imageView.contentMode = .scaleAspectFit
         imageView.layer.cornerRadius = 10
+        imageView.layer.masksToBounds = true
         imageView.backgroundColor = .systemGray6
 
         NSLayoutConstraint.activate([

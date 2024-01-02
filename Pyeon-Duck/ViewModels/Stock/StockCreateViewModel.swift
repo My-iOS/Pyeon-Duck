@@ -12,6 +12,7 @@ class StockCreateViewModel {
     var selectedStockCategory: StockCategory?
     var stockItem: StockItem?
     var actionTag = 1 // 1: Create 2: Update
+    var sstService = SSTService.shared
 }
 
 extension StockCreateViewModel {

@@ -5,6 +5,7 @@
 //  Created by 준우의 MacBook 16 on 12/24/23.
 //
 
+import Speech
 import UIKit
 
 enum Action {
@@ -80,6 +81,7 @@ extension ExpirationCreateVC {
 extension ExpirationCreateVC {
     func setupUI() {
         view.backgroundColor = .systemGray6
+        viewModel.sstService.speechRecognizer?.delegate = self
         hideKeyboardWhenTappedAround()
 
         addView()
@@ -179,6 +181,7 @@ extension ExpirationCreateVC {
     }
 
     func createItemTitleTextField() {
+        itemTitleTextField.clearButtonMode = .whileEditing
         itemTitleTextField.placeholder = "상품 이름을 입력해주세요."
         itemTitleTextField.addLeftPadding()
         itemTitleTextField.layer.cornerRadius = 10
@@ -196,7 +199,7 @@ extension ExpirationCreateVC {
     }
 
     func createMicrophoneButton() {
-        let configuration = UIImage.SymbolConfiguration(pointSize: 30) // 이미지 크기 조절
+        let configuration = UIImage.SymbolConfiguration(pointSize: 30, weight: .bold) // 이미지 크기 조절
         let image = UIImage(systemName: "mic.fill", withConfiguration: configuration)
         microphoneButton.setImage(image, for: .normal)
         microphoneButton.imageView?.tintColor = .white
@@ -291,6 +294,33 @@ extension ExpirationCreateVC {
 extension ExpirationCreateVC {
     @objc func didTapMicrophoneButton(_ sender: UIButton) {
         print("#### \(#function)")
+        itemTitleTextField.text = nil
+        let configuration = UIImage.SymbolConfiguration(pointSize: 30, weight: .bold) // 이미지 크기 조절
+        let image = UIImage(systemName: "mic.fill", withConfiguration: configuration)
+        microphoneButton.setImage(image, for: .normal)
+        microphoneButton.imageView?.tintColor = .white
+        microphoneButton.backgroundColor = .red
+
+        if viewModel.sstService.audioEngine.isRunning {
+            viewModel.sstService.audioEngine.stop()
+            viewModel.sstService.recognitionRequest?.endAudio()
+            microphoneButton.isEnabled = false
+
+        } else {
+            viewModel.sstService.startRecording { [weak self] str in
+                self?.itemTitleTextField.text = str
+            } stopHandler: { [weak self] isStop in
+                self?.microphoneButton.isEnabled = isStop
+            } placeHandler: { [weak self] str in
+                self?.itemTitleTextField.text = str
+            }
+
+            let configuration = UIImage.SymbolConfiguration(pointSize: 30, weight: .bold) // 이미지 크기 조절
+            let image = UIImage(systemName: "mic.fill", withConfiguration: configuration)
+            microphoneButton.setImage(image, for: .normal)
+            microphoneButton.imageView?.tintColor = .red
+            microphoneButton.backgroundColor = .white
+        }
     }
 }
 
@@ -324,6 +354,21 @@ extension ExpirationCreateVC: UIImagePickerControllerDelegate, UINavigationContr
             let alert = UIAlertController(title: "", message: "사진 촬영이 취소되었습니다.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "확인", style: .cancel))
             self.present(alert, animated: true)
+        }
+    }
+}
+
+// MARK: - SFSpeechRecognizerDelegate
+
+extension ExpirationCreateVC: SFSpeechRecognizerDelegate {
+    // 음성 인식기의 사용 가능 상태가 변경될 때 호출됩니다.
+    func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
+        if available {
+            // True
+            microphoneButton.isEnabled = true
+        } else {
+            // False
+            microphoneButton.isEnabled = false
         }
     }
 }

@@ -11,6 +11,7 @@ class ExpirationDateCreateViewModel {
     var dataManager = DataManager()
     var expirationItem: ExpirationDate?
     var selectedTagNum = 1 // 1: Read 2: Update
+    var sstService = SSTService.shared
 }
 
 extension ExpirationDateCreateViewModel {
