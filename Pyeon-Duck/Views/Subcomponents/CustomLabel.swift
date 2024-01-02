@@ -11,6 +11,7 @@ class CustomLabel: UILabel {
     override init(frame: CGRect) {
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
+        adjustsFontSizeToFitWidth = true
     }
 
     @available(*, unavailable)

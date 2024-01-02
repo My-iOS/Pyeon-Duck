@@ -202,7 +202,7 @@ extension ExpirationDetailVC {
 
         NSLayoutConstraint.activate([
             expirationDateLabel.topAnchor.constraint(equalTo: describeTitleLable.bottomAnchor, constant: 20),
-            expirationDateLabel.leadingAnchor.constraint(equalTo: describeExpirationLabel.trailingAnchor, constant: 24),
+            expirationDateLabel.leadingAnchor.constraint(equalTo: describeExpirationLabel.trailingAnchor, constant: 12),
             expirationDateLabel.widthAnchor.constraint(equalToConstant: 150),
             expirationDateLabel.heightAnchor.constraint(equalToConstant: 60),
         ])
@@ -226,7 +226,7 @@ extension ExpirationDetailVC {
 
         NSLayoutConstraint.activate([
             createDateLabel.topAnchor.constraint(equalTo: describeExpirationLabel.bottomAnchor, constant: 20),
-            createDateLabel.leadingAnchor.constraint(equalTo: describeCreateDateLabel.trailingAnchor, constant: 24),
+            createDateLabel.leadingAnchor.constraint(equalTo: describeCreateDateLabel.trailingAnchor, constant: 12),
             createDateLabel.widthAnchor.constraint(equalToConstant: 150),
             createDateLabel.heightAnchor.constraint(equalToConstant: 60),
         ])
@@ -255,7 +255,7 @@ extension ExpirationDetailVC {
 
         NSLayoutConstraint.activate([
             modifiedDateLabel.topAnchor.constraint(equalTo: describeModifiedDateLabel.topAnchor, constant: 0),
-            modifiedDateLabel.leadingAnchor.constraint(equalTo: describeModifiedDateLabel.trailingAnchor, constant: 24),
+            modifiedDateLabel.leadingAnchor.constraint(equalTo: describeModifiedDateLabel.trailingAnchor, constant: 12),
             modifiedDateLabel.widthAnchor.constraint(equalToConstant: 150),
             modifiedDateLabel.heightAnchor.constraint(equalToConstant: 60),
         ])

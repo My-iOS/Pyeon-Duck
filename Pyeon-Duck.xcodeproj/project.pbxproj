@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4E089F922B4489B5009B10BE /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E089F912B4489B5009B10BE /* HapticManager.swift */; };
+		4E089F942B449781009B10BE /* AppAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E089F932B449781009B10BE /* AppAppearance.swift */; };
 		4E0ABC262B38527500B585DA /* ExpirationListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0ABC252B38527500B585DA /* ExpirationListVC.swift */; };
 		4E0ABC282B385A4700B585DA /* ExpirationCreateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0ABC272B385A4700B585DA /* ExpirationCreateVC.swift */; };
 		4E0ABC2B2B385B3800B585DA /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0ABC2A2B385B3800B585DA /* CustomImageView.swift */; };
@@ -51,6 +52,7 @@
 
 /* Begin PBXFileReference section */
 		4E089F912B4489B5009B10BE /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
+		4E089F932B449781009B10BE /* AppAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAppearance.swift; sourceTree = "<group>"; };
 		4E0ABC252B38527500B585DA /* ExpirationListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpirationListVC.swift; sourceTree = "<group>"; };
 		4E0ABC272B385A4700B585DA /* ExpirationCreateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpirationCreateVC.swift; sourceTree = "<group>"; };
 		4E0ABC2A2B385B3800B585DA /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 				4E7B87022B441C99008263C6 /* SSTService.swift */,
 				4E3D49B42B3590D500D4A1D1 /* Model.xcdatamodeld */,
 				4E089F912B4489B5009B10BE /* HapticManager.swift */,
+				4E089F932B449781009B10BE /* AppAppearance.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -321,6 +324,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4EC696DA2B2AD742000EDE9B /* SalaryViewModel.swift in Sources */,
+				4E089F942B449781009B10BE /* AppAppearance.swift in Sources */,
 				4ED180AF2B3FC26B004486A2 /* StockItemCell.swift in Sources */,
 				4E0ABC2B2B385B3800B585DA /* CustomImageView.swift in Sources */,
 				4E7F05E02B37187600822B55 /* CustomStackView.swift in Sources */,
