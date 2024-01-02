@@ -48,6 +48,7 @@ extension ExpirationCalendarVC {
         super.viewDidLoad()
         setUpUI()
         viewModel.fetchExpirationList()
+        viewModel.scheduleNotificationIfNeeded()
     }
 
     override func viewWillAppear(_ animated: Bool) {
