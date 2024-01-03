@@ -476,16 +476,22 @@ extension SalaryVC {
 
 extension SalaryVC {
     @objc func didTapCalculatorButton(_ sender: UIButton) {
-        let hourlyWage = viewModel.numberFormattedStrToInt(hourlyWageTextField.text ?? "0")
-        let workHours = viewModel.numberFormattedStrToInt(workHoursTextField.text ?? "0")
+        if hourlyWageTextField.text == "" || workHoursTextField.text == "" {
+            showBlankAlert()
+        } else if viewModel.filterWorkDayArr.isEmpty {
+            showEmptyDaysAlert()
+        } else {
+            let hourlyWage = viewModel.numberFormattedStrToInt(hourlyWageTextField.text ?? "0")
+            let workHours = viewModel.numberFormattedStrToInt(workHoursTextField.text ?? "0")
 
-        let dailyResult = hourlyWage * workHours
-        let weeklyResult = dailyResult * viewModel.filterWorkDayArr.count
-        let monthlyResult = dailyResult * viewModel.countWeekdaysInCurrentMonth(weekday: viewModel.filterWorkDayArr)
+            let dailyResult = hourlyWage * workHours
+            let weeklyResult = dailyResult * viewModel.filterWorkDayArr.count
+            let monthlyResult = dailyResult * viewModel.countWeekdaysInCurrentMonth(weekday: viewModel.filterWorkDayArr)
 
-        resultDailyTextField.text = viewModel.numberFormatted(dailyResult)
-        resultWeeklyTextField.text = viewModel.numberFormatted(weeklyResult)
-        resultMonthlyTextField.text = viewModel.numberFormatted(monthlyResult)
+            resultDailyTextField.text = viewModel.numberFormatted(dailyResult)
+            resultWeeklyTextField.text = viewModel.numberFormatted(weeklyResult)
+            resultMonthlyTextField.text = viewModel.numberFormatted(monthlyResult)
+        }
     }
 }
 
@@ -510,6 +516,26 @@ extension SalaryVC {
         } else {
             workHoursTextField.text = input.description
         }
+    }
+}
+
+// MARK: - 빈 칸 확인 경고
+
+extension SalaryVC {
+    func showBlankAlert() {
+        let alert = UIAlertController(title: "빈 칸이 있습니다.", message: "", preferredStyle: .alert)
+
+        let confirmAction = UIAlertAction(title: "확인", style: .default)
+        alert.addAction(confirmAction)
+        present(alert, animated: true)
+    }
+
+    func showEmptyDaysAlert() {
+        let alert = UIAlertController(title: "요일을 확인해주세요.", message: "", preferredStyle: .alert)
+
+        let confirmAction = UIAlertAction(title: "확인", style: .default)
+        alert.addAction(confirmAction)
+        present(alert, animated: true)
     }
 }
 
