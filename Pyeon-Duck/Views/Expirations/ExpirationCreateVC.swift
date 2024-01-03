@@ -273,27 +273,31 @@ extension ExpirationCreateVC {
 extension ExpirationCreateVC {
     @objc func didTapSaveButton(_ sender: UIButton) {
         // Convert UIImage to Data
-        if viewModel.selectedTagNum == 1 {
-            // Create
-            if let imageData = imageView.image?.pngData() {
-                if imageView.image?.isSymbolImage == true {
-                    viewModel.addExpiration(itemTitleTextField.text ?? "N/A", viewModel.dateToStrFormatted(datePicker.date), UIImage(named: "DuckBlankImage")!.pngData()!, viewModel.dateToStrFormatted(Date.now), isConfirm: false)
-                } else {
-                    viewModel.addExpiration(itemTitleTextField.text ?? "N/A", viewModel.dateToStrFormatted(datePicker.date), imageData, viewModel.dateToStrFormatted(Date.now), isConfirm: false)
-                }
-            }
-
-            navigationController?.popViewController(animated: true)
-
+        if itemTitleTextField.text == "" {
+            showBlankAlert()
         } else {
-            // Update
-            if let item = viewModel.expirationItem {
-                viewModel.updateExpiration(item, newTitle: itemTitleTextField.text ?? "N/A", newDate: viewModel.dateToStrFormatted(datePicker.date), newModifiedDate: viewModel.dateToStrFormatted(Date.now))
+            if viewModel.selectedTagNum == 1 {
+                // Create
+                if let imageData = imageView.image?.pngData() {
+                    if imageView.image?.isSymbolImage == true {
+                        viewModel.addExpiration(itemTitleTextField.text ?? "N/A", viewModel.dateToStrFormatted(datePicker.date), UIImage(named: "DuckBlankImage")!.pngData()!, viewModel.dateToStrFormatted(Date.now), isConfirm: false)
+                    } else {
+                        viewModel.addExpiration(itemTitleTextField.text ?? "N/A", viewModel.dateToStrFormatted(datePicker.date), imageData, viewModel.dateToStrFormatted(Date.now), isConfirm: false)
+                    }
+                }
+
+                navigationController?.popViewController(animated: true)
+
+            } else {
+                // Update
+                if let item = viewModel.expirationItem {
+                    viewModel.updateExpiration(item, newTitle: itemTitleTextField.text ?? "N/A", newDate: viewModel.dateToStrFormatted(datePicker.date), newModifiedDate: viewModel.dateToStrFormatted(Date.now))
+                }
+
+                let view = navigationController?.viewControllers as [UIViewController]
+
+                navigationController?.popToViewController(view[1], animated: true)
             }
-
-            let view = navigationController?.viewControllers as [UIViewController]
-
-            navigationController?.popToViewController(view[1], animated: true)
         }
     }
 }
@@ -338,6 +342,17 @@ extension ExpirationCreateVC {
 extension ExpirationCreateVC: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         view.endEditing(true)
+    }
+}
+
+// MARK: - 빈 칸 확인 Alert
+
+extension ExpirationCreateVC {
+    func showBlankAlert() {
+        let alert = UIAlertController(title: "빈 칸이 있습니다.", message: "", preferredStyle: .alert)
+        let confirmAlert = UIAlertAction(title: "확인", style: .default)
+        alert.addAction(confirmAlert)
+        present(alert, animated: true)
     }
 }
 

@@ -74,9 +74,14 @@ extension StockCategoryVC {
             else {
                 return
             }
-            self.viewModel.addStockCategory(content)
 
-            self.tableView.reloadData()
+            if content == "" || content == " " {
+                showBlankAlert()
+            } else {
+                self.viewModel.addStockCategory(content)
+
+                self.tableView.reloadData()
+            }
         }
 
         let cancel = UIAlertAction(title: "취소", style: .destructive) { (cancel) in
@@ -121,6 +126,17 @@ extension StockCategoryVC {
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
         ])
+    }
+}
+
+// MARK: - 빈 칸 확인 Alert
+
+extension StockCategoryVC {
+    func showBlankAlert() {
+        let alert = UIAlertController(title: "빈 칸이 있습니다.", message: "", preferredStyle: .alert)
+        let confirmAlert = UIAlertAction(title: "확인", style: .default)
+        alert.addAction(confirmAlert)
+        present(alert, animated: true)
     }
 }
 

@@ -284,24 +284,28 @@ extension StockCreateVC {
         guard let title = itemTitleTextField.text else { return }
         guard let imageData = imageView.image?.pngData() else { return }
 
-        if viewModel.actionTag == 1 {
-            // Create
-            if let imageData = imageView.image?.pngData() {
-                if imageView.image?.isSymbolImage == true {
-                    viewModel.addStockItem(title, UIImage(named: "DuckBlankImage")!.pngData()!, Int64(stockStepper.value), viewModel.selectedStockCategory!)
-                } else {
-                    viewModel.addStockItem(title, imageData, Int64(stockStepper.value), viewModel.selectedStockCategory!)
-                }
-            }
-            navigationController?.popViewController(animated: true)
+        if itemTitleTextField.text == "" {
+            showBlankAlert()
         } else {
-            // Update
-            if let item = viewModel.stockItem {
-                viewModel.updateStockItem(stockItem: item, newTitle: title, newImage: imageData, newCount: Int(stockStepper.value), selectedCategory: viewModel.selectedStockCategory!)
+            if viewModel.actionTag == 1 {
+                // Create
+                if let imageData = imageView.image?.pngData() {
+                    if imageView.image?.isSymbolImage == true {
+                        viewModel.addStockItem(title, UIImage(named: "DuckBlankImage")!.pngData()!, Int64(stockStepper.value), viewModel.selectedStockCategory!)
+                    } else {
+                        viewModel.addStockItem(title, imageData, Int64(stockStepper.value), viewModel.selectedStockCategory!)
+                    }
+                }
+                navigationController?.popViewController(animated: true)
+            } else {
+                // Update
+                if let item = viewModel.stockItem {
+                    viewModel.updateStockItem(stockItem: item, newTitle: title, newImage: imageData, newCount: Int(stockStepper.value), selectedCategory: viewModel.selectedStockCategory!)
 
-                let view = navigationController?.viewControllers as [UIViewController]
+                    let view = navigationController?.viewControllers as [UIViewController]
 
-                navigationController?.popToViewController(view[1], animated: true)
+                    navigationController?.popToViewController(view[1], animated: true)
+                }
             }
         }
     }
@@ -310,7 +314,6 @@ extension StockCreateVC {
 // MARK: - Reset Button
 
 extension StockCreateVC {
-    // To-Do Stuff
     func createResetButton() {
         let resetButton = UIBarButtonItem(image: UIImage(systemName: "gobackward"), style: .plain, target: self, action: #selector(didTapRestButton))
         navigationItem.rightBarButtonItem = resetButton
@@ -361,6 +364,17 @@ extension StockCreateVC {
             microphoneButton.imageView?.tintColor = .red
             microphoneButton.backgroundColor = .white
         }
+    }
+}
+
+// MARK: - 빈 칸 확인 Alert
+
+extension StockCreateVC {
+    func showBlankAlert() {
+        let alert = UIAlertController(title: "빈 칸이 있습니다.", message: "", preferredStyle: .alert)
+        let confirmAlert = UIAlertAction(title: "확인", style: .default)
+        alert.addAction(confirmAlert)
+        present(alert, animated: true)
     }
 }
 
