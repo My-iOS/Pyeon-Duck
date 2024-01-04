@@ -272,7 +272,7 @@ extension StockCreateVC {
         saveButton.addTarget(self, action: #selector(didTapSaveButton), for: .touchUpInside)
 
         NSLayoutConstraint.activate([
-            saveButton.topAnchor.constraint(equalTo: stockCountDescribeLabel.bottomAnchor, constant: 30),
+            saveButton.topAnchor.constraint(equalTo: stockCountDescribeLabel.bottomAnchor, constant: 20),
             saveButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             saveButton.widthAnchor.constraint(equalToConstant: 180),
             saveButton.heightAnchor.constraint(equalToConstant: 60),

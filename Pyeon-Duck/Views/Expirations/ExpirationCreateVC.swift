@@ -245,7 +245,7 @@ extension ExpirationCreateVC {
         saveButton.addTarget(self, action: #selector(didTapSaveButton), for: .touchUpInside)
 
         NSLayoutConstraint.activate([
-            saveButton.topAnchor.constraint(equalTo: expirationDateLabel.bottomAnchor, constant: 50),
+            saveButton.topAnchor.constraint(equalTo: expirationDateLabel.bottomAnchor, constant: 20),
             saveButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             saveButton.widthAnchor.constraint(equalToConstant: 180),
             saveButton.heightAnchor.constraint(equalToConstant: 60),
