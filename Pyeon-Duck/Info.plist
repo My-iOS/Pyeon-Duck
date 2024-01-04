@@ -5,7 +5,7 @@
 	<key>NSSpeechRecognitionUsageDescription</key>
 	<string>음성 명령 기능 사용을 위해 접근권한 동의가 필요합니다. 설정에서 이를 변경할 수 있습니다.</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>마이크 기능 사용을 위해 마이크 접근권한 동의가 필요합니다. 설정에서 이를 변경할 수 있습니다.</string>
+	<string>마이크를 사용하여 상품명을 입력하는 기능을 사용하기 위해서는 마이크 접근권한 동의가 필요합니다. 설정에서 이를 변경할 수 있습니다.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>상품 촬영 기능 사용을 위해 사진 라이브러리 접근권한 동의가 필요합니다. 설정에서 이를 변경할 수 있습니다.</string>
 	<key>UIApplicationSceneManifest</key>
