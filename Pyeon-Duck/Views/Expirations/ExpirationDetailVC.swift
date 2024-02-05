@@ -73,6 +73,7 @@ extension ExpirationDetailVC {
 
         createScrollView()
         createContentView()
+
         createDescribeImageLabel()
         createImageView()
         createDescribeTitleLabel()
@@ -83,7 +84,6 @@ extension ExpirationDetailVC {
         createCreateDateLabel()
         createDescribeModifiedDateLabel()
         createModifiedDateLabel()
-
         createEditButton()
     }
 
@@ -118,7 +118,6 @@ extension ExpirationDetailVC {
             contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
             contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-//            contentView.heightAnchor.constraint(equalToConstant: 1000),
         ])
     }
 

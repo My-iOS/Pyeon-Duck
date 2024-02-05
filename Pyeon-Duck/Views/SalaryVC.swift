@@ -596,12 +596,12 @@ extension SalaryVC {
 
 extension SalaryVC {
     func keyboardCheck() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name: UIResponder.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(willShowKeyboard), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(willHideKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didShowKeyboard), name: UIResponder.keyboardDidShowNotification, object: nil)
     }
 
-    @objc func keyboardWillShow(notification: NSNotification) {
+    @objc func willShowKeyboard(notification: NSNotification) {
         scrollView.isScrollEnabled = false
         if hourlyWageTextField.isFirstResponder {
             if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
@@ -618,7 +618,7 @@ extension SalaryVC {
         }
     }
 
-    @objc func keyboardDidShow(notification: NSNotification) {
+    @objc func didShowKeyboard(notification: NSNotification) {
         scrollView.isScrollEnabled = false
         if hourlyWageTextField.isFirstResponder {
             if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
@@ -635,7 +635,7 @@ extension SalaryVC {
         }
     }
 
-    @objc func keyboardWillHide(notification: NSNotification) {
+    @objc func willHideKeyboard(notification: NSNotification) {
         if contentView.frame.origin.y != textFieldPosY {
             contentView.frame.origin.y = textFieldPosY
             scrollView.isScrollEnabled = true

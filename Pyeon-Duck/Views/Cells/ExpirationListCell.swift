@@ -32,7 +32,6 @@ class ExpirationListCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         // 여기에 셀 구성을 추가하세요.
-//        confirm("Hello", (UIImage(systemName: "bell")?.pngData())!, false)
         setupUI()
     }
 
